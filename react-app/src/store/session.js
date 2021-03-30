@@ -14,7 +14,7 @@ const createUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER
-})
+});
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/',{
@@ -25,7 +25,7 @@ export const authenticate = () => async (dispatch) => {
   const user = await response.json();
   dispatch(getUser(user))
   return user;
-}
+};
 
 export const login = (email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/login', {
@@ -44,7 +44,7 @@ export const login = (email, password) => async (dispatch) => {
    return user;
  }
  return user;
-}
+};
 
 export const logout = () => async (dispatch) => {
   const response = await fetch("/api/auth/logout", {
@@ -58,17 +58,43 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = async (username, email, password) => {
+export const signUp = (firstName, email, password) => async (dispatch) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username,
+      firstName,
       email,
       password,
     }),
   });
-  return await response.json();
-}
+   if (response.ok) {
+    let data = await response.json();
+    dispatch(createUser(data));
+    return response;
+  }
+};
+
+const initialState = { user : null };
+
+const sessionReducer = (state = initialState, action) => {
+    let newState;
+    switch (action.type) {
+      case GET_USER:
+        return { ...state, user: action.user };
+      case CREATE_USER:
+        newState = Object.assign({}, state);
+        newState.user = action.user;
+        return newState;
+      case REMOVE_USER:
+        newState = Object.assign({}, state)
+        newState.user = null;
+        return newState;
+      default:
+        return state;
+    }
+};
+
+export default sessionReducer;
