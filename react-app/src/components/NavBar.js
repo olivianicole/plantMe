@@ -2,8 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
-const NavBar = ({ setAuthenticated }) => {
-  return (
+const NavBar = ({ authenticated, setAuthenticated }) => {
+  let nav;
+  if (authenticated) {
+    nav = (
     <nav>
       <ul>
         <li>
@@ -31,7 +33,13 @@ const NavBar = ({ setAuthenticated }) => {
         </li>
       </ul>
     </nav>
-  );
+  )} else {
+    nav = (
+      <>
+      </>
+    )
+  };
+  return <>{nav}</>
 }
 
 export default NavBar;

@@ -1,0 +1,49 @@
+.splash-page-container {
+    background-image: url(../../site-images/splash-background.jpeg);
+    background-attachment: local;
+    background-size: cover;
+    background-position: center;
+    height: 800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-origin: content-box;
+}
+
+.splash-title-circle {
+    height: 400px;
+    width: 400px;
+    background-color: white;
+    border-radius: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+    box-shadow: 0 1px 1px rgb(0 22 36 / 8%), 0 1px 3px rgb(0 22 36 / 16%);
+}
+
+.splash-title-text {
+    color: black;
+    font-size: 72px;
+    margin-bottom: 30px;
+}
+
+.splash-login-button, .splash-register-button {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    background-color: white;
+    height: 40px;
+    width: 80px;
+    border-radius: 8px;
+    margin: 0 25px 30px 25px;
+    color: black;
+    box-shadow: 0 1px 1px rgb(0 22 36 / 8%), 0 1px 3px rgb(0 22 36 / 16%);
+}
+
+.splash-about-text {
+    color: black;
+    width: 210px;
+    display: flex;
+    flex-wrap: wrap;
+}
