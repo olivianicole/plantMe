@@ -16,16 +16,18 @@ const removeUser = () => ({
   type: REMOVE_USER
 })
 
-export const authenticate = async() => {
+export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/',{
     headers: {
       'Content-Type': 'application/json'
     }
   });
-  return await response.json();
+  const user = await response.json();
+  dispatch(getUser(user))
+  return user;
 }
 
-export const login = async (email, password) => {
+export const login = (email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
@@ -36,16 +38,23 @@ export const login = async (email, password) => {
       password
     })
   });
-  return await response.json();
+ const user = await response.json();
+ if (!user.errors) {
+   dispatch(getUser(user));
+   return user;
+ }
+ return user;
 }
 
-export const logout = async () => {
+export const logout = () => async (dispatch) => {
   const response = await fetch("/api/auth/logout", {
     headers: {
       "Content-Type": "application/json",
     }
   });
-  return await response.json();
+  await response.json();
+  dispatch(removeUser());
+  return response;
 };
 
 
