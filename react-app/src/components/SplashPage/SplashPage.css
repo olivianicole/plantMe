@@ -27,7 +27,7 @@
 .splash-title-text {
     color: black;
     font-size: 72px;
-    margin-bottom: 30px;
+    margin: 80px auto 30px auto;
 }
 
 .splash-login-button, .splash-register-button {
