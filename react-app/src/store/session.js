@@ -23,7 +23,10 @@ export const authenticate = () => async (dispatch) => {
     }
   });
   const user = await response.json();
-  dispatch(getUser(user))
+  if (response.ok) {
+    dispatch(getUser(user));
+    return user;
+  }
   return user;
 };
 
