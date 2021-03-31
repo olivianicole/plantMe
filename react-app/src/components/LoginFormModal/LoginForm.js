@@ -38,11 +38,7 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
     <div className="login-form-container">
         <form onSubmit={onLogin}>
         <div className="login-form-title">
-            <p>welcome back!</p>
-            <div 
-            onClick={() => setShowModal(false)}
-            className="login-form-exit"> x
-            </div>
+            <p>Welcome back!</p>
         </div>
         <div>
             {errors.map((error) => (
@@ -78,8 +74,8 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
             value={password}
             onChange={updatePassword}
             />
-            <button type="submit">Login</button>
         </div>
+        <button type="submit">Login</button>
         </form>
     </div>
   );

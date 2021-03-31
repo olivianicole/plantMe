@@ -1,4 +1,4 @@
-.login-form-modal-button {
+.signup-form-modal-button {
     border: 1px solid rgba(0,0,0, 0.75);
     background-color: #f8f8ff;
     height: 40px;
@@ -10,3 +10,11 @@
     justify-content: center;
     box-shadow: 0px -1px 5px 1px rgba(0,0,0, 0.3);
 }
+
+.signup-form-exit {
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+}
+
+
