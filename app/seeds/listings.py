@@ -143,7 +143,7 @@ def seed_listings():
                         image_3="",
                         category_id=,
                         shop_id=4,
-                        price=10.00)
+                        price=12.00)
     listing17 = Listing(name="",
                         description="",
                         image_1="",
