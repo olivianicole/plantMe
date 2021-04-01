@@ -37,9 +37,14 @@ def upgrade():
                     )
     op.create_table('shops',
                     sa.Column('id', sa.Integer(), nullable=False),
+                    sa.Column('shop_logo', sa.String(), nullable=False),
                     sa.Column('name', sa.String(), nullable=False),
                     sa.Column('owner_id', sa.Integer(), nullable=False),
                     sa.Column('description', sa.String(), nullable=False),
+                    sa.Column('city', sa.String())
+                    sa.Column('state', sa.String())
+                    sa.Column('country', sa.String())
+                    sa.Column('num_sales', sa.Integer(5, 2), nullable=True),
                     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('name'),
@@ -47,15 +52,14 @@ def upgrade():
                     )
     op.create_table('listings',
                     sa.Column('id', sa.Integer(), nullable=False),
-                    sa.Column('name', sa.String(length=100), nullable=False),
-                    sa.Column('description', sa.String(length=250),
-                              nullable=False),
-                    sa.Column('num_sales', sa.Integer(), nullable=True),
+                    sa.Column('name', sa.String(), nullable=False),
+                    sa.Column('description', sa.Text(), nullable=False),
                     sa.Column('image_1', sa.String(), nullable=False),
                     sa.Column('image_2', sa.String(), nullable=True),
                     sa.Column('image_3', sa.String(), nullable=True),
                     sa.Column('category_id', sa.Integer(), nullable=True),
                     sa.Column('shop_id', sa.Integer(), nullable=False),
+                    sa.Column('price', sa.Numeric())
                     sa.ForeignKeyConstraint(['category_id'],
                                             ['categories.id'], ),
                     sa.ForeignKeyConstraint(['shop_id'], ['shops.id'], ),
