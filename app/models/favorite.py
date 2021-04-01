@@ -1,11 +1,13 @@
 from .db import db
 
+
 class Favorite(db.Model):
     __tablename__ = "favorites"
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"), nullable=False)
+    listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"),
+                           nullable=False)
 
     user = db.relationship("User", back_populates="favorites")
     listing = db.relationship("Listing", back_populates="favorites")

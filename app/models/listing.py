@@ -1,5 +1,6 @@
 from .db import db
 
+
 class Listing(db.Model):
     __tablename__ = "listings"
 
@@ -10,12 +11,13 @@ class Listing(db.Model):
     image_1 = db.Column(db.String, nullable=False)
     image_2 = db.Column(db.String, nullable=True)
     image_3 = db.Column(db.String, nullable=True)
-    category_id = db.Column(db.Integer, db.ForeignKey("cateogries.id"), nullable=False)
-    shop_id = db.Column(db.Integer, db.ForeignKey("shops.id"), nullable=False)
-
+    category_id = db.Column(db.Integer, db.ForeignKey("cateogries.id"))
+    shop_id = db.Column(db.Integer, db.ForeignKey("shops.id")
+                        nullable=False)
     category = db.relationship("Category", back_populates="listings")
     shop = db.relationship("Shop", back_populates="listings")
-
+    favorites = db.relationship("Favorite", back_populates="listing",
+                                cascade="all, delete-orphan")
     const to_dict(self):
         return {
             "name": self.name,
@@ -28,6 +30,7 @@ class Listing(db.Model):
             "shop_id": self.shop_id,
             "category": self.category.to_simple_dict(),
             "shop": self.category.to_simple_dict(),
+            "favorites": [favorite.to_simple_dict() for favorite in favorites]
         }
 
     const to_simple_dict(self):

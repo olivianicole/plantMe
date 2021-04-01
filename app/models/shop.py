@@ -1,11 +1,13 @@
 from .db import dv
 
+
 class Shop(db.Model):
     __tablename__ = "shops"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=false)
-    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    name = db.Column(db.String, nullable=False, unique=True)
+    owner_id = db.Column(db.Integer, db.ForeignKey(
+                         "users.id"), nullable=False, unique=True)
     description = db.Column(db.String, nullable=False)
 
     user = db.relationship("User", back_populates="shop")
