@@ -6,19 +6,20 @@ class Listing(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(250) nullable=False)
+    description = db.Column(db.String(250), nullable=False)
     num_sales = db.Column(db.Integer, default=0)
     image_1 = db.Column(db.String, nullable=False)
     image_2 = db.Column(db.String, nullable=True)
     image_3 = db.Column(db.String, nullable=True)
-    category_id = db.Column(db.Integer, db.ForeignKey("cateogries.id"))
-    shop_id = db.Column(db.Integer, db.ForeignKey("shops.id")
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
+    shop_id = db.Column(db.Integer, db.ForeignKey("shops.id"),
                         nullable=False)
     category = db.relationship("Category", back_populates="listings")
     shop = db.relationship("Shop", back_populates="listings")
     favorites = db.relationship("Favorite", back_populates="listing",
                                 cascade="all, delete-orphan")
-    const to_dict(self):
+
+    def to_dict(self):
         return {
             "name": self.name,
             "description": self.description,
@@ -33,7 +34,7 @@ class Listing(db.Model):
             "favorites": [favorite.to_simple_dict() for favorite in favorites]
         }
 
-    const to_simple_dict(self):
+    def to_simple_dict(self):
         return {
             "name": self.name,
             "description": self.description,

@@ -6,9 +6,9 @@ class Review(db.Model):
     __tablename__ = "reviews"
 
     id = db.Column(db.Integer, primary_key=True)
-    listing_id = db.Column(db.Integer, db.ForeignKey("listings.id")
+    listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"),
                            nullable=False, unique=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id", nullable=False), 
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False,
                         unique=True)
     rating = db.Column(db.Integer, default=0)
     review = db.Column(db.String(250))
@@ -22,8 +22,8 @@ class Review(db.Model):
             "id": self.id,
             "listingId": self.listing_id,
             "user_id": self.user_id,
-            "rating", self.rating,
-            "review", self.review
+            "rating": self.rating,
+            "review": self.review,
             "listing": self.listing.to_simple_dict(),
             "user": self.user.to_simple_dict()
 
@@ -34,6 +34,6 @@ class Review(db.Model):
             "id": self.id,
             "listingId": self.listing_id,
             "user_id": self.user_id,
-            "rating", self.rating,
-            "review", self.review
+            "rating": self.rating,
+            "review": self.review
         }

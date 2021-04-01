@@ -1,4 +1,4 @@
-from .db import dv
+from .db import db
 
 
 class Shop(db.Model):
@@ -10,7 +10,7 @@ class Shop(db.Model):
                          "users.id"), nullable=False, unique=True)
     description = db.Column(db.String, nullable=False)
 
-    user = db.relationship("User", back_populates="shop")
+    user = db.relationship("User", back_populates="shops")
 
     def to_dict(self):
         return {
