@@ -2,10 +2,10 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import "./SplashPage.css"
 import LoginFormModal from "../LoginFormModal";
+import SignUpFormModal from "../SignUpFormModal";
 
 
 const SplashPage = ({ authenticated }) => {
-    console.log("on splash")
 
     if (authenticated){
         return <Redirect to="/home" />
@@ -14,15 +14,19 @@ const SplashPage = ({ authenticated }) => {
         <>
             <div className="splash-page-container">
                 <div className="splash-title-circle">
-                    <p className="splash-title-text">plantMe</p>
-                    <div className="splash-modal-container">
-                        <div className="splash-register-modal">register</div>
-                        <div className="splash-login-modal">log in
-                            {/* <LoginFormModal authenticated={authenticated} /> */}
+                    <div className="splash-title-inner-circle">
+                        <p className="splash-title-text">plantMe</p>
+                        <div className="splash-modal-container">
+                            <div className="splash-register-modal">
+                                <SignUpFormModal  authenticated={authenticated} />
+                            </div>
+                            <div className="splash-login-modal">
+                                <LoginFormModal authenticated={authenticated} />
+                            </div>
                         </div>
-                    </div>
-                    <div className="splash-about-text">
-                        <p></p>
+                        <div className="splash-about-text">
+                            <p>where people come together to buy and sell unique and beautiful greenery  </p>
+                        </div>
                     </div>
                     </div>
             </div>
