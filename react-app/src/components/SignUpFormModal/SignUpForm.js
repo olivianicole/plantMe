@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { signUp } from '../../services/auth';
+import "./SignUp.css";
 
-const SignUpForm = ({ authenticated, setShowModal, setAuthenticated }) => {
+const SignUpForm = ({ authenticated, setShowModal, setAuthenticated}) => {
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+
+    
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -36,25 +40,27 @@ const SignUpForm = ({ authenticated, setShowModal, setAuthenticated }) => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
-  
+
+  const onClose = () => setShowModal(false)
+
   if (authenticated) {
   return <Redirect to="/home" />;
   };
 
 return (
   <div className="signup-form-container">
-      <form onSubmit={onSignUp}>
+      <form onSubmit={onSignUp} className="signup-form">
       <div className="signup-form-title">
           <p>Hello there!</p>
       </div>
       <div>
           {errors.map((error) => (
-          <div>{error}</div>
+          <div className="signup-error-messages">{error}</div>
           ))}
       </div>
-      <div>
-          <label htmlFor="firstName">First Name</label>
+      <div className="signup-form-field-container">
           <input
+          className="signup-form-field"
           name="firstName"
           type="email"
           placeholder="First Name"
@@ -62,9 +68,9 @@ return (
           onChange={updateFirstName}
           />
       </div>
-      <div>
-          <label htmlFor="email">Email</label>
+      <div className="signup-form-field-container">
           <input
+          className="signup-form-field"
           name="email"
           type="text"
           placeholder="Email"
@@ -72,9 +78,9 @@ return (
           onChange={updateEmail}
           />
       </div>
-      <div>
-          <label htmlFor="password">Password</label>
+      <div className="signup-form-field-container">
           <input
+          className="signup-form-field"
           name="password"
           type="password"
           placeholder="Password"
@@ -82,9 +88,9 @@ return (
           onChange={updatePassword}
           />
       </div>
-      <div>
-          <label htmlFor="repeatPassword">Password</label>
+      <div className="signup-form-field-container">
           <input
+          className="signup-form-field"
           name="repeatPassword"
           type="password"
           placeholder="Confirm Password"
@@ -92,7 +98,12 @@ return (
           onChange={updateRepeatPassword}
           />
       </div>
-      <button type="submit">Register</button>
+      <div className="signup-form-action-container">
+          <button type="submit" className="signup-form-register-button">Register</button>
+          <button type="button" onClick={onClose} className="signup-form-link-home" to="/">
+              <i className="fas fa-home"></i>
+          </button>
+      </div>
       </form>
   </div>
   );

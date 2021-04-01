@@ -30,34 +30,26 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
+  const onClose = () => setShowModal(false)
+
   if (authenticated) {
     return <Redirect to="/home" />;
   };
 
   return (
     <div className="login-form-container">
-        <form onSubmit={onLogin}>
+        <form className="login-form" onSubmit={onLogin}>
         <div className="login-form-title">
             <p>Welcome back!</p>
         </div>
         <div>
             {errors.map((error) => (
-            <div>{error}</div>
+            <div className="login-error-messages">{error}</div>
             ))}
         </div>
-        <div>
-            <label htmlFor="firstName">First Name</label>
+        <div className="login-form-field-container">
             <input
-            name="firstName"
-            type="email"
-            placeholder="First Name"
-            value={firstName}
-            onChange={updateFirstName}
-            />
-        </div>
-        <div>
-            <label htmlFor="email">Email</label>
-            <input
+            className="login-form-field"
             name="email"
             type="text"
             placeholder="Email"
@@ -65,9 +57,9 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
             onChange={updateEmail}
             />
         </div>
-        <div>
-            <label htmlFor="password">Password</label>
+        <div className="login-form-field-container">
             <input
+            className="login-form-field"
             name="password"
             type="password"
             placeholder="Password"
@@ -75,7 +67,12 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
             onChange={updatePassword}
             />
         </div>
-        <button type="submit">Login</button>
+        <div className="login-form-action-container">
+            <button className="login-form-register-button" type="submit">Login</button>
+            <button type="button" onClick={onClose} className="login-form-link-home" to="/">
+              <i className="fas fa-home"></i>
+          </button>
+        </div>
         </form>
     </div>
   );

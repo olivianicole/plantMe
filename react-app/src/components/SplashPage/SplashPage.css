@@ -45,7 +45,7 @@
     flex-direction: row;
 }
 .splash-login-modal, .splash-register-modal {
-    background-color: white;
+    background-color: #f8f8ff;
     margin: 0 25px 30px 25px;
 }
 

@@ -4,20 +4,21 @@ import { Modal } from "../../context/Modal";
 import "./SignUp.css";
 
 const SignUpFormModal = ({ authenticated }) => {
-    const [ showModal, setShowModal ] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     
     return (
         <>
             <button 
             onClick={() => setShowModal(true)}
-            className="signup-form-modal-button">
-                Register
-                { showModal && (
-                        <Modal onClose={() => setShowModal(false)}>
-                            <SignUpForm authenticated={authenticated} setShowModal={setShowModal} />
-                        </Modal>
-                    )}
+            className="signup-form-modal-button"
+            >
+            Register
             </button>
+            { showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+                <SignUpForm authenticated={authenticated} setShowModal={setShowModal}/>
+            </Modal>
+            )}
         </>
     )
 };
