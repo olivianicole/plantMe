@@ -26,8 +26,8 @@ class Listing(db.Model):
             "image_3": self.image_3,
             "category_id": self.category_id,
             "shop_id": self.shop_id,
-            "category": self.category,
-            "shop": self.category
+            "category": self.category.to_simple_dict(),
+            "shop": self.category.to_simple_dict(),
         }
 
     const to_simple_dict(self):
