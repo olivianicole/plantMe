@@ -1,3 +1,5 @@
+/* index.js */
+
 .login-form-modal-button {
     border: 1px solid rgba(0,0,0, 0.75);
     background-color: #f8f8ff;
@@ -9,4 +11,73 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0px -1px 5px 1px rgba(0,0,0, 0.3);
+}
+
+/* SignUpFormModal.js */
+
+.login-form-container {
+    height: 400px;
+    width: 400px;
+    border-radius: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px -1px 5px 5px rgba(0,0,0, 0.3);
+    border: black solid 3px;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form-title {
+    color: black;
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.login-error-messages {
+    font-size: 10px;
+    color: 	#DC143C;
+    margin: 2px;
+}
+
+.login-form-field-container {
+    margin: 4px;
+}
+
+.login-form-field {
+    border: 1px solid black;
+    background-color: #f8f8ff;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.login-form-action-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form-register-button {
+    margin-top: 15px;
+    border: 1px solid rgba(0,0,0, 0.75);
+    background-color: #f8f8ff;
+    height: 40px;
+    width: 80px;
+    border-radius: 8px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px -1px 5px 1px rgba(0,0,0, 0.3);
+}
+
+.login-form-link-home {
+    color: black;
+    font-size: 20px;
+    margin-top: 15px;
+    border: none;
+    background-color: #f8f8ff;
 }

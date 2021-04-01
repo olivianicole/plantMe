@@ -12,12 +12,12 @@ const LoginFormModal = ({ authenticated }) => {
             onClick={() => setShowModal(true)}
             className="login-form-modal-button">
                 Log In
-                { showModal && (
-                        <Modal onClose={() => setShowModal(false)}>
-                            <LoginForm authenticated={authenticated} setShowModal={setShowModal} />
-                        </Modal>
-                    )}
             </button>
+            { showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+                <LoginForm authenticated={authenticated} setShowModal={setShowModal} />
+            </Modal>
+            )}
         </>
     )
 };
