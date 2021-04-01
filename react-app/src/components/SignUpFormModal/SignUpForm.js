@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { signUp } from '../../services/auth';
+import "./SignUp.css";
 
 const SignUpForm = ({ authenticated, setShowModal, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -43,18 +44,18 @@ const SignUpForm = ({ authenticated, setShowModal, setAuthenticated }) => {
 
 return (
   <div className="signup-form-container">
-      <form onSubmit={onSignUp}>
+      <form onSubmit={onSignUp} className="signup-form">
       <div className="signup-form-title">
           <p>Hello there!</p>
       </div>
       <div>
           {errors.map((error) => (
-          <div>{error}</div>
+          <div className="signup-error-messages">{error}</div>
           ))}
       </div>
-      <div>
-          <label htmlFor="firstName">First Name</label>
+      <div className="signupform-field-container">
           <input
+          className="signupform-field"
           name="firstName"
           type="email"
           placeholder="First Name"
@@ -62,9 +63,9 @@ return (
           onChange={updateFirstName}
           />
       </div>
-      <div>
-          <label htmlFor="email">Email</label>
+      <div className="signupform-field-container">
           <input
+          className="signupform-field"
           name="email"
           type="text"
           placeholder="Email"
@@ -72,9 +73,9 @@ return (
           onChange={updateEmail}
           />
       </div>
-      <div>
-          <label htmlFor="password">Password</label>
+      <div className="signupform-field-container">
           <input
+          className="signupform-field"
           name="password"
           type="password"
           placeholder="Password"
@@ -82,9 +83,9 @@ return (
           onChange={updatePassword}
           />
       </div>
-      <div>
-          <label htmlFor="repeatPassword">Password</label>
+      <div className="signupform-field-container">
           <input
+          className="signupform-field"
           name="repeatPassword"
           type="password"
           placeholder="Confirm Password"
@@ -92,7 +93,10 @@ return (
           onChange={updateRepeatPassword}
           />
       </div>
-      <button type="submit">Register</button>
+      <div className="signup-form-action-container">
+          
+          <button type="submit" className="signup-form-register-button">Register</button>
+      </div>
       </form>
   </div>
   );

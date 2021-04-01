@@ -10,32 +10,27 @@
   }
 
   #modal-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
   }
 
   #modal-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    width: 570px;
-    position: relative;
-    padding: 0px;
-    margin: 4em;
-    text-align: center;
+      position: absolute;
+      background-color:#f8f8ff;
+      height: 400px;
+      width: 400px;
+      border-radius: 400px;
   }
 
-  .modal-image-container {
+  /* .modal-image-container {
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     max-height: 600px;
-    
-
-  }
+  
+  } */
