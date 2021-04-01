@@ -41,10 +41,10 @@ def upgrade():
                     sa.Column('name', sa.String(), nullable=False),
                     sa.Column('owner_id', sa.Integer(), nullable=False),
                     sa.Column('description', sa.String(), nullable=False),
-                    sa.Column('city', sa.String())
-                    sa.Column('state', sa.String())
-                    sa.Column('country', sa.String())
-                    sa.Column('num_sales', sa.Integer(5, 2), nullable=True),
+                    sa.Column('city', sa.String()),
+                    sa.Column('state', sa.String()),
+                    sa.Column('country', sa.String()),
+                    sa.Column('num_sales', sa.Integer(), nullable=True),
                     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('name'),
@@ -59,7 +59,7 @@ def upgrade():
                     sa.Column('image_3', sa.String(), nullable=True),
                     sa.Column('category_id', sa.Integer(), nullable=True),
                     sa.Column('shop_id', sa.Integer(), nullable=False),
-                    sa.Column('price', sa.Numeric())
+                    sa.Column('price', sa.Numeric(5, 2)),
                     sa.ForeignKeyConstraint(['category_id'],
                                             ['categories.id'], ),
                     sa.ForeignKeyConstraint(['shop_id'], ['shops.id'], ),

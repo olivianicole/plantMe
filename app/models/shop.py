@@ -20,7 +20,7 @@ class Shop(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "shop_logo": self.shop_logo
+            "shop_logo": self.shop_logo,
             "name": self.name,
             "ownerId": self.owner_id,
             "description": self.description,
