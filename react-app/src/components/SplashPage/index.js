@@ -5,7 +5,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
 
 
-const SplashPage = ({ authenticated }) => {
+const SplashPage = ({ authenticated, setAuthenticated }) => {
 
     if (authenticated){
         return <Redirect to="/home" />
@@ -18,10 +18,10 @@ const SplashPage = ({ authenticated }) => {
                         <p className="splash-title-text">plantMe</p>
                         <div className="splash-modal-container">
                             <div className="splash-register-modal">
-                                <SignUpFormModal  authenticated={authenticated} />
+                                <SignUpFormModal  authenticated={authenticated} setAuthenticated={setAuthenticated} />
                             </div>
                             <div className="splash-login-modal">
-                                <LoginFormModal authenticated={authenticated} />
+                                <LoginFormModal authenticated={authenticated} setAuthenticated={setAuthenticated}/>
                             </div>
                         </div>
                         <div className="splash-about-text">

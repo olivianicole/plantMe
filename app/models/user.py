@@ -30,17 +30,16 @@ class User(db.Model, UserMixin):
         return {
           "id": self.id,
           "firstName": self.first_name,
-          "username": self.username,
           "email": self.email,
-          "shops": self.shop.to_simple_dict(),
+          "shops": self.shops.to_simple_dict(),
           "reviews": [review.to_simple_dict() for review in self.reviews],
-          "favorites": [favorite.to_simple_dict() for favorite in self.favorites]
+          "favorites": [favorite.to_simple_dict()
+                        for favorite in self.favorites]
         }
 
     def to_simple_dict(self):
         return {
           "id": self.id,
           "firstName": self.first_name,
-          "username": self.username,
           "email": self.email
         }

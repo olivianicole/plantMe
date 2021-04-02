@@ -38,8 +38,8 @@ export const login = (email, password) => async (dispatch) => {
     },
     body: JSON.stringify({
       email,
-      password
-    })
+      password,
+    }),
   });
  const user = await response.json();
  if (!user.errors) {

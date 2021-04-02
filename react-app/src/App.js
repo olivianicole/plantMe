@@ -32,8 +32,8 @@ function App() {
     <BrowserRouter>
       <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
       <Switch>
-        <Route path="/" exact={true} authenticated={authenticated} >
-          <SplashPage authenticated={authenticated} />
+        <Route path="/" exact={true} authenticated={authenticated} setAuthenticated={setAuthenticated}>
+          <SplashPage authenticated={authenticated} setAuthenticated={setAuthenticated}/>
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
