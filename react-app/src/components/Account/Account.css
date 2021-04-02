@@ -1,0 +1,40 @@
+.acount-page-container {
+    position: relative;
+    top: 108px;
+    height: auto;
+    width: 100%;
+}
+
+.account-first-name {
+    font-size: 32px;
+    color: black;
+    line-height: 36px;
+}
+
+.account-link-to-favorites {
+    width: 132px;
+    height: 102px;
+    border: 2px solid #222222;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.account-fav-inner {
+    background-color: #EAEAEA;
+    border: white 1px solid;
+    width: 120px;
+    height: 90px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.account-favorites-navlink, .account-favorites-navlink :active {
+    text-decoration: none;
+}
+.fa-heart {
+    color: #880808;
+    font-size: 30px;
+}
