@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import logout from "../../store/session"
+import AccountButton from "./AccountButton";
+
 import "./NavBar.css"
 const NavBar = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
@@ -25,9 +27,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           </NavLink>
           <NavLink className="nav-bar-favorites-link" to="/favorites">
             <i class="far fa-heart"></i>
-          </NavLink>
-          <NavLink className="nav-bar-account-link" to="/account">
-            <i class="fas fa-seedling"></i>
           </NavLink>
           <button onClick={onLogout}>Log Out</button>
         </div>
