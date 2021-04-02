@@ -1,11 +1,19 @@
-.nav-container {
-        border-bottom: 1px solid rgba(34, 34, 34, 0.15);
-}
 
 .nav-component {
-    width: 987px;
+    width: 100%;
+    border-bottom: 2px solid rgba(34, 34, 34, 0.15);
+    background-color: #f8f8ff;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+.nav-component-top {
     height: 72px;
     padding: 12px 36px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .header-site-title {
@@ -18,16 +26,41 @@
     text-decoration: none;
 }
 
-.nav-bar-favorites-link {
+.nav-container-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.navbar-favorites-link, .navbar-favorites-link :active {
+    text-decoration: none;
+}
+.fa-heart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 24px;
+    height: 48px;
+    width: 48px;
+    text-decoration: none;
+
+    
+}
+
+.fa-heart ::before {
+    text-decoration: none;
+}
+
+.nav-account-link {
     color: black;
     height: 48px;
     width: 48px;
     font-size: 24px;
 }
 
-.nav-bar-account-link {
-    color: black;
-    height: 48px;
-    width: 48px;
-    font-size: 24px;
+.nav-component-bottom {
+    height: 34px;
 }

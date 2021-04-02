@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "reac-router-dom";
+import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
-import "./AccountButton.css";
+// import "./AccountButton.css";
 
 function AccountButton ({ setAuthenticated }) {
     const [ showMenu, setShowMenu ] = useState(false);
@@ -37,7 +37,7 @@ function AccountButton ({ setAuthenticated }) {
                         <NavLink to="/home" className="account-menu-dropdown">Home</NavLink>
                     </div>
                     <div onClick={closeMenu}>
-                        <NavLink to="/account" className="account-menu-dropdown">Home</NavLink>
+                        <NavLink to="/account" className="account-menu-dropdown">Account</NavLink>
                     </div>
                     <div onClick={closeMenu}>
                         <LogoutButton setAuthenticated={setAuthenticated} />

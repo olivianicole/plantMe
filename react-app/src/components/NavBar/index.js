@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import logout from "../../store/session"
-import AccountButton from "./AccountButton";
+import AccountButton from "./AccountButton.js";
 
 import "./NavBar.css"
 const NavBar = ({ authenticated, setAuthenticated }) => {
@@ -19,19 +19,24 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   let nav;
   if (authenticated) {
     nav = (
-    <div className="nav-container">
       <nav className="nav-component">
-        <div>
-          <NavLink className="header-site-title" to="/home" exact={true} activeClassName="active">
-           plantMe
-          </NavLink>
-          <NavLink className="nav-bar-favorites-link" to="/favorites">
-            <i class="far fa-heart"></i>
-          </NavLink>
-          <button onClick={onLogout}>Log Out</button>
+        <div className="nav-component-top">
+          <div>
+              <NavLink className="header-site-title" to="/home" exact={true} activeClassName="active">plantMe</NavLink>
+          </div>
+          <div className="nav-container-right">
+            <NavLink className="navbar-favorites-link" to="/favorites">
+              <div >
+                <i class="far fa-heart" />
+              </div>
+            </NavLink>
+            <div>
+              <AccountButton setAuthenticated={setAuthenticated} />
+            </div>
+          </div>
         </div>
+        <div className="nav-component-bottom"></div>
       </nav>
-    </div>
   )} else {
     nav = (
       <>
