@@ -11,7 +11,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    shops = db.relationship("Shop", back_populates="users")
+    shops = db.relationship("Shop", uselist=False, back_populates="users")
+    reviews = db.relationship("Review", back_populates="user")
+    favorites = db.relationship("Favorite", back_populates="user")
 
     @property
     def password(self):
@@ -29,7 +31,10 @@ class User(db.Model, UserMixin):
           "id": self.id,
           "firstName": self.first_name,
           "username": self.username,
-          "email": self.email
+          "email": self.email,
+          "shops": self.shop.to_simple_dict(),
+          "reviews": [review.to_simple_dict() for review in self.reviews],
+          "favorites": [favorite.to_simple_dict() for favorite in self.favorites]
         }
 
     def to_simple_dict(self):

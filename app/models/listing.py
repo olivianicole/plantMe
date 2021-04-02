@@ -18,6 +18,7 @@ class Listing(db.Model):
     shop = db.relationship("Shop", back_populates="listings")
     favorites = db.relationship("Favorite", back_populates="listing",
                                 cascade="all, delete-orphan")
+    reviews = db.relationship("Review", back_populates="listing")
 
     def to_dict(self):
         return {
@@ -28,9 +29,11 @@ class Listing(db.Model):
             "image_3": self.image_3,
             "category_id": self.category_id,
             "shop_id": self.shop_id,
+            "price": self.price,
             "category": self.category.to_simple_dict(),
             "shop": self.category.to_simple_dict(),
-            "favorites": [favorite.to_simple_dict() for favorite in favorites]
+            "favorites": [favorite.to_simple_dict() for favorite in favorites],
+            "reviews": [review.to_simple_dict() for review in self.reviews]
         }
 
     def to_simple_dict(self):
