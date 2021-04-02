@@ -16,7 +16,7 @@ class Shop(db.Model):
     num_sales = db.Column(db.Integer, default=0)
     store_link = db.Column(db.String)
 
-    users = db.relationship("User", uselist=False, back_populates="shops")
+    users = db.relationship("User", uselist=False, back_populates="shop")
     listings = db.relationship("Listing", back_populates="shop")
 
     def to_dict(self):

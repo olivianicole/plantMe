@@ -27,7 +27,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           <div className="nav-container-right">
             <NavLink className="navbar-favorites-link" to="/favorites">
               <div >
-                <i class="far fa-heart" />
+                <i className="far fa-heart" />
               </div>
             </NavLink>
             <div>
