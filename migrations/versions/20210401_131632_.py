@@ -45,7 +45,7 @@ def upgrade():
                     sa.Column('state', sa.String()),
                     sa.Column('country', sa.String()),
                     sa.Column('num_sales', sa.Integer(), nullable=True),
-                    sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
+                    sa.ForeignKeyConstraint(['owner_id'], ['user.id'], ),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('name'),
                     sa.UniqueConstraint('owner_id')
