@@ -14,6 +14,7 @@ class Shop(db.Model):
     state = db.Column(db.String)
     country = db.Column(db.String)
     num_sales = db.Column(db.Integer, default=0)
+    store_link = db.Column(db.String)
 
     users = db.relationship("User", uselist=False, back_populates="shops")
     listings = db.relationship("Listing", back_populates="shop")

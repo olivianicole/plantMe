@@ -93,7 +93,7 @@ def seed_favorites():
     favorite88 = Favorite(user_id=3, listing_id=8)
     favorite89 = Favorite(user_id=2, listing_id=29)
     favorite90 = Favorite(user_id=1, listing_id=30)
-    favorite91 = Favorite(user_id=1, listing_id=61)
+    favorite91 = Favorite(user_id=1, listing_id=6)
     favorite92 = Favorite(user_id=2, listing_id=22)
     favorite93 = Favorite(user_id=3, listing_id=3)
     favorite94 = Favorite(user_id=4, listing_id=11)
