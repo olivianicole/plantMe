@@ -3,7 +3,7 @@ import SignUpForm from "./SignUpForm";
 import { Modal } from "../../context/Modal";
 import "./SignUp.css";
 
-const SignUpFormModal = ({ authenticated }) => {
+const SignUpFormModal = ({ authenticated, setAuthenticated }) => {
     const [showModal, setShowModal] = useState(false);
     
     return (
@@ -16,7 +16,7 @@ const SignUpFormModal = ({ authenticated }) => {
             </button>
             { showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                <SignUpForm authenticated={authenticated} setShowModal={setShowModal}/>
+                <SignUpForm authenticated={authenticated} setShowModal={setShowModal} setAuthenticated={setAuthenticated}/>
             </Modal>
             )}
         </>

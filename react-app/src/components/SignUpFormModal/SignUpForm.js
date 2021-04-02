@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import { NavLink, Redirect } from "react-router-dom";
-import { signUp } from '../../services/auth';
+import { useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { signUp } from '../../store/session';
 import "./SignUp.css";
 
 const SignUpForm = ({ authenticated, setShowModal, setAuthenticated}) => {
+  const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
-  const [firstName, setFirstName] = useState("");
+  const [first_name, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-    
-
-
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-        const user = await signUp(firstName, email, password);
-        if (!user.errors) {
+        const user = await dispatch(signUp(first_name, email, password));
+        if (!user?.errors) {
             setAuthenticated(true);
         } else {
             setErrors(user.errors);
@@ -62,9 +61,9 @@ return (
           <input
           className="signup-form-field"
           name="firstName"
-          type="email"
+          type="text"
           placeholder="First Name"
-          value={firstName}
+          value={first_name}
           onChange={updateFirstName}
           />
       </div>
@@ -72,7 +71,7 @@ return (
           <input
           className="signup-form-field"
           name="email"
-          type="text"
+          type="email"
           placeholder="Email"
           value={email}
           onChange={updateEmail}
