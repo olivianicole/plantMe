@@ -27,6 +27,9 @@
 }
 
 .nav-container-right {
+    position: absolute;
+    top: 12px;
+    right: 100px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -45,9 +48,6 @@
     font-size: 24px;
     height: 48px;
     width: 48px;
-    text-decoration: none;
-
-    
 }
 
 .fa-heart ::before {

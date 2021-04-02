@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
-// import "./AccountButton.css";
+import "./AccountButton.css";
 
 function AccountButton ({ setAuthenticated }) {
     const [ showMenu, setShowMenu ] = useState(false);

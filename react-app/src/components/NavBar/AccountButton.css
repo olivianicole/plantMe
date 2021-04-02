@@ -1,0 +1,16 @@
+
+.account-menu-container {
+    position: absolute;
+    top: 0px;
+}
+.fa-seedling {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 24px;
+    height: 48px;
+    width: 48px;
+}
+.acount-menu-container-open {
+}
