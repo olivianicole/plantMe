@@ -16,7 +16,7 @@ class Favorite(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "sip_id": self.sip_id,
+            "listing_id": self.listing_id,
             "user": self.user.to_simple_dict(),
             "listing": self.listing.to_simple_dict()
         }
@@ -25,5 +25,5 @@ class Favorite(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "sip_id": self.sip_id
+            "listing_id": self.listing_id
         }

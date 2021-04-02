@@ -1,0 +1,33 @@
+.nav-container {
+        border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+}
+
+.nav-component {
+    width: 987px;
+    height: 72px;
+    padding: 12px 36px;
+}
+
+.header-site-title {
+    color:#636F57;
+    font-size: 40px;
+    text-decoration: none;
+}
+.header-site-title :active {
+    color:#636F57;
+    text-decoration: none;
+}
+
+.nav-bar-favorites-link {
+    color: black;
+    height: 48px;
+    width: 48px;
+    font-size: 24px;
+}
+
+.nav-bar-account-link {
+    color: black;
+    height: 48px;
+    width: 48px;
+    font-size: 24px;
+}
