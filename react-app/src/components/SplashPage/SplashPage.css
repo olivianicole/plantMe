@@ -50,11 +50,11 @@
 }
 
 .splash-about-text {
-    color: black;
+    color:#636F57;
     width: 210px;
     display: flex;
     flex-wrap: wrap;
-    font-size: 12px;
+    font-size: 15px;
     text-align: center;
     font-weight: 600;
 }

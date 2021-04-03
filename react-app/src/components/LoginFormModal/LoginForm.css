@@ -2,6 +2,7 @@
 
 .login-form-modal-button {
     border: 1px solid rgba(0,0,0, 0.75);
+    font-size: 18px;
     background-color: #f8f8ff;
     height: 40px;
     width: 80px;
@@ -10,7 +11,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px -1px 5px 1px rgba(0,0,0, 0.3);
+    border: rgba(0,0,0, 0.2) 1px solid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 /* SignUpFormModal.js */
@@ -48,22 +50,31 @@
 }
 
 .login-form-field {
-    border: 1px solid black;
     background-color: #f8f8ff;
     border-radius: 4px;
     padding: 4px;
+    border: rgba(0,0,0, 0.2) 1px solid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    color: black;
 }
+
 
 .login-form-action-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+.action-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 155px;
+}
 .login-form-register-button {
     margin-top: 15px;
-    border: 1px solid rgba(0,0,0, 0.75);
     background-color: #f8f8ff;
+    font-size: 18px;
     height: 40px;
     width: 80px;
     border-radius: 8px;
@@ -71,7 +82,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px -1px 5px 1px rgba(0,0,0, 0.3);
+    border: rgba(0,0,0, 0.2) 1px solid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .login-form-link-home {
@@ -80,4 +92,26 @@
     margin-top: 15px;
     border: none;
     background-color: #f8f8ff;
+    border: rgba(0,0,0, 0.2) 1px solid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 8px;
+    padding: 5px;
+    height:40px;
+    width: 40px;
+}
+.demouser {
+    margin: 10px;
+    border: rgba(0,0,0, 0.2) 1px solid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 8px;
+    width: 155px;
+    background-color: #f8f8ff;
+    margin-top:20px;
+}
+
+.demouser img{
+    background-color: #f8f8ff;
+    height:40px;
+    border-radius: 8px;
+    width: auto;
 }

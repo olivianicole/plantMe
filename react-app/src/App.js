@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
-import User from "./components/User";
+import Account from "./components/Account";
 import SplashPage from "./components/SplashPage";
 import { authenticate } from "./store/session";
 
@@ -38,8 +38,8 @@ function App() {
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
+        <ProtectedRoute path="/account" exact={true} authenticated={authenticated}>
+          <Account />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
