@@ -35,7 +35,7 @@ function Account() {
   return (
     <>
       <div className="acount-page-container">
-          <div className="account-first-name">{user.first_name}</div>
+          <div className="account-first-name">{user?.first_name}</div>
           <div className="account-links">
             <button onClick={openFavorites} className="fav account-link-container">
               <i class="fas fa-heart account-heart"></i>
