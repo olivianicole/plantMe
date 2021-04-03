@@ -15,17 +15,35 @@ function Account() {
     }
   }, [user, dispatch])
 
+  let option;
+  const openFavorites = () => {
+    option = (
+      <>
+      </>
+    )
+    return option;
+  };
+
+  const openStoreInfo = () => {
+    option = (
+      <>
+      </>
+    )
+    return option;
+  }
+
   return (
     <>
       <div className="acount-page-container">
           <div className="account-first-name">{user.first_name}</div>
-          <NavLink to="/favorites" className="account-favorites-navlink">
-            <div className="account-link-to-favorites">
-              <div className="account-fav-inner">
-                <i class="fas fa-heart"></i>
-              </div>
-            </div>
-          </NavLink>
+          <div className="account-links">
+            <button onClick={openFavorites} className="fav account-link-container">
+              <i class="fas fa-heart account-heart"></i>
+            </button>
+            <button onClick={openStoreInfo} className="store account-link-container">
+              <i class="fas fa-store account-store"></i>
+            </button>
+          </div>
       </div>
     </>
   );

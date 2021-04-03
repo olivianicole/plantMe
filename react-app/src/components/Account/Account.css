@@ -9,18 +9,14 @@
     font-size: 32px;
     color: black;
     line-height: 36px;
+    margin: 20px 0 0 45px;
 }
-
-.account-link-to-favorites {
-    width: 132px;
-    height: 102px;
-    border: 2px solid #222222;
-    border-radius: 24px;
+.account-links {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    margin-left: 40px;
 }
-.account-fav-inner {
+.account-link-container {
     background-color: #EAEAEA;
     border: white 1px solid;
     width: 120px;
@@ -28,13 +24,29 @@
     border-radius: 18px;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    margin: 35px 5px 5px 5px;
+    color: rgba(0, 0, 0, 0.5)
 }
 
+.fav:focus {
+    color: #C21E56;
+    border: white 5px solid;
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.store:focus {
+    color: rgba(0, 0, 0, 0.75);
+    border: white 5px solid;
+    outline:0;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75);
+}
 .account-favorites-navlink, .account-favorites-navlink :active {
     text-decoration: none;
 }
-.fa-heart {
-    color: #880808;
+.account-heart, .account-store {
     font-size: 30px;
+    color: inherit;
 }
+
