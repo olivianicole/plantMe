@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 function Account() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session?.user?.current_user);
+  const user = useSelector((state) => state?.session?.user?.current_user);
   
   useEffect(() => {
     if (!user) {
