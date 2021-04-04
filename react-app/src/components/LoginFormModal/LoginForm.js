@@ -80,7 +80,7 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
             </button>
           </div>
           <button onClick={signInDemoUser} className="demouser">
-            <img src={demouser}/>
+            <img src={demouser} alt="click to sign in as a demo user"/>
           </button>
         </div>
         </form>

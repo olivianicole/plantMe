@@ -37,10 +37,10 @@ function Account() {
           <div className="account-first-name">{user?.first_name}</div>
           <div className="account-links">
             <button onClick={openFavorites} className="fav account-link-container">
-              <i class="fas fa-heart account-heart"></i>
+              <i className="fas fa-heart account-heart"></i>
             </button>
             <button onClick={openStoreInfo} className="store account-link-container">
-              <i class="fas fa-store account-store"></i>
+              <i className="fas fa-store account-store"></i>
             </button>
           </div>
       </div>

@@ -1,16 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
-import logout from "../../store/session"
 import AccountButton from "./AccountButton.js";
 
 import "./NavBar.css"
 const NavBar = ({ authenticated, setAuthenticated }) => {
-  const dispatch = useDispatch();
-  const onLogout = () => {
-      setAuthenticated(false);
-      dispatch(logout);
-  }
 
   if (!authenticated) {
     return<Redirect to="/" />
