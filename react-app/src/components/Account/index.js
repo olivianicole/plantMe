@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { authenticate } from "../../store/session";
 import { useDispatch, useSelector } from 'react-redux';
 import "./Account.css";
-import { NavLink } from "react-router-dom";
 
 
 function Account() {

@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import Account from "./components/Account";
 import SplashPage from "./components/SplashPage";
+import Home from "./components/Home";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -40,6 +41,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/account" exact={true} authenticated={authenticated}>
           <Account />
+        </ProtectedRoute>
+        <ProtectedRoute path="/home" exact={true} authenticated={authenticated}>
+          <Home />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
