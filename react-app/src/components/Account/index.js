@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { authenticate } from "../../store/session";
 import { useDispatch, useSelector } from 'react-redux';
+import ShopForm from "./ShopForm";
 import "./Account.css";
 
 
@@ -23,11 +24,21 @@ const Account = () => {
     return option;
   };
 
-  const openStoreInfo = () => {
-    option = (
-      <>
-      </>
-    )
+  const openShopInfo = (user) => {
+    if (user.shop) {
+      option = (
+        <>
+        </>
+      )
+    } else {
+      option = (
+        <>
+          <div className="option-container">
+            <ShopForm />
+          </div>
+        </>
+      )
+    }
     return option;
   }
 
@@ -39,7 +50,7 @@ const Account = () => {
             <button onClick={openFavorites} className="fav account-link-container">
               <i className="fas fa-heart account-heart"></i>
             </button>
-            <button onClick={openStoreInfo} className="store account-link-container">
+            <button onClick={openShopInfo} className="store account-link-container">
               <i className="fas fa-store account-store"></i>
             </button>
           </div>
