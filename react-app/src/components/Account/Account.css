@@ -50,6 +50,11 @@
     color: inherit;
 }
 
+.account-page-lower-container {
+    border: 1px solid black;
+    margin: 15px 45px;
+    border-radius: 18px;
+}
 
 /* Shop Form */
 
