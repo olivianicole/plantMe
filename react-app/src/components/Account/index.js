@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import { authenticate } from "../../store/session";
 import { useDispatch, useSelector } from 'react-redux';
 import "./Account.css";
-import { NavLink } from "react-router-dom";
 
 
-function Account() {
+const Account = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user?.current_user);
   
@@ -38,10 +37,10 @@ function Account() {
           <div className="account-first-name">{user?.first_name}</div>
           <div className="account-links">
             <button onClick={openFavorites} className="fav account-link-container">
-              <i class="fas fa-heart account-heart"></i>
+              <i className="fas fa-heart account-heart"></i>
             </button>
             <button onClick={openStoreInfo} className="store account-link-container">
-              <i class="fas fa-store account-store"></i>
+              <i className="fas fa-store account-store"></i>
             </button>
           </div>
       </div>
