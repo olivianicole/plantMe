@@ -56,7 +56,7 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
             <input
             className="login-form-field"
             name="email"
-            type="text"
+            type="wmail"
             placeholder="Email"
             value={email}
             onChange={updateEmail}
