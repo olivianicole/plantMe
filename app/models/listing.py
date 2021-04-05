@@ -45,4 +45,5 @@ class Listing(db.Model):
             "image_3": self.image_3,
             "category_id": self.category_id,
             "shop_id": self.shop_id,
+            "price": self.price,
         }

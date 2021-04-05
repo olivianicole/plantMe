@@ -1,11 +1,14 @@
 import React from "react";
+import './Listing.css';
 
-const Listing = () => {
+const Listing = ({ listing }) => {
 
     return (
         <>
             <div className="listing-container">
-                <img className="listing-img" src={listing.image_1} alt={listing.description}/>
+                <div className="listing-img">
+                    <img src={listing.image_1} alt={listing.description}/>
+                </div>
                 <div>{listing.price}</div>
             </div>
 
