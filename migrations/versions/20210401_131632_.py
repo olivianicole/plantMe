@@ -60,7 +60,7 @@ def upgrade():
                     sa.Column('image_3', sa.String(), nullable=True),
                     sa.Column('category_id', sa.Integer(), nullable=True),
                     sa.Column('shop_id', sa.Integer(), nullable=False),
-                    sa.Column('price', sa.Numeric(5, 2)),
+                    sa.Column('price', sa.Float()),
                     sa.ForeignKeyConstraint(['category_id'],
                                             ['categories.id'], ),
                     sa.ForeignKeyConstraint(['shop_id'], ['shops.id'], ),

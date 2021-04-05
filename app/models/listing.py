@@ -13,7 +13,7 @@ class Listing(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
     shop_id = db.Column(db.Integer, db.ForeignKey("shops.id"),
                         nullable=False)
-    price = db.Column(db.Numeric, nullable=False)
+    price = db.Column(db.Float, nullable=False)
     category = db.relationship("Category", back_populates="listings")
     shop = db.relationship("Shop", back_populates="listings")
     favorites = db.relationship("Favorite", back_populates="listing",
