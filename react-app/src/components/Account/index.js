@@ -3,7 +3,7 @@ import { authenticate } from "../../store/session";
 import { useDispatch, useSelector } from 'react-redux';
 import ShopForm from "./ShopForm";
 import "./Account.css";
-import shopReducer from "../../store/shop";
+
 
 
 const Account = () => {
@@ -28,7 +28,9 @@ const Account = () => {
     )
   } else if (showShopForm) {
     option = (
-      <div>show shop form</div>
+      <div>
+        <ShopForm />
+      </div>
     )
   } else if (showShopInfo) {
     option = (
