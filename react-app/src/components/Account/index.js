@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./Account.css";
 
 
-function Account() {
+const Account = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user?.current_user);
   

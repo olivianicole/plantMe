@@ -11,6 +11,7 @@ export const getListings = () => async (dispatch) => {
             'Content-Type': 'application/json',
         },
     });
+    console.log(response);
     if (response.ok) {
         const listings = await response.json();
         dispatch(load(listings))
@@ -20,7 +21,7 @@ export const getListings = () => async (dispatch) => {
 
 const initialState = {};
 
-const listingReducer = (state = initialState, action) => {
+const listingsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD:
@@ -32,4 +33,4 @@ const listingReducer = (state = initialState, action) => {
     }
 };
 
-export default listingReducer;
+export default listingsReducer;
