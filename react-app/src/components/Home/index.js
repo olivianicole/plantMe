@@ -15,53 +15,53 @@ const Home = ({ authenticated }) => {
         if (!listings) dispatch(getListings());
     }, [dispatch, listings])
 
-    let userInfo;
+    // let userInfo;
 
-    if (user.shop) {
-        userInfo = (
-            <div className="something">
-                <NavLink className="home-page-account-link" to="/account">
-                    <div className="home-page-logo-img">
-                        <img src={user.shop.shop_logo} alt="Your Shop's Logo"/>
-                    </div>
-                    <div>View Your Account Details </div>
-                </NavLink>
-            </div>
-        )
-    } else {
-        userInfo = (
-            <div>
-                <NavLink className="home-page-account-link" to="/account">
-                    <i class="fas fa-store"></i>
-                    <div className="home-page-account-link-text">Looking to Open a Shop?</div>
-                </NavLink>
-            </div>
-        )
-    }
+    // if (user.shop) {
+    //     userInfo = (
+    //         <div className="home-page-account-info-container">
+    //             <NavLink className="home-page-account-link" to="/account">
+    //                 <div className="home-page-logo-img">
+    //                     <img src={user.shop.shop_logo} alt="Your Shop's Logo"/>
+    //                 </div>
+    //                 <div className="home-page-account-link-text">View Your Account Details </div>
+    //             </NavLink>
+    //         </div>
+    //     )
+    // } else {
+    //     userInfo = (
+    //         <div>
+    //             <NavLink className="home-page-account-link" to="/account">
+    //                 <i class="fas fa-store"></i>
+    //                 <div className="home-page-account-link-text">Looking to Open a Shop?</div>
+    //             </NavLink>
+    //         </div>
+    //     )
+    // }
     return (
         <>
             <div className="home-page-container">
                 <div className="home-page-welcome-container">
-                <div>
-                    <div>
-                        {`Welcome Back, ${user.first_name}!`}
+                    <div className="home-page-user-container">
+                        <div>
+                            {`Welcome Back, ${user.first_name}!`}
+                        </div>
+                        {/* {userInfo} */}
                     </div>
-                    {userInfo}
-                </div>
-                <div className="home-page-suggested-listings">
-                    <div className="suggested-text-bold">Suggested Listings <p className="suggested-text-light">Based on what others are loving lately</p></div>
-                    <div className="suggested-listing-container">
-                        {suggestedListings?.map((listing) =>  {
-                                return (
-                                    <div className="suggested-listing-individual-container">
-                                        <img src={listing.image_1} alt={listing.description} /> 
-                                        <div className="suggested-listing-text">{}</div>
-                                    </div>
-                                )
-                        }
-                        )}
+                    <div className="home-page-suggested-listings">
+                        <div className="suggested-text-bold">Suggested Listings <p className="suggested-text-light">Based on what others are loving lately</p></div>
+                        <div className="suggested-listing-container">
+                            {suggestedListings?.map((listing) =>  {
+                                    return (
+                                        <div className="suggested-listing-individual-container">
+                                            <img src={listing.image_1} alt={listing.description} /> 
+                                            <div className="suggested-listing-text">{listing.name}</div>
+                                        </div>
+                                    )
+                            }
+                            )}
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div>
                     {listings?.map((listing) => <Listing key={listing.id} listing={listing} /> )}
