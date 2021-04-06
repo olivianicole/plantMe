@@ -19,6 +19,18 @@ export const getListings = () => async (dispatch) => {
     }
 };
 
+export const getCurrentListing = (id) => async (dispatch) => {
+    const response = await fetch(`/api/listing/${id}`, {
+        headers : {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.ok) {
+        const listing = await response.json();
+        dispatch(load(listing));
+        return response;
+    }
+}
 
 const initialState = {};
 

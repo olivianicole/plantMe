@@ -15,3 +15,9 @@ def listings():
     return {"all_listings": [listing.to_simple_dict() for listing in listings],
             "suggested_listings": [listing.to_dict()
                                    for listing in suggested_listings]}
+
+
+@listing_routes.route('/<int:id>')
+def listing(id):
+    listing = Listing.query.get(id)
+    return {"current_listing": listing.to_dict()}
