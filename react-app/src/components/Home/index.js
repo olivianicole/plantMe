@@ -51,9 +51,9 @@ const Home = ({ authenticated }) => {
                 <div className="home-page-suggested-listings">
                     <div className="suggested-text-bold">Suggested Listings <p className="suggested-text-light">Based on what others are loving lately</p></div>
                     <div className="suggested-listing-container">
-                        {listings?.map((listing) =>  {
+                        {suggestedListings?.map((listing) =>  {
                                 return (
-                                    <div>
+                                    <div className="suggested-listing-individual-container">
                                         <img src={listing.image_1} alt={listing.description} /> 
                                         <div className="suggested-listing-text">{}</div>
                                     </div>

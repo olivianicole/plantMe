@@ -40,3 +40,14 @@
     text-decoration: none;
     margin-top: 20px;
 }
+.suggested-listing-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.suggested-listing-individual-container img {
+    height: 60px;
+    width: 60px;
+    border-radius: 60px;
+}
