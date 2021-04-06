@@ -7,16 +7,12 @@ import "./Home.css";
 
 const Home = ({ authenticated }) => {
     const dispatch = useDispatch();
-    const listings = useSelector((state) => {
-        return state.listings.allListings?.all_listings;
-    })
+    const listings = useSelector((state) => state.listings.allListings?.all_listings);
     const user = useSelector((state) => state?.session?.user?.current_user);
-    
+    const suggestedListings = useSelector((state) => state.listings.allListings?.suggested_listings);
 
     useEffect(() => {
-        if (!listings){
-            dispatch(getListings());
-        }
+        if (!listings) dispatch(getListings());
     }, [dispatch, listings])
 
     let userInfo;
@@ -46,9 +42,26 @@ const Home = ({ authenticated }) => {
         <>
             <div className="home-page-container">
                 <div className="home-page-welcome-container">
-                {`Welcome Back, ${user.first_name}!`}
-                
+                <div>
+                    <div>
+                        {`Welcome Back, ${user.first_name}!`}
+                    </div>
                     {userInfo}
+                </div>
+                <div className="home-page-suggested-listings">
+                    <div className="suggested-text-bold">Suggested Listings <p className="suggested-text-light">Based on what others are loving lately</p></div>
+                    <div className="suggested-listing-container">
+                        {listings?.map((listing) =>  {
+                                return (
+                                    <div>
+                                        <img src={listing.image_1} alt={listing.description} /> 
+                                        <div className="suggested-listing-text">{}</div>
+                                    </div>
+                                )
+                        }
+                        )}
+                    </div>
+                </div>
                 </div>
                 <div>
                     {listings?.map((listing) => <Listing key={listing.id} listing={listing} /> )}
