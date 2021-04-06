@@ -63,8 +63,8 @@ const Home = ({ authenticated }) => {
                         </div>
                     </div>
                 </div>
-                <div>
-                    {listings?.map((listing) => <Listing key={listing.id} listing={listing} /> )}
+                <div className="home-page-listing-grid">
+                    {listings?.map((listing) => <Listing className="home-page-listing-item" key={listing.id} listing={listing} /> )}
                 </div>
             </div>
         </>

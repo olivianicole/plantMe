@@ -9,7 +9,7 @@ listing_routes = Blueprint('listing', __name__)
 @listing_routes.route('/')
 # @login_required
 def listings():
-    listings = Listing.query.all()
+    listings = Listing.query.limit(30)
     suggested_listings = Listing.query.order_by(Listing.price).limit(7)
     # print("LISTINGS", listings)
     return {"all_listings": [listing.to_simple_dict() for listing in listings],

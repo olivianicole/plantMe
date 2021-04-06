@@ -67,10 +67,10 @@
     box-shadow: none;
 }
 
-.home-page-account-link :hover {
+/* .home-page-account-link :hover {
     border-radius: none;
     box-shadow: none;
-}
+} */
 
 .suggested-text-bold {
     font-weight: 500;
@@ -130,4 +130,17 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 6px;
+}
+
+.home-page-listing-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1rem;
+    margin: 0px 40px;
+}
+
+.home-page-listing-item {
+    display: inline;
+    height: 100px;
+    width: auto;
 }
