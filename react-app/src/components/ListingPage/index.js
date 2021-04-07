@@ -11,29 +11,30 @@ const ListingPage = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const listing = useSelector((state) => state.listings?.allListings?.current_listing);
-    console.log(listing);
+    const emptyImage = "https://www.vitraglobal.com/UPLOAD/Products/thumb/K94773300001VTE0_small.jpg";
 
     useEffect(() => {
         if (!listing) dispatch(getCurrentListing(params.id));
     }, [listing, dispatch, params]);
 
-    const options = {
-        items: 1,
-        loop: true,
-        mouseDrag: true,
-        touchDrag: true,
-        nav: true,
+    const controlsOptions = {
+        show: true,
+        position: "middle",
+        // rightControlIcon: <i class="fas fa-chevron-right" />,
+        // leftControlIcon: <i class="fas fa-chevron-left" />,
+        shape: "circle",
+        width: "48px",
+        height: "48px",
     }
-
 
     return (
         <>
             <div className="listing-page-container">
                 <div className="listing-image-carousel">
-                    <SimpleCarousel className="my-slider">
+                    <SimpleCarousel controlsOptions={controlsOptions}>
                         <div><img src={listing?.image_1} alt={listing?.description}/></div>
-                        <div><img src={listing?.image_2 || ""} alt={listing?.description}/></div>
-                        <div><img src={listing?.image_3 || ""} alt={listing?.description}/></div>
+                        <div><img src={listing?.image_2 || emptyImage} alt={listing?.description || "no additional images"}/></div>
+                        <div><img src={listing?.image_3 || emptyImage} alt={listing?.description || "no additional images"}/></div>
                     </SimpleCarousel>
                 </div>
             </div>

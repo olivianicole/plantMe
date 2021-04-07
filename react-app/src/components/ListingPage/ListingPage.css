@@ -14,11 +14,9 @@
 .listing-image-carousel {
     height: 490px;
     width: 490px;
-    
 }
 
-.owl-carousel-pic {
-    height: 490px;
-    width: 490px;
+.listing-image-carousel button {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: rgba(255, 255, 255, 0.4) 1px dotted;
 }
-
