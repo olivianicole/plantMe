@@ -20,18 +20,20 @@ const ListingPage = () => {
     const controlsOptions = {
         show: true,
         position: "middle",
-        // rightControlIcon: <i class="fas fa-chevron-right" />,
-        // leftControlIcon: <i class="fas fa-chevron-left" />,
         shape: "circle",
         width: "48px",
         height: "48px",
+    }
+
+    const indicatorOptions = {
+        show: false,
     }
 
     return (
         <>
             <div className="listing-page-container">
                 <div className="listing-image-carousel">
-                    <SimpleCarousel controlsOptions={controlsOptions}>
+                    <SimpleCarousel controlsOptions={controlsOptions} indicatorOptions={indicatorOptions}>
                         <div><img src={listing?.image_1} alt={listing?.description}/></div>
                         <div><img src={listing?.image_2 || emptyImage} alt={listing?.description || "no additional images"}/></div>
                         <div><img src={listing?.image_3 || emptyImage} alt={listing?.description || "no additional images"}/></div>
