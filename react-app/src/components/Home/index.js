@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getListings } from "../../store/listings";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import Listing from "../Listing";
 import "./Home.css";
 

@@ -1,4 +1,5 @@
 .listing-page-container {
+    padding: 20px;
     position: relative;
     top: 108px;
     height: auto;
@@ -23,14 +24,20 @@
     align-items: flex-start;
     width: 395px;
 }
+
 .listing-page-container img {
     height: 490px;
     width: 490px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .listing-image-carousel {
-    height: 635px;
+    margin: 10px;
+    height: 490px;
     width: 635px;
+   
 }
 
 .listing-image-carousel button {
@@ -46,7 +53,9 @@
     margin: 20px 20px 20px 5px;
     text-decoration: none;
 }
-
+.fa-arrow-left {
+    margin-right: 10px;
+}
 
 .listing-page-shop-name {
     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
@@ -80,4 +89,23 @@
     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
     font-weight: 500;
     margin-top: 40px;
+}
+
+.listing-page-quantity-container {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 16px;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    margin: 20px auto;
+}
+
+.quantity-select, .quantity-select option {
+    height: 48px;
+    width: 380px;
+    margin: 10px auto;
+    background-color: #f8f8ff;
+    color: black;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
 }
