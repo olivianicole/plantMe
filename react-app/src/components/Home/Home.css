@@ -19,14 +19,14 @@
 }
 
 .home-page-user-container {
-    margin: auto auto auto 0;
+    margin: auto auto auto 30px;
     font-family: "Guardian-EgypTT",serif;
     font-weight: 300;
     letter-spacing: 0.5px;
 }
 
 .home-page-suggested-listings {
-    margin: auto auto auto 0;
+    margin: auto auto auto 30px;
 }
 .home-page-logo-img {
     height: 75px;
@@ -89,6 +89,7 @@
     line-height: 18px;
     margin-left: 10px;
     margin-top: 2px;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
 }
 .suggested-listing-container {
     display: flex;
@@ -109,6 +110,8 @@
     width: 84px;
     margin: 10px;   
     overflow: hidden;
+    text-decoration: none;
+    color: black;
 }
 
 

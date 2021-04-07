@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Account from "./components/Account";
 import SplashPage from "./components/SplashPage";
 import Home from "./components/Home";
+import ListingPage from "./components/ListingPage";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
         <ProtectedRoute path="/home" authenticated={authenticated}>
           <Home />
         </ProtectedRoute>
+        <ProtectedRoute path="/listing/:id" authenticated={authenticated}>
+          <ListingPage />
+        </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );

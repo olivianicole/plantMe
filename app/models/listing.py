@@ -22,6 +22,7 @@ class Listing(db.Model):
 
     def to_dict(self):
         return {
+            "id": self.id,
             "name": self.name,
             "description": self.description,
             "image_1": self.image_1,
@@ -39,6 +40,7 @@ class Listing(db.Model):
 
     def to_simple_dict(self):
         return {
+            "id": self.id,
             "name": self.name,
             "description": self.description,
             "image_1": self.image_1,

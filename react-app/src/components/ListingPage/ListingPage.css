@@ -1,0 +1,59 @@
+.listing-page-container {
+    position: relative;
+    top: 108px;
+    height: auto;
+    width: 100%;
+    background-color: #f8f8ff;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.listing-page-container-left {
+    margin: auto;
+
+}
+
+.listing-page-container-right {
+    margin: 0 auto auto 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 260px;
+}
+.listing-page-container img {
+    height: 490px;
+    width: 490px;
+}
+
+.listing-image-carousel {
+    height: 635px;
+    width: 635px;
+}
+
+.listing-image-carousel button {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: rgba(255, 255, 255, 0.4) 1px dotted;
+}
+
+.listing-page-back {
+    font-size: 13px;
+    color: #595959;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    margin: 20px 20px 20px 5px;
+    text-decoration: none;
+}
+
+.fa-arrow-left{
+    font-size: 13px;
+    color: #595959;
+    margin: 20px 5px 20px -110px;
+}
+
+.listing-page-shop-name {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 16px;
+    color: #222;
+}
