@@ -12,12 +12,12 @@ const Listing = ({ listing }) => {
 
     return (
         <>
-            <div className="listing-container">
+            <a href={`/listing/${listing.id}`} className="listing-container">
                 <div className="listing-img">
                     <img src={listing.image_1} alt={listing.description}/>
                 </div>
                 <div className="listing-price">{priceValue}</div>
-            </div>
+            </a>
 
         </>
     )

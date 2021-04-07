@@ -23,21 +23,39 @@ const ListingPage = () => {
         shape: "circle",
         width: "48px",
         height: "48px",
+        contentCoversContainer: true,
     }
 
     const indicatorOptions = {
         show: false,
     }
 
+    let priceValue;
+    let p = listing?.price.toString().length
+    
+    if (p === 1 || p === 2) priceValue = (`$ ${listing.price}.00`)
+    if (p === 3) priceValue = (`$ ${listing.price}0`)
+    if (p >= 4) priceValue = (`$ ${listing.price}`)   
+
     return (
         <>
             <div className="listing-page-container">
-                <div className="listing-image-carousel">
-                    <SimpleCarousel controlsOptions={controlsOptions} indicatorOptions={indicatorOptions}>
-                        <div><img src={listing?.image_1} alt={listing?.description}/></div>
-                        <div><img src={listing?.image_2 || emptyImage} alt={listing?.description || "no additional images"}/></div>
-                        <div><img src={listing?.image_3 || emptyImage} alt={listing?.description || "no additional images"}/></div>
-                    </SimpleCarousel>
+                <div className="listing-page-container-left">
+                    <a href="/home" className="listing-page-back"><i className="fas fa-arrow-left"></i>Back to listings</a>
+                    <div className="listing-image-carousel">
+                        <SimpleCarousel controlsOptions={controlsOptions} indicatorOptions={indicatorOptions}>
+                            <img src={listing?.image_1} alt={listing?.description}/>
+                            <img src={listing?.image_2 || emptyImage} alt={listing?.description || "no additional images"}/>
+                            <img src={listing?.image_3 || emptyImage} alt={listing?.description || "no additional images"}/>
+                        </SimpleCarousel>
+
+                    </div>
+                </div>
+                <div className="listing-page-container-right">
+                    <div className="listing-page-shop-name">{listing?.shop.name}</div>
+                    <div className="listing-page-num-sales">{listing?.num_sales}</div>
+                    <div className="listing-page-listing-title">{listing?.name}</div>
+                    <div className="listing-page-listing-price">{priceValue}</div>
                 </div>
             </div>
         </>

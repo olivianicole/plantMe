@@ -16,7 +16,6 @@ const Home = ({ authenticated }) => {
     }, [dispatch, listings])
 
     // let userInfo;
-
     // if (user.shop) {
     //     userInfo = (
     //         <div className="home-page-account-info-container">
@@ -53,10 +52,10 @@ const Home = ({ authenticated }) => {
                         <div className="suggested-listing-container">
                             {suggestedListings?.map((listing) =>  {
                                     return (
-                                        <div className="suggested-listing-individual-container">
+                                        <a href={`/listing/${listing.id}`}className="suggested-listing-individual-container">
                                             <img src={listing.image_1} alt={listing.description} /> 
                                             <div className="suggested-listing-text">{listing.name}</div>
-                                        </div>
+                                        </a>
                                     )
                             }
                             )}

@@ -3,10 +3,15 @@
     height: 164px;
 }
 
+.listing-container, .listing-container active {
+    text-decoration: none;
+}
+
 .listing-price {
-    font-size: 16px;
     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
+    color: black;
 }
+
