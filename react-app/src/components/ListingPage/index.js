@@ -37,6 +37,9 @@ const ListingPage = () => {
     if (p === 3) priceValue = (`$ ${listing.price}0`)
     if (p >= 4) priceValue = (`$ ${listing.price}`)   
 
+  
+
+    let numSales = listing?.num_sales.toLocaleString(navigator.language, {minimumFractionDigits: 0});
     return (
         <>
             <div className="listing-page-container">
@@ -53,7 +56,7 @@ const ListingPage = () => {
                 </div>
                 <div className="listing-page-container-right">
                     <div className="listing-page-shop-name">{listing?.shop.name}</div>
-                    <div className="listing-page-num-sales">{listing?.num_sales}</div>
+                    <div className="listing-page-num-sales">{numSales} sales</div>
                     <div className="listing-page-listing-title">{listing?.name}</div>
                     <div className="listing-page-listing-price">{priceValue}</div>
                 </div>
