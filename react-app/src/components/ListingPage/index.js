@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { getCurrentListing } from "../../store/listings";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
@@ -10,11 +10,15 @@ import "./ListingPage.css"
 const ListingPage = () => {
     const dispatch = useDispatch();
     const params = useParams();
+    const [quantity, setQuantity] = useState(0);
+    
     const listing = useSelector((state) => state.listings?.allListings?.current_listing);
     const emptyImage = "https://www.vitraglobal.com/UPLOAD/Products/thumb/K94773300001VTE0_small.jpg";
 
     useEffect(() => {
         if (!listing) dispatch(getCurrentListing(params.id));
+            console.log(quantity);
+
     }, [listing, dispatch, params]);
 
     const controlsOptions = {
@@ -59,6 +63,16 @@ const ListingPage = () => {
                     <div className="listing-page-num-sales">{numSales} sales</div>
                     <div className="listing-page-listing-title">{listing?.name}</div>
                     <div className="listing-page-listing-price">{priceValue}</div>
+                    <div className="listing-page-quantity-container">
+                        <select className="quantity-select">
+                            <option value={1} className="quantity-option" onClick={() => setQuantity(1)}>1</option>
+                            <option value={2} className="quantity-option" onClick={() => setQuantity(2)}>2</option>
+                            <option value={3} className="quantity-option" onClick={() => setQuantity(3)}>3</option>
+                            <option value={4} className="quantity-option" onClick={() => setQuantity(4)}>4</option>
+                            <option value={5} className="quantity-option" onClick={() => setQuantity(5)}>5</option>
+                        </select>
+
+                    </div>
                 </div>
             </div>
         </>

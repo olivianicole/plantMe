@@ -34,8 +34,9 @@
 }
 
 .listing-image-carousel button {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #595959;
     border: rgba(255, 255, 255, 0.4) 1px dotted;
+    z-index: 1;
 }
 
 .listing-page-back {
@@ -46,14 +47,37 @@
     text-decoration: none;
 }
 
-.fa-arrow-left{
-    font-size: 13px;
-    color: #595959;
-    margin: 20px 5px 20px -110px;
-}
 
 .listing-page-shop-name {
     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
     font-size: 16px;
     color: #222;
+    -webkit-font-smoothing: antialiased;
+}
+
+.listing-page-num-sales {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 13px;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 10px;
+}
+
+.listing-page-listing-title {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.35px;
+    font-size: 18px;
+    line-height: 32px;
+    -webkit-font-smoothing: antialiased;
+    transform: scale(1, 1.3);
+    margin-top: 40px;
+}
+
+.listing-page-listing-price {
+    font-size: 28px;
+    line-height: 36px;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-weight: 500;
+    margin-top: 40px;
 }
