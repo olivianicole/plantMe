@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { getCurrentListing } from "../../store/listings";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
@@ -10,11 +10,14 @@ import "./ListingPage.css"
 const ListingPage = () => {
     const dispatch = useDispatch();
     const params = useParams();
+    const [quantity, setQuantity] = useState(0);
+    
     const listing = useSelector((state) => state.listings?.allListings?.current_listing);
     const emptyImage = "https://www.vitraglobal.com/UPLOAD/Products/thumb/K94773300001VTE0_small.jpg";
 
     useEffect(() => {
         if (!listing) dispatch(getCurrentListing(params.id));
+
     }, [listing, dispatch, params]);
 
     const controlsOptions = {
@@ -37,6 +40,9 @@ const ListingPage = () => {
     if (p === 3) priceValue = (`$ ${listing.price}0`)
     if (p >= 4) priceValue = (`$ ${listing.price}`)   
 
+  
+
+    let numSales = listing?.num_sales.toLocaleString(navigator.language, {minimumFractionDigits: 0});
     return (
         <>
             <div className="listing-page-container">
@@ -53,9 +59,19 @@ const ListingPage = () => {
                 </div>
                 <div className="listing-page-container-right">
                     <div className="listing-page-shop-name">{listing?.shop.name}</div>
-                    <div className="listing-page-num-sales">{listing?.num_sales}</div>
+                    <div className="listing-page-num-sales">{numSales} sales</div>
                     <div className="listing-page-listing-title">{listing?.name}</div>
                     <div className="listing-page-listing-price">{priceValue}</div>
+                    <div className="listing-page-quantity-container">Quantity
+                        <select className="quantity-select">
+                            <option value={1} className="quantity-option" onClick={() => setQuantity(1)}>1</option>
+                            <option value={2} className="quantity-option" onClick={() => setQuantity(2)}>2</option>
+                            <option value={3} className="quantity-option" onClick={() => setQuantity(3)}>3</option>
+                            <option value={4} className="quantity-option" onClick={() => setQuantity(4)}>4</option>
+                            <option value={5} className="quantity-option" onClick={() => setQuantity(5)}>5</option>
+                        </select>
+                    </div>
+                    <button className="listing-page-add-to-cart">Add To Cart</button>
                 </div>
             </div>
         </>
