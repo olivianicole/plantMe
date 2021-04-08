@@ -62,7 +62,7 @@ const ListingPage = () => {
                     <div className="listing-page-num-sales">{numSales} sales</div>
                     <div className="listing-page-listing-title">{listing?.name}</div>
                     <div className="listing-page-listing-price">{priceValue}</div>
-                    <div className="listing-page-quantity-container">How many?
+                    <div className="listing-page-quantity-container">Quantity
                         <select className="quantity-select">
                             <option value={1} className="quantity-option" onClick={() => setQuantity(1)}>1</option>
                             <option value={2} className="quantity-option" onClick={() => setQuantity(2)}>2</option>
@@ -70,8 +70,8 @@ const ListingPage = () => {
                             <option value={4} className="quantity-option" onClick={() => setQuantity(4)}>4</option>
                             <option value={5} className="quantity-option" onClick={() => setQuantity(5)}>5</option>
                         </select>
-
                     </div>
+                    <button className="listing-page-add-to-cart">Add To Cart</button>
                 </div>
             </div>
         </>
