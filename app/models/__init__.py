@@ -5,3 +5,4 @@ from .review import Review
 from .listing import Listing
 from .favorite import Favorite
 from .category import Category
+from .purchase import Purchase
