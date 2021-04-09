@@ -4,15 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import SimpleCarousel from 'simple-react-carousel';
 import CartModal from "../CartModal";
-
-
 import "./ListingPage.css"
 
 const ListingPage = () => {
     const dispatch = useDispatch();
     const params = useParams();
-    const [quantity, setQuantity] = useState(0);
-    const [added, setAdded] = useState();
+    const [quantity, setQuantity] = useState(1);
     
     const listing = useSelector((state) => state.listings?.allListings?.current_listing);
     const user = useSelector((state) => state.session?.user?.current_user);
@@ -47,7 +44,7 @@ const ListingPage = () => {
 
      const item = {
             name: listing?.name,
-            image: listing?.image,
+            image: listing?.image_1,
             price: listing?.price,
             quantity: quantity,
         }
@@ -72,15 +69,15 @@ const ListingPage = () => {
                     <div className="listing-page-listing-price">{priceValue}</div>
                     <div className="listing-page-quantity-container">Quantity
                         <select className="quantity-select">
-                            <option value={1} className="quantity-option" onClick={() => setQuantity(1)}>1</option>
-                            <option value={2} className="quantity-option" onClick={() => setQuantity(2)}>2</option>
-                            <option value={3} className="quantity-option" onClick={() => setQuantity(3)}>3</option>
-                            <option value={4} className="quantity-option" onClick={() => setQuantity(4)}>4</option>
-                            <option value={5} className="quantity-option" onClick={() => setQuantity(5)}>5</option>
+                            <option value={1} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>1</option>
+                            <option value={2} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>2</option>
+                            <option value={3} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>3</option>
+                            <option value={4} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>4</option>
+                            <option value={5} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>5</option>
                         </select>
                     </div>
-                    <CartModal item={item} added={added} setAdded={setAdded}/>
-                    {/* <button onClick={addToCart} className="listing-page-add-to-cart">Add To Cart</button> */}
+                    <CartModal item={item} />
+                    {/* <button onSelect={addToCart} className="listing-page-add-to-cart">Add To Cart</button> */}
                 </div>
             </div>
         </>

@@ -1,9 +1,15 @@
-const ADD = "/cart/add";
+const BUY = "/cart/buy";
+const ADD = "/cart/add"
 
-const add = (addedItem) => ({
-    type: ADD,
+const buy = (addedItem) => ({
+    type: BUY,
     payload: addedItem,
 });
+
+const add = (item) => ({
+    type: ADD,
+    payload: item,
+})
 
 
 
@@ -20,20 +26,36 @@ export const purchase = (itemDetails) => async (dispatch) => {
     });
     const addedItem = await response.json();
     if (response.ok) {
-        dispatch(add(addedItem));
+        dispatch(buy(addedItem));
     }
     return addedItem;
 };
+
+// export const addToCart = (item) => async (dispatch) => {
+//     const {  name, image, price, quantity } = item;
+//     const response = await fetch ("/api/cart/add", {
+//         method: "POST",
+//         headers
+//     })
+//     const addedItem = item.json();
+//     dispatch(add(addedItem));
+//     return addedItem;
+// }
 
 const initialState = {};
 
 const cartReducer = (state=initialState, action) => {
     let newState;
     switch (action.type) {
-        case ADD:
+        case BUY:
             newState = Object.assign({}, state);
             if (newState.purchased) newState.purchased = [...newState.purchased, action.payload];
             else newState.purchased = action.payload
+            return newState;
+        case ADD:
+            newState = Object.assign({}, state);
+            if (newState.cart) newState.cart = [...newState.cart, action.payload];
+            else newState.cart = action.item;
             return newState;
         default:
             return state;

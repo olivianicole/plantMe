@@ -1,31 +1,26 @@
-import React, { useState } from "react";
-import { Modal } from "../../context/Modal";
+import React, { useEffect, useState } from "react";
+import { ShoppingCartModal } from "../../context/Modal";
 import Cart from "./Cart";
 import "./Cart.css";
+// import addToCart from "../../store/cart";
+import { useDispatch, useSelector } from "react-redux";
 
-const CartModal = ({item, added, setAdded}) => {
+
+const CartModal = ({ item }) => {
+    const dispatch = useDispatch();
     const [ showModal, setShowModal ] = useState(false);
-
-     const addToCart = () => {
-        if(added){
-            added.push(item);
-        } else {
-            setAdded([item])
-        }
-        setShowModal(true);
-    };
-
+   
     return (
         <>
             <button 
-            onClick={addToCart}
+            onClick={() => setShowModal(true)}
             className="add-to-cart-button">
                 Add to cart
             </button>
             { showModal && (
-            <Modal style={{"zIndex": 50}}onClose={() => setShowModal(false)}>
+            <ShoppingCartModal onClose={() => setShowModal(false)}>
                 <Cart setShowModal={setShowModal} />
-            </Modal>
+            </ShoppingCartModal>
             )}
         </>
     )
