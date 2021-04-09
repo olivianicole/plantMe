@@ -3,14 +3,21 @@ import './Listing.css';
 
 const Listing = ({ listing }) => {
 
+    let priceValue;
+    let p = listing.price.toString().length
+    
+    if (p === 1 || p === 2) priceValue = (`$ ${listing.price}.00`)
+    if (p === 3) priceValue = (`$ ${listing.price}0`)
+    if (p >= 4) priceValue = (`$ ${listing.price}`)    
+
     return (
         <>
-            <div className="listing-container">
+            <a href={`/listing/${listing.id}`} className="listing-container">
                 <div className="listing-img">
                     <img src={listing.image_1} alt={listing.description}/>
                 </div>
-                <div>{listing.price}</div>
-            </div>
+                <div className="listing-price">{priceValue}</div>
+            </a>
 
         </>
     )

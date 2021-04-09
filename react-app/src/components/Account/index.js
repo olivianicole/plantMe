@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import ShopForm from "./ShopForm";
 import "./Account.css";
 
-
-
 const Account = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user?.current_user);

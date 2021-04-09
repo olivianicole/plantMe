@@ -22,6 +22,7 @@ class Listing(db.Model):
 
     def to_dict(self):
         return {
+            "id": self.id,
             "name": self.name,
             "description": self.description,
             "image_1": self.image_1,
@@ -30,14 +31,16 @@ class Listing(db.Model):
             "category_id": self.category_id,
             "shop_id": self.shop_id,
             "price": self.price,
-            "category": self.category.to_simple_dict(),
-            "shop": self.category.to_simple_dict(),
-            "favorites": [favorite.to_simple_dict() for favorite in favorites],
-            "reviews": [review.to_simple_dict() for review in self.reviews]
+            # "category": self.category.to_simple_dict(),
+            "shop": self.shop.to_simple_dict(),
+            "favorites": [favorite.to_simple_dict() for favorite in self.favorites],
+            "reviews": [review.to_simple_dict() for review in self.reviews],
+            "num_sales": self.shop.num_sales,
         }
 
     def to_simple_dict(self):
         return {
+            "id": self.id,
             "name": self.name,
             "description": self.description,
             "image_1": self.image_1,

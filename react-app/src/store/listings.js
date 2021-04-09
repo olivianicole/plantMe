@@ -5,19 +5,32 @@ const load = (listings) => ({
     payload: listings,
 });
 
+
 export const getListings = () => async (dispatch) => {
-    const response = await fetch('/api/listing', {
+    const response = await fetch('/api/listing/', {
         headers : {
             'Content-Type': 'application/json',
         },
     });
-    console.log(response);
     if (response.ok) {
         const listings = await response.json();
-        dispatch(load(listings))
+        dispatch(load(listings));
         return response;
     }
 };
+
+export const getCurrentListing = (id) => async (dispatch) => {
+    const response = await fetch(`/api/listing/${id}`, {
+        headers : {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.ok) {
+        const listing = await response.json();
+        dispatch(load(listing));
+        return response;
+    }
+}
 
 const initialState = {};
 
