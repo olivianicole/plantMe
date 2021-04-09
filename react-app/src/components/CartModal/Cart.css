@@ -12,10 +12,50 @@
     border-radius: 30px;
 }
 
-
 /* Cart.js */
 
 .cart-container{
-  
+    
+}
 
+.cart-title-text {
+    padding: 12px 0 0 20px;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    font-size: 25px;
+}
+
+.cart-item-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    justify-content: space-between;
+  
+}
+
+.cart-item-container img {
+    height: 75px;
+    width: 75px;
+}
+
+.cart-item-name {
+    width: 200px;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+}
+
+.cart-item-right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+}
+
+.cart-item-price, .cart-item-quantity {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
 }
