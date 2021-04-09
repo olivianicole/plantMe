@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import listingsReducer from "./listings";
 import shopReducer from "./shop";
+import cartReducer from "./cart";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   listings: listingsReducer,
   shop: shopReducer,
+  cart: cartReducer,
 });
 
 let enhancer;

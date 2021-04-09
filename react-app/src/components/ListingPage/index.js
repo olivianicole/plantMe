@@ -3,6 +3,7 @@ import { getCurrentListing } from "../../store/listings";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import SimpleCarousel from 'simple-react-carousel';
+import CartModal from "../CartModal";
 
 
 import "./ListingPage.css"
@@ -11,8 +12,10 @@ const ListingPage = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const [quantity, setQuantity] = useState(0);
+    const [added, setAdded] = useState();
     
     const listing = useSelector((state) => state.listings?.allListings?.current_listing);
+    const user = useSelector((state) => state.session?.user?.current_user);
     const emptyImage = "https://www.vitraglobal.com/UPLOAD/Products/thumb/K94773300001VTE0_small.jpg";
 
     useEffect(() => {
@@ -40,9 +43,14 @@ const ListingPage = () => {
     if (p === 3) priceValue = (`$ ${listing.price}0`)
     if (p >= 4) priceValue = (`$ ${listing.price}`)   
 
-  
-
     let numSales = listing?.num_sales.toLocaleString(navigator.language, {minimumFractionDigits: 0});
+
+     const item = {
+            name: listing?.name,
+            image: listing?.image,
+            price: listing?.price,
+            quantity: quantity,
+        }
     return (
         <>
             <div className="listing-page-container">
@@ -71,7 +79,8 @@ const ListingPage = () => {
                             <option value={5} className="quantity-option" onClick={() => setQuantity(5)}>5</option>
                         </select>
                     </div>
-                    <button className="listing-page-add-to-cart">Add To Cart</button>
+                    <CartModal item={item} added={added} setAdded={setAdded}/>
+                    {/* <button onClick={addToCart} className="listing-page-add-to-cart">Add To Cart</button> */}
                 </div>
             </div>
         </>
