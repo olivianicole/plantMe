@@ -36,3 +36,18 @@ export function Modal ({ onClose, children, setShowModal }) {
         modalNode
     );
 };
+
+export function ShoppingCartModal ({ onClose, children, setShowModal }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="cart-modal">
+            <div id="cart-modal-background" onClick={onClose} />
+            <div id="cart-modal-content" >
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+};

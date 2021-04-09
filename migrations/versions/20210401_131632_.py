@@ -87,6 +87,14 @@ def upgrade():
                     sa.UniqueConstraint('listing_id'),
                     sa.UniqueConstraint('user_id')
                     )
+    op.create_table('purchases',
+                    sa.Column('id', sa.Integer(), nullable=False),
+                    sa.Column('user_id', sa.Integer(), nullable=False),
+                    sa.Column('shop_id', sa.Integer(), nullable=False),
+                    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+                    sa.ForeignKeyConstraint(['shop_id'], ['shops.id'], ),
+                    sa.PrimaryKeyConstraint('id')
+                    )
     # ### end Alembic commands ###
 
 
