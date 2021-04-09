@@ -43,10 +43,10 @@
     left: 0;
     bottom: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     z-index: 5;
-}
+  }
 
 #cart-modal-background {
     position: fixed;
@@ -54,13 +54,14 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 #cart-modal-content {
+    margin-top: 100px;
     position: absolute;
     background-color:#f8f8ff;
-    height: 400px;
+    height: 650px;
     width: 400px;
     
 }
