@@ -12,7 +12,6 @@ const ListingPage = () => {
     const [quantity, setQuantity] = useState(1);
     
     const listing = useSelector((state) => state.listings?.allListings?.current_listing);
-    const user = useSelector((state) => state.session?.user?.current_user);
     const emptyImage = "https://www.vitraglobal.com/UPLOAD/Products/thumb/K94773300001VTE0_small.jpg";
 
     useEffect(() => {
