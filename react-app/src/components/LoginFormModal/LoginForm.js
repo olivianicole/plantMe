@@ -47,11 +47,11 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
         <div className="login-form-title">
             <p>Welcome back!</p>
         </div>
-        {/* <div>
+        <div>
             {errors.map((error) => (
             <div className="login-error-messages">{error}</div>
             ))}
-        </div> */}
+        </div>
         <div className="login-form-field-container">
             <input
             className="login-form-field"

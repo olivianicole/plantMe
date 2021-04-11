@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import NavBar from "./components/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-// import UsersList from "./components/UsersList";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Account from "./components/Account";
 import SplashPage from "./components/SplashPage";
 import Home from "./components/Home";
 import ListingPage from "./components/ListingPage";
+import Checkout from "./components/Checkout";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -37,9 +37,6 @@ function App() {
         <Route path="/" exact={true} authenticated={authenticated} setAuthenticated={setAuthenticated}>
           <SplashPage authenticated={authenticated} setAuthenticated={setAuthenticated}/>
         </Route>
-        {/* <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList/>
-        </ProtectedRoute> */}
         <ProtectedRoute path="/account" exact={true} authenticated={authenticated}>
           <Account />
         </ProtectedRoute>
@@ -49,7 +46,9 @@ function App() {
         <ProtectedRoute path="/listing/:id" authenticated={authenticated}>
           <ListingPage />
         </ProtectedRoute>
-
+        <ProtectedRoute path="/checkout" authenticated={authenticated}>
+          <Checkout />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

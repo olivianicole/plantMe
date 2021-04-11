@@ -15,7 +15,8 @@
 /* Cart.js */
 
 .cart-container{
-    
+    display: flex;
+    flex-direction: column;
 }
 
 .cart-title-text {
@@ -58,4 +59,38 @@
     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
     color: #222;
     -webkit-font-smoothing: antialiased;
+}
+
+.cart-checkout-button {
+    align-self: center;
+    justify-self: flex-end;
+    color: white;
+    background-color: #222;
+    width: 350px;
+    height: 48px;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* TinyCartModal.js */
+
+.tiny-cart-button {
+    border: none;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8ff;
+}
+
+.fa-shopping-cart {
+    color: black;
+    font-size: 24px;
 }

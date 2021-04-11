@@ -37,7 +37,8 @@
 
 }
 
-.navbar-favorites-link, .navbar-favorites-link :active {
+.navbar-favorites-link, .navbar-favorites-link :active, 
+.navbar-cart-link, .navbar-cart-link :active {
     text-decoration: none;
 }
 .fa-heart {
