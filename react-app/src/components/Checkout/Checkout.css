@@ -1,0 +1,31 @@
+.checkout-page-container {
+    padding: 20px;
+    position: relative;
+    top: 108px;
+    height: auto;
+    width: 100%;
+    background-color: #f8f8ff;
+}
+.checkout-title-text {
+    color: #595959;
+    padding: 5px;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 20px;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 30px;
+    font-weight: 200;
+}
+
+.fa-lock {
+    padding: 5px;
+    font-size: 18px;
+}
+.checkout-item-container {
+
+}
+
+.checkout-item-container img {
+    height: 100px;
+    width: 100px;
+}
+

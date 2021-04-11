@@ -1,9 +1,9 @@
 const BUY = "/cart/buy";
 const ADD = "/cart/add"
 
-const buy = (addedItem) => ({
+const buy = (item) => ({
     type: BUY,
-    payload: addedItem,
+    payload: item,
 });
 
 export const add = (item) => ({
@@ -24,11 +24,11 @@ export const purchase = (itemDetails) => async (dispatch) => {
         quantity,
         }),
     });
-    const addedItem = await response.json();
+    const item = await response.json();
     if (response.ok) {
-        dispatch(buy(addedItem));
+        dispatch(buy(item));
     }
-    return addedItem;
+    return item;
 };
 
 
@@ -39,8 +39,8 @@ const cartReducer = (state=initialState, action) => {
     switch (action.type) {
         case BUY:
             newState = Object.assign({}, state);
-            if (newState.purchased) newState.purchased = [...newState.purchased, action.payload];
-            else newState.purchased = action.payload
+            if (newState.purchased) newState.purchased.push(action.payload)
+            else newState.purchased = [action.payload];
             return newState;
         case ADD:
             newState = Object.assign({}, state);

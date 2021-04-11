@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import SimpleCarousel from 'simple-react-carousel';
 import CartModal from "../CartModal";
+import priceConverter from "../../services/priceconverter";
 import "./ListingPage.css"
 
 const ListingPage = () => {
@@ -31,14 +32,7 @@ const ListingPage = () => {
     const indicatorOptions = {
         show: false,
     }
-
-    let priceValue;
-    let p = listing?.price.toString().length
-    
-    if (p === 1 || p === 2) priceValue = (`$ ${listing.price}.00`)
-    if (p === 3) priceValue = (`$ ${listing.price}0`)
-    if (p >= 4) priceValue = (`$ ${listing.price}`)   
-
+  
     let numSales = listing?.num_sales.toLocaleString(navigator.language, {minimumFractionDigits: 0});
 
      const item = {
@@ -47,6 +41,7 @@ const ListingPage = () => {
             price: listing?.price,
             quantity
         }
+
     return (
         <>
             <div className="listing-page-container">
@@ -65,7 +60,7 @@ const ListingPage = () => {
                     <div className="listing-page-shop-name">{listing?.shop.name}</div>
                     <div className="listing-page-num-sales">{numSales} sales</div>
                     <div className="listing-page-listing-title">{listing?.name}</div>
-                    <div className="listing-page-listing-price">{priceValue}</div>
+                    <div className="listing-page-listing-price">{priceConverter(listing?.price)}</div>
                     <div className="listing-page-quantity-container">Quantity
                         <select className="quantity-select">
                             <option value={1} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>1</option>

@@ -1,19 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import { viewCart } from "../../store/cart";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import priceConverter from "../../services/priceconverter";
 import "./Cart.css";
 
 const Cart = () => {
     const items = useSelector((state) => state.cart?.cart);
-    const priceValue = (price) => {
-        let returnPrice;
-        let p = price?.toString().length
-    
-        if (p === 1 || p === 2) returnPrice = (`$ ${price}.00`)
-        if (p === 3) returnPrice = (`$ ${price}0`)
-        if (p >= 4) returnPrice = (`$ ${price}`)   
-        return returnPrice;
-    }
 
     useEffect(() => {
         if (!items){
@@ -31,14 +23,14 @@ const Cart = () => {
                         <img src={item.image}/>
                         <div className="cart-item-name">{item.name}</div>
                         <div className="cart-item-right-container">
-                            <div className="cart-item-price">{priceValue(item.price)}</div>
+                            <div className="cart-item-price">{priceConverter(item.price)}</div>
                             <div className="cart-item-quantity">Quantity: {item.quantity}</div>
                         </div>
                     </div>
 
                 )
                 )}
-                <button></button>
+                <NavLink to="/checkout" className="cart-checkout-button">Proceed to checkout</NavLink>
             </div>
         )
     } else {
