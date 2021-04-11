@@ -15,8 +15,9 @@ const CartModal = ({ item }) => {
         <>
             <button 
             onClick={() => {
-                setShowModal(true)
                 dispatch(add(item))
+                console.log(item)
+                setShowModal(true)
                 return
             }}
             className="add-to-cart-button">

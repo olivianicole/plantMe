@@ -44,7 +44,7 @@ const cartReducer = (state=initialState, action) => {
             return newState;
         case ADD:
             newState = Object.assign({}, state);
-            if (newState.cart) newState.cart = [newState.cart, action.payload];
+            if (newState.cart) newState.cart.push(action.payload)
             else newState.cart = [action.payload];
             return newState;
         default:

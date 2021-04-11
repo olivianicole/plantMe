@@ -45,7 +45,7 @@ const ListingPage = () => {
             name: listing?.name,
             image: listing?.image_1,
             price: listing?.price,
-            quantity: quantity,
+            quantity
         }
     return (
         <>
@@ -76,7 +76,6 @@ const ListingPage = () => {
                         </select>
                     </div>
                     <CartModal item={item} />
-                    {/* <button onSelect={addToCart} className="listing-page-add-to-cart">Add To Cart</button> */}
                 </div>
             </div>
         </>
