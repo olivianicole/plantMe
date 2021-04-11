@@ -1,24 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavorite, deleteFavorite } from "../../store/favorites";
+import { addFavorite, deleteFavorite, getUserFavorites } from "../../store/favorites";
 
 const FavoriteButton = ({ listing }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state?.session?.user?.current_user);
-    const userFavorites = useSelector((state) => {
-    
-        return state.favorites;
-    });
- 
-    const liked = userFavorites?.filter((favorite) => favorite.listing_id === listing.id).length;
-
+    const favorites = useSelector((state) => state?.favorites?.userFavorites?.user_favorites);
+    const liked = favorites?.filter((favorite) => favorite.listing_id === listing.id);
     let fav;
-    if (liked) {
+    if (liked?.length) {
         fav = (
             <div>
                 <i className="fas fa-heart" />
             </div>
-        )
+        ) 
     } else {
         fav = (
             <div>
@@ -26,10 +21,14 @@ const FavoriteButton = ({ listing }) => {
             </div>
         )
     }
-
+    useEffect((state) => {
+        if (!favorites) dispatch(getUserFavorites(user.id));
+    }, [dispatch, favorites])
+   
     const handleClick = async () => {
-        if (userFavorites) {
-            const favorite = userFavorites?.filter((favorite) => favorite.listing_id === listing.id)
+        if (liked?.length) {
+            const favorite = user.favorites?.filter((favorite) => favorite.listing_id === listing.id)
+            console.log(favorite)
             if (favorite[0]) dispatch(deleteFavorite(favorite[0].id));
             else {
             const favorite = {
@@ -48,8 +47,9 @@ const FavoriteButton = ({ listing }) => {
 
     return (
         <div onClick={handleClick} className="favorite-button">
-            {fav}
+           {fav}
         </div>
+        
     );
 };
 

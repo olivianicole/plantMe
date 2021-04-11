@@ -27,6 +27,7 @@ def add_favorite():
 @login_required
 def user_favorites(id):
     favs = Favorite.query.filter(Favorite.user_id == id).all()
+    print(favs)
     return {"user_favorites": [fav.to_dict() for fav in favs]}
 
 
