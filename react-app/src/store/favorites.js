@@ -46,9 +46,10 @@ export const getUserFavorites = (userId) => async (dispatch) => {
 };
 
 export const deleteFavorite = (userLikeId) => async (dispatch) => {
-  const response = await fetch(`/api/likes/${userLikeId}/delete/`);
+  const response = await fetch(`/api/favorite/${userLikeId}/delete/`);
 
   const deletedFav = await response.json();
+  console.log(deletedFav);
   if (response.ok) {
     dispatch(remove(deletedFav))
   }
@@ -63,19 +64,16 @@ const favoritesReducer = (state=initialState, action) => {
   switch (action.type) {
     case ADD:
       newState = Object.assign({}, state);
-      if (newState.favorites) {
-        newState.favorites = [...newState.favorites, action.payload]
-      } else {
-        newState.favorites = action.payload
-      }
+      if (newState.favorites) newState.favorites = [...newState.favorites.favorites, action.payload]
+      else newState.favorites = [action.payload]
       return newState;
     case GET_FAVORITES:
       newState = Object.assign({}, state);
-      newState.userFavorites = action.payload;
+      newState.favorites = action.payload;
       return newState;
     case REMOVE:
       newState = Object.assign({}, state)
-      newState.favorites = newState.favorites.filter(favorite => favorite.id !== action.favorite.id)
+      newState.favorites = newState.favorites.favorites.filter(favorite => favorite.id !== action.payload.id)
       return newState;
     default:
       return state;

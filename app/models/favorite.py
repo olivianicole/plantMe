@@ -9,7 +9,7 @@ class Favorite(db.Model):
     listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"),
                            nullable=False)
 
-    user = db.relationship("User", back_populates="favorites")
+    user = db.relationship("User", back_populates="favorites", lazy='subquery')
     listing = db.relationship("Listing", back_populates="favorites")
 
     def to_dict(self):
