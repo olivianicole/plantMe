@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import AccountButton from "./AccountButton.js";
-
+import TinyCartModal from "../CartModal/TinyCartModal";
 import "./NavBar.css"
 const NavBar = ({ authenticated, setAuthenticated }) => {
 
@@ -18,9 +18,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
               <NavLink className="header-site-title" to="/home" exact={true} activeClassName="active">plantMe</NavLink>
           </div>
           <div className="nav-container-right">
+            <TinyCartModal className="nabvar-cart-link"/>
             <NavLink className="navbar-favorites-link" to="/favorites">
-              <div >
-                <i className="far fa-heart" />
+              <div>
+                <i className="far fa-heart"/>
               </div>
             </NavLink>
             <div>

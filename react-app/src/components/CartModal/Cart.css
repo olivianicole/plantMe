@@ -77,3 +77,20 @@
     justify-content: center;
     text-decoration: none;
 }
+
+/* TinyCartModal.js */
+
+.tiny-cart-button {
+    border: none;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8ff;
+}
+
+.fa-shopping-cart {
+    color: black;
+    font-size: 24px;
+}

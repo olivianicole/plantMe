@@ -2,26 +2,15 @@ import React, { useEffect, useState } from "react";
 import { ShoppingCartModal } from "../../context/Modal";
 import Cart from "./Cart";
 import "./Cart.css";
-import { add } from "../../store/cart";
-import { useDispatch } from "react-redux";
 
-
-const CartModal = ({ item }) => {
-    const dispatch = useDispatch();
+const TinyCartModal = () => {
     const [ showModal, setShowModal ] = useState(false);
-
-
     return (
         <>
             <button 
-            onClick={() => {
-                dispatch(add(item))
-                console.log(item)
-                setShowModal(true)
-                return
-            }}
-            className="add-to-cart-button">
-                Add to cart
+            onClick={() => setShowModal(true)}
+            className="tiny-cart-button">
+            <i class="fas fa-shopping-cart"/>
             </button>
             { showModal && (
             <ShoppingCartModal onClose={() => setShowModal(false)}>
@@ -32,6 +21,4 @@ const CartModal = ({ item }) => {
     )
 };
 
-export default CartModal;
-
-
+export default TinyCartModal;

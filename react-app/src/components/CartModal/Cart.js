@@ -35,7 +35,7 @@ const Cart = () => {
         )
     } else {
         return (
-            <div>Your cart is empty!</div>
+            <div className="cart-title-text">Your cart is empty!</div>
 
         )
         

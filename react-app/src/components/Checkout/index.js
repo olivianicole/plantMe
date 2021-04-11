@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import priceConverter from "../../services/priceconverter";
-import { purchase } from "../../store/cart";
+// import { purchase } from "../../store/cart";
+import { NavLink } from "react-router-dom";
 import "./Checkout.css";
 
 const Checkout = () => {
@@ -16,23 +17,22 @@ const Checkout = () => {
     }
     }, [items])
     
-    const onPurchase = (e) => {
-        e.preventDefault();
-        if (items) {
-            items.map((item) => {
-                const itemDetails = {
-                    user_id: user.id,
-                    shop_id: item.shop_id,
-                    quantity: item.quantity,
-                };
-                dispatch(purchase(itemDetails));
-                })
-                return <Redirect to="/account" />;
-            } else {
-                console.log("error! no items!")
-            }
-        
-    }
+    // const onPurchase = (e) => {
+    //     e.preventDefault();
+        // if (items) {
+        //     items.map((item) => {
+        //         const itemDetails = {
+        //             user_id: user.id,
+        //             shop_id: item.shop_id,
+        //             quantity: item.quantity,
+        //         };
+        //         dispatch(purchase(itemDetails));
+        //         })
+        //         return <Redirect to="/account" />;
+        //     } else {
+        //         console.log("error! no items!")
+        //     }
+    // }
 
     return (
         <>
@@ -49,7 +49,7 @@ const Checkout = () => {
                 </div>
                 ))}
                 <div className="button-container">
-                    <button onClick={onPurchase} className="checkout-complete-button">Complete Purchase</button>
+                    <NavLink to="/account" className="checkout-complete-button">Complete Purchase</NavLink>
                 </div>
             </div>
         </>
