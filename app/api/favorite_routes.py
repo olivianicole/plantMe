@@ -1,8 +1,7 @@
 from app.models import db, Favorite
 from flask_login import login_required
 from flask import Blueprint, session, request
-from app.forms import LikeForm
-
+from app.forms import FavoriteForm
 
 favorite_routes = Blueprint('favorite', __name__)
 
@@ -10,7 +9,7 @@ favorite_routes = Blueprint('favorite', __name__)
 @favorite_routes.route('/', methods=["POST"])
 @login_required
 def add_favorite():
-    form = LikeForm()
+    form = FavoriteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         fav = Favorite(
