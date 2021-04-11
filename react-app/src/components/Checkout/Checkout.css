@@ -14,6 +14,8 @@
     -webkit-font-smoothing: antialiased;
     border-radius: 30px;
     font-weight: 200;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .fa-lock {
@@ -21,11 +23,48 @@
     font-size: 18px;
 }
 .checkout-item-container {
-
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 20px;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+    margin: 20px auto;
+    padding: 20px;
 }
 
 .checkout-item-container img {
     height: 100px;
     width: 100px;
+    margin: 10px;
+}
+.checkout-item-name {
+    margin: 10px;
+}
+.checkout-item-right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 10px;
+    width: 140px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout-complete-button {
+    justify-self: flex-end;
+    color: white;
+    background-color: #222;
+    width: 350px;
+    height: 48px;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 30px;
 }
 

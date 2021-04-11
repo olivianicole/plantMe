@@ -31,7 +31,7 @@ const Home = ({ authenticated }) => {
     //     userInfo = (
     //         <div>
     //             <NavLink className="home-page-account-link" to="/account">
-    //                 <i class="fas fa-store"></i>
+    //                 <i className="fas fa-store"></i>
     //                 <div className="home-page-account-link-text">Looking to Open a Shop?</div>
     //             </NavLink>
     //         </div>

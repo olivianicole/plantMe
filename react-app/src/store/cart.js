@@ -15,15 +15,19 @@ export const add = (item) => ({
 
 export const purchase = (itemDetails) => async (dispatch) => {
     const { user_id, shop_id, quantity } = itemDetails;
+    console.log(itemDetails)
     const response = await fetch("/api/cart/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+            "Content-Type": "application/json" 
+        },
         body: JSON.stringify({
-        user_id,
-        shop_id,
-        quantity,
+            user_id,
+            shop_id,
+            quantity,
         }),
     });
+    console.log(response)
     const item = await response.json();
     if (response.ok) {
         dispatch(buy(item));
