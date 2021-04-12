@@ -3,6 +3,7 @@ import { authenticate } from "../../store/session";
 import { useDispatch, useSelector } from 'react-redux';
 import ShopForm from "./ShopForm";
 import Listing from "../Listing";
+import ListingModal from "../ListingModal";
 import "./Account.css";
 import { getUserFavorites } from "../../store/favorites";
 
@@ -11,7 +12,6 @@ const Account = () => {
   const user = useSelector((state) => state?.session?.user?.current_user);
   const favorites = useSelector((state) => state?.favorites?.favorites?.favorites);
   const listings = useSelector((state) => state?.session?.user?.current_user?.shop.listings);
-  console.log(listings);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showShopForm, setShowShopForm] = useState(false);
   const [showShopInfo, setShowShopInfo] = useState(false);
@@ -31,8 +31,13 @@ const Account = () => {
       {favorites?.map((favorite) => {
       return (
           <div className="account-favorite-container">
-              <Listing listing={favorite.listing} />
-            <div className="account-favorite-listing-name">{favorite.listing.name}</div>
+              <div>
+                <Listing listing={favorite.listing} />
+              </div>
+              <div className="account-indiv-text-container">
+                <div className="account-favorite-listing-name">{favorite.listing.name}</div>
+                <div className="account-favorite-listing-description">{favorite.listing.description}</div>
+              </div>
           </div>
 
           )
@@ -56,9 +61,11 @@ const Account = () => {
           <div>
             <div className="account-shop-name">{user.shop.name}</div>
             <div className="account-shop-description">{user.shop.description}</div>
+            <ListingModal />
           </div>
         </div>
-        <div className="account-indiv-container">
+        <div className="account-indiv-container"> 
+        <p className="account-your-listings">Your shop is currently selling:</p>
           {listings?.map((listing) => {
             return (
               <div className="account-indiv-listing">
