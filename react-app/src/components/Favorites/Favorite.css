@@ -1,0 +1,27 @@
+.favorite-page-container {
+    position: relative;
+    top: 108px;
+    height: auto;
+    width: 100%;
+    background-color: #f8f8ff;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favorite-page-title {
+     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 20px;
+    color: #222;
+    margin: 0 auto;
+}
+
+.favorite-listings-grid{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1rem;
+    margin: 0px 40px;
+
+}
+
