@@ -46,4 +46,5 @@ class Shop(db.Model):
             "state": self.state,
             "country": self.country,
             "num_sales": self.num_sales,
+            "listings": [listing.to_simple_dict() for listing in self.listings]
         }

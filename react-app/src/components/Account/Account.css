@@ -114,6 +114,38 @@
     margin: 0 auto;
 }
 
+
+.account-indiv-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-indiv-listing {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.account-indiv-text-container {
+    padding: 20px;
+    margin-left: 20px;
+}
+
+.account-indiv-name {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 16px;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+}
+
+.account-indiv-description {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 12px;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    width: 80%;
+}
+
 /* Shop Form */
 
 

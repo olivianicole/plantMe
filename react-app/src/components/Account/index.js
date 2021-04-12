@@ -10,6 +10,8 @@ const Account = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user?.current_user);
   const favorites = useSelector((state) => state?.favorites?.favorites?.favorites);
+  const listings = useSelector((state) => state?.session?.user?.current_user?.shop.listings);
+  console.log(listings);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showShopForm, setShowShopForm] = useState(false);
   const [showShopInfo, setShowShopInfo] = useState(false);
@@ -55,7 +57,21 @@ const Account = () => {
             <div className="account-shop-name">{user.shop.name}</div>
             <div className="account-shop-description">{user.shop.description}</div>
           </div>
-
+        </div>
+        <div className="account-indiv-container">
+          {listings?.map((listing) => {
+            return (
+              <div className="account-indiv-listing">
+                  <div>
+                      <Listing listing={listing} />
+                  </div>
+                  <div className="account-indiv-text-container">
+                    <div className="account-indiv-name">{listing.name}</div>
+                    <div className="account-indiv-description">{listing.description}</div>
+                  </div>
+              </div>
+            )
+          })}
         </div>
       </>
     )
