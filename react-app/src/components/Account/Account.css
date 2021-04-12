@@ -77,7 +77,9 @@
     color: #222;
     -webkit-font-smoothing: antialiased;
     padding: 20px;
+    font-weight: bold;
 }
+
 .account-shop-name {
     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
     font-size: 20px;
@@ -110,11 +112,15 @@
     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
     font-size: 16px;
     color: #222;
-    width: 500px;
-    margin: 0 auto;
+
 }
 
-
+.account-favorite-listing-description {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 12px;
+    color: #222;
+    width: 80%;
+}
 .account-indiv-container {
     display: flex;
     flex-direction: column;
@@ -125,7 +131,14 @@
     flex-direction: row;
     padding: 20px;
 }
-
+.account-your-listings {
+    padding: 20px;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+}
 .account-indiv-text-container {
     padding: 20px;
     margin-left: 20px;

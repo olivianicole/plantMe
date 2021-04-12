@@ -20,7 +20,7 @@ const Home = ({ authenticated }) => {
                 <div className="home-page-welcome-container">
                     <div className="home-page-user-container">
                         <div>
-                            {`Welcome Back, ${user.first_name}!`}
+                            {`Welcome Back, ${user?.first_name}!`}
                         </div>
                     </div>
                     <div className="home-page-suggested-listings">
@@ -28,9 +28,9 @@ const Home = ({ authenticated }) => {
                         <div className="suggested-listing-container">
                             {suggestedListings?.map((listing) =>  {
                                     return (
-                                        <a href={`/listing/${listing.id}`}className="suggested-listing-individual-container">
-                                            <img src={listing.image_1} alt={listing.description} /> 
-                                            <div className="suggested-listing-text">{listing.name}</div>
+                                        <a href={`/listing/${listing?.id}`} className="suggested-listing-individual-container" key={listing?.id}>
+                                            <img src={listing?.image_1} alt={listing?.description} /> 
+                                            <div className="suggested-listing-text">{listing?.name}</div>
                                         </a>
                                     )
                             }
@@ -39,7 +39,7 @@ const Home = ({ authenticated }) => {
                     </div>
                 </div>
                 <div className="home-page-listing-grid">
-                    {listings?.map((listing) => <Listing className="home-page-listing-item" key={listing.id} listing={listing} /> )}
+                    {listings?.map((listing) => <Listing className="home-page-listing-item" key={listing?.id} listing={listing} /> )}
                 </div>
             </div>
         </>

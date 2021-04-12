@@ -10,7 +10,7 @@ const TinyCartModal = () => {
             <button 
             onClick={() => setShowModal(true)}
             className="tiny-cart-button">
-            <i class="fas fa-shopping-cart"/>
+            <i className="fas fa-shopping-cart"/>
             </button>
             { showModal && (
             <ShoppingCartModal onClose={() => setShowModal(false)}>

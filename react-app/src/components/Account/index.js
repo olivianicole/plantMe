@@ -31,8 +31,13 @@ const Account = () => {
       {favorites?.map((favorite) => {
       return (
           <div className="account-favorite-container">
-              <Listing listing={favorite.listing} />
-            <div className="account-favorite-listing-name">{favorite.listing.name}</div>
+              <div>
+                <Listing listing={favorite.listing} />
+              </div>
+              <div className="account-indiv-text-container">
+                <div className="account-favorite-listing-name">{favorite.listing.name}</div>
+                <div className="account-favorite-listing-description">{favorite.listing.description}</div>
+              </div>
           </div>
 
           )
@@ -58,7 +63,8 @@ const Account = () => {
             <div className="account-shop-description">{user.shop.description}</div>
           </div>
         </div>
-        <div className="account-indiv-container">
+        <div className="account-indiv-container"> 
+        <p className="account-your-listings">Your shop is currently selling:</p>
           {listings?.map((listing) => {
             return (
               <div className="account-indiv-listing">
