@@ -1,5 +1,6 @@
 import React from "react";
 import './Listing.css';
+import FavoriteButton from "../FavoriteButton";
 
 const Listing = ({ listing }) => {
 
@@ -16,8 +17,9 @@ const Listing = ({ listing }) => {
                 <div className="listing-img">
                     <img src={listing.image_1} alt={listing.description}/>
                 </div>
-                <div className="listing-price">{priceValue}</div>
+            <div className="listing-price">{priceValue}</div>
             </a>
+            <FavoriteButton listing={listing}/>
 
         </>
     )

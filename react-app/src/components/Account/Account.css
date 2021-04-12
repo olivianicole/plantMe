@@ -56,6 +56,17 @@
     border-radius: 18px;
 }
 
+.account-favorites-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.account-favorite-container {
+    display: flex;
+    flex-direction: row;
+}
+
 /* Shop Form */
 
 
