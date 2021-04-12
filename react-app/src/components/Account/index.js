@@ -46,7 +46,19 @@ const Account = () => {
     )
   } else if (showShopInfo) {
     option = (
-      <div>show shop info</div>
+      <>
+        <div className="account-shop-container">
+          <div>
+            <div className="account-shop-title">Manage Your Shop</div>
+            <img src={user.shop.shop_logo}/>
+          </div>
+          <div>
+            <div className="account-shop-name">{user.shop.name}</div>
+            <div className="account-shop-description">{user.shop.description}</div>
+          </div>
+
+        </div>
+      </>
     )
   } else {
     option = (
