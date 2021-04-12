@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import SimpleCarousel from 'simple-react-carousel';
 import CartModal from "../CartModal";
 import priceConverter from "../../services/priceconverter";
+import FavoriteButton from "../FavoriteButton/ListingFavButton";
 import "./ListingPage.css"
 
 const ListingPage = () => {
@@ -61,7 +62,10 @@ const ListingPage = () => {
                     <div className="listing-page-shop-name">{listing?.shop.name}</div>
                     <div className="listing-page-num-sales">{numSales} sales</div>
                     <div className="listing-page-listing-title">{listing?.name}</div>
-                    <div className="listing-page-listing-price">{priceConverter(listing?.price)}</div>
+                    <div className="listing-page-price-fav">
+                        <div className="listing-page-listing-price">{priceConverter(listing?.price)}</div>
+                        <FavoriteButton listing={listing}/>
+                    </div>
                     <div className="listing-page-quantity-container">Quantity
                         <select className="quantity-select">
                             <option value={1} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>1</option>

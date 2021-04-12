@@ -10,11 +10,11 @@ const FavoriteButton = ({ listing }) => {
     let fav;
     if (liked?.length) {
         fav = (
-            <i className="fas fa-heart fav" />
+            <i className="fas fa-heart listing-liked" />
         ) 
     } else {
         fav = (
-            <i className="far fa-heart fav" />
+            <i className="far fa-heart listing" />
         )
     }
     useEffect((state) => {

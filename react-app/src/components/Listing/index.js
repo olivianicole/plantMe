@@ -23,7 +23,7 @@ const Listing = ({ listing }) => {
                     </a>
                 </div>
                 <div className="listing-button-container">
-                    <FavoriteButton listing={listing} />
+                    <FavoriteButton listing={listing} className="listing-button"/>
                 </div>
 
             </div>
