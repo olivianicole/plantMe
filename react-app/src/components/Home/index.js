@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getListings } from "../../store/listings";
-// import { NavLink } from "react-router-dom";
 import Listing from "../Listing";
 import "./Home.css";
 
@@ -15,28 +14,6 @@ const Home = ({ authenticated }) => {
         if (!listings) dispatch(getListings());
     }, [dispatch, listings])
 
-    // let userInfo;
-    // if (user.shop) {
-    //     userInfo = (
-    //         <div className="home-page-account-info-container">
-    //             <NavLink className="home-page-account-link" to="/account">
-    //                 <div className="home-page-logo-img">
-    //                     <img src={user.shop.shop_logo} alt="Your Shop's Logo"/>
-    //                 </div>
-    //                 <div className="home-page-account-link-text">View Your Account Details </div>
-    //             </NavLink>
-    //         </div>
-    //     )
-    // } else {
-    //     userInfo = (
-    //         <div>
-    //             <NavLink className="home-page-account-link" to="/account">
-    //                 <i className="fas fa-store"></i>
-    //                 <div className="home-page-account-link-text">Looking to Open a Shop?</div>
-    //             </NavLink>
-    //         </div>
-    //     )
-    // }
     return (
         <>
             <div className="home-page-container">
@@ -45,7 +22,6 @@ const Home = ({ authenticated }) => {
                         <div>
                             {`Welcome Back, ${user.first_name}!`}
                         </div>
-                        {/* {userInfo} */}
                     </div>
                     <div className="home-page-suggested-listings">
                         <div className="suggested-text-bold">Suggested Listings <p className="suggested-text-light">Based on what others are loving lately</p></div>

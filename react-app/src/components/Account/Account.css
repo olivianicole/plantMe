@@ -56,6 +56,7 @@
     border-radius: 18px;
 }
 
+
 .account-shop-container {
     display: flex;
     flex-direction: row;
@@ -89,6 +90,16 @@
     color: #222;
     -webkit-font-smoothing: antialiased;
     padding: 20px;
+
+.account-favorites-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.account-favorite-container {
+    display: flex;
+    flex-direction: row;
 
 }
 
