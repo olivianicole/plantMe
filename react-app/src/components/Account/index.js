@@ -30,8 +30,8 @@ const Account = () => {
       {favorites?.map((favorite) => {
       return (
           <div className="account-favorite-container">
-            <Listing listing={favorite.listing} />
-            <div>{favorite.listing.name}</div>
+              <Listing listing={favorite.listing} />
+            <div className="account-favorite-listing-name">{favorite.listing.name}</div>
           </div>
 
           )
@@ -44,7 +44,7 @@ const Account = () => {
         <ShopForm />
       </div>
     )
-  } else if (showShopInfo) {
+  } else {
     option = (
       <>
         <div className="account-shop-container">
@@ -60,12 +60,7 @@ const Account = () => {
         </div>
       </>
     )
-  } else {
-    option = (
-      <>
-      </>
-    )
-  }
+  } 
 
   const openFavorites = () => {
     setShowFavorites(true);
