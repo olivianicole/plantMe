@@ -96,6 +96,8 @@
     -webkit-font-smoothing: antialiased;
     padding: 20px;
 }
+
+
 .account-favorites-container {
     display: flex;
     flex-direction: column;

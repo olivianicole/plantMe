@@ -1,11 +1,14 @@
 const LOAD = "/listing/load";
-
+const ADD = "/listing/new";
 const load = (listings) => ({
     type: LOAD,
     payload: listings,
 });
 
-
+const add = (listing) => ({
+    type: ADD,
+    payload: listing,
+})
 export const getListings = () => async (dispatch) => {
     const response = await fetch('/api/listing/', {
         headers : {
@@ -32,6 +35,29 @@ export const getCurrentListing = (id) => async (dispatch) => {
     }
 }
 
+export const newListing = (listing) => async (dispatch) => {
+    const { name, description, image_1, image_2, image_3, category_id, shop_id, price } = listing;
+    const response = await fetch('/api/account/new', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            name,
+            description,
+            image_1,
+            image_2,
+            image_3,
+            category_id,
+            shop_id,
+            price
+        })
+    });
+    if (response.ok) {
+        const listing = await response.json();
+        dispatch(add(listing));
+        return response;
+    }
+}
+
 const initialState = {};
 
 const listingsReducer = (state = initialState, action) => {
@@ -41,6 +67,8 @@ const listingsReducer = (state = initialState, action) => {
             newState = Object.assign({}, state);
             newState.allListings = action.payload;
             return newState;
+        case ADD:
+            newState.allListings = [...newState.allListings, action.payload]
         default:
             return state;
     }
