@@ -8,6 +8,7 @@ import SplashPage from "./components/SplashPage";
 import Home from "./components/Home";
 import ListingPage from "./components/ListingPage";
 import Checkout from "./components/Checkout";
+import Favorites from "./components/Favorites";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/checkout" authenticated={authenticated}>
           <Checkout />
+        </ProtectedRoute>
+        <ProtectedRoute path="/favorites" authenticated={authenticated}>
+          <Favorites />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -1,0 +1,14 @@
+.fav {
+    color: rgba(248,248,255, 0.7);
+}
+
+.listing-liked {
+    color: #C21E56;
+    font-size: 35px;
+}
+
+.listing {
+    color: #222;
+    font-size: 35px;
+}
+

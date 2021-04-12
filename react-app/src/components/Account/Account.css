@@ -3,13 +3,16 @@
     top: 108px;
     height: auto;
     width: 100%;
+    background-color: #f8f8ff;
+    padding-top: 20px
 }
 
 .account-first-name {
     font-size: 32px;
     color: black;
     line-height: 36px;
-    margin: 20px 0 0 45px;
+    margin: 0 0 0 45px;
+    background-color: #f8f8ff;
 }
 .account-links {
     display: flex;
@@ -17,8 +20,8 @@
     margin-left: 40px;
 }
 .account-link-container {
-    background-color: #EAEAEA;
-    border: white 1px solid;
+    background-color: #C6C6CC;
+    border: #f8f8ff 1px solid;
     width: 120px;
     height: 90px;
     border-radius: 18px;
@@ -90,7 +93,7 @@
     color: #222;
     -webkit-font-smoothing: antialiased;
     padding: 20px;
-
+}
 .account-favorites-container {
     display: flex;
     flex-direction: column;
@@ -100,7 +103,15 @@
 .account-favorite-container {
     display: flex;
     flex-direction: row;
+    margin: 20px;
+}
 
+.account-favorite-listing-name {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 16px;
+    color: #222;
+    width: 500px;
+    margin: 0 auto;
 }
 
 /* Shop Form */

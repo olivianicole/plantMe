@@ -1,3 +1,8 @@
+.listing-ele-container {
+    width: 226px;
+    height: 184px;
+}
+
 .listing-img img{
     width: 206px;
     height: 164px;
@@ -13,5 +18,13 @@
     font-size: 16px;
     line-height: 20px;
     color: black;
+}
+
+.listing-link-container, .listing-button-container {
+    position: absolute;
+}
+
+.listing-button-container {
+    z-index: 1;
 }
 

@@ -10,7 +10,6 @@ const Account = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user?.current_user);
   const favorites = useSelector((state) => state?.favorites?.favorites?.favorites);
-  console.log(favorites);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showShopForm, setShowShopForm] = useState(false);
   const [showShopInfo, setShowShopInfo] = useState(false);
@@ -30,8 +29,8 @@ const Account = () => {
       {favorites?.map((favorite) => {
       return (
           <div className="account-favorite-container">
-            <Listing listing={favorite.listing} />
-            <div>{favorite.listing.name}</div>
+              <Listing listing={favorite.listing} />
+            <div className="account-favorite-listing-name">{favorite.listing.name}</div>
           </div>
 
           )
@@ -44,7 +43,7 @@ const Account = () => {
         <ShopForm />
       </div>
     )
-  } else if (showShopInfo) {
+  } else {
     option = (
       <>
         <div className="account-shop-container">
@@ -60,12 +59,7 @@ const Account = () => {
         </div>
       </>
     )
-  } else {
-    option = (
-      <>
-      </>
-    )
-  }
+  } 
 
   const openFavorites = () => {
     setShowFavorites(true);
