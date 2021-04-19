@@ -39,10 +39,12 @@
     margin: 10px 0;
 }
 
-.login-error-messages {
-    font-size: 10px;
+.login-errors-container {
+    font-size: 11px;
     color: 	#DC143C;
     margin: 2px;
+    height: auto;
+    padding: 5px;
 }
 
 .login-form-field-container {

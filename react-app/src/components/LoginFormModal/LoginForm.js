@@ -22,18 +22,31 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
   };
   let handleErrors;
   if(errors){
-    errors.map((error) => {
-     handleErrors = (
-       <>
-        <div className="login-errors-container">
-          <div>{error.email}</div>
-          <div>{error.password}</div>
-        </div>
-       </>
-     )
-    })
+    for (let i = 0; i < errors.length; i++);
+    if(errors[0]){
+      if (errors[1]){
+        handleErrors = (
+          <>
+            <div>{`Email: ${errors[0].email}`}</div>
+            <div>{`Password: ${errors[0].email}`}</div>
+          </>
+        )
+      } else {
+        handleErrors = (
+          <>
+            <div>{`Email: ${errors[0].email}`}</div>
+          </>
+        )
+      }
+    } else if (errors[1]){
+        handleErrors = (
+          <>
+            <div>{`Password: ${errors[1].password}`}</div>
+          </>
+        )
+      }
+    
   }
-  console.log("errors", errors)
   
   const signInDemoUser = async (e) => {
     e.preventDefault();
@@ -60,7 +73,7 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
         <div className="login-form-title">
             <p>Welcome back!</p>
         </div>
-        <div>
+        <div className="login-errors-container">
            {handleErrors}
         </div>
         <div className="login-form-field-container">
