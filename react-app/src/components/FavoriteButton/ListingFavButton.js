@@ -6,7 +6,7 @@ const FavoriteButton = ({ listing }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state?.session?.user?.current_user);
     const favorites = useSelector((state) => state?.favorites?.favorites?.favorites);
-    const liked = favorites?.filter((favorite) => favorite.listing_id === listing.id);
+    const liked = favorites?.filter((favorite) => favorite?.listing_id === listing?.id);
     let fav;
     if (liked?.length) {
         fav = (
@@ -23,7 +23,7 @@ const FavoriteButton = ({ listing }) => {
    
     const handleClick = async () => {
 
-        const favorite = favorites?.filter((favorite) => favorite.listing_id === listing.id)
+        const favorite = favorites?.filter((favorite) => favorite?.listing_id === listing?.id)
         console.log("favorite", favorite)
         if (favorite[0]) dispatch(deleteFavorite(favorite[0].id));
         else {

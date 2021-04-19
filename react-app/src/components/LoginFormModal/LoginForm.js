@@ -20,8 +20,35 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
       setErrors(user.errors);
     }
   };
-  console.log(errors);
-    const signInDemoUser = async (e) => {
+  let handleErrors;
+  if(errors){
+    for (let i = 0; i < errors.length; i++);
+    if(errors[0]){
+      if (errors[1]){
+        handleErrors = (
+          <>
+            <div>{`Email: ${errors[0].email}`}</div>
+            <div>{`Password: ${errors[0].email}`}</div>
+          </>
+        )
+      } else {
+        handleErrors = (
+          <>
+            <div>{`Email: ${errors[0].email}`}</div>
+          </>
+        )
+      }
+    } else if (errors[1]){
+        handleErrors = (
+          <>
+            <div>{`Password: ${errors[1].password}`}</div>
+          </>
+        )
+      }
+    
+  }
+  
+  const signInDemoUser = async (e) => {
     e.preventDefault();
     await dispatch(login("demo@gmail.com", "password"))
     setAuthenticated(true);
@@ -40,18 +67,15 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
   if (authenticated) {
     return <Redirect to="/home" />;
   };
-
   return (
     <div className="login-form-container">
         <form className="login-form" onSubmit={onLogin}>
         <div className="login-form-title">
             <p>Welcome back!</p>
         </div>
-        {/* <div>
-            {errors.map((error) => (
-            <div className="login-error-messages">{error}</div>
-            ))}
-        </div> */}
+        <div className="login-errors-container">
+           {handleErrors}
+        </div>
         <div className="login-form-field-container">
             <input
             className="login-form-field"

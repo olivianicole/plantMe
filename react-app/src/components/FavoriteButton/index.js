@@ -18,7 +18,7 @@ const FavoriteButton = ({ listing }) => {
         )
     }
     useEffect((state) => {
-        if (!favorites) dispatch(getUserFavorites(user.id));
+        if (!favorites) dispatch(getUserFavorites(user?.id));
     }, [dispatch, favorites])
    
     const handleClick = async () => {
