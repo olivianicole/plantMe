@@ -39,8 +39,9 @@ class User(db.Model, UserMixin):
                 "reviews": [review.to_simple_dict() for review in self.reviews],
                 "favorites": [favorite.to_simple_dict()
                               for favorite in self.favorites],
-                "purchases": [purchase.to_simple_dict()
-                              for purchase in self.purchases]
+            
+                # "purchases": [purchase.to_simple_dict()
+                #               for purchase in self.purchases]
             }
         else:
             dict = {
@@ -50,8 +51,8 @@ class User(db.Model, UserMixin):
                 "reviews": [review.to_simple_dict() for review in self.reviews],
                 "favorites": [favorite.to_simple_dict()
                               for favorite in self.favorites],
-                "purchases": [purchase.to_simple_dict()
-                              for purchase in self.purchases]
+                # "purchases": [purchase.to_simple_dict()
+                #               for purchase in self.purchases]
             }
         return dict
 

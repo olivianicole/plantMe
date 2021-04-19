@@ -11,11 +11,23 @@ export const add = (item) => ({
     payload: item,
 })
 
-
+export const addToCart = (itemDetails) => async (dispatch) => {
+    const { user_id, shop_id, quantity } = itemDetails;
+    const response = await fetch("/api/cart/add", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            user_id,
+            shop_id,
+            quantity,
+        }),
+    })
+}
 
 export const purchase = (itemDetails) => async (dispatch) => {
     const { user_id, shop_id, quantity } = itemDetails;
-    console.log(itemDetails)
     const response = await fetch("/api/cart/", {
         method: "POST",
         headers: { 

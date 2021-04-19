@@ -90,17 +90,17 @@ def upgrade():
     op.create_table('purchases',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('user_id', sa.Integer(), nullable=False),
-                    sa.Column('shop_id', sa.Integer(), nullable=False),
+                    sa.Column('listing_id', sa.Integer(), nullable=False),
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-                    sa.ForeignKeyConstraint(['shop_id'], ['shops.id'], ),
+                    sa.ForeignKeyConstraint(['listing_id'], ['listings.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
     op.create_table('carts',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('user_id', sa.Integer(), nullable=False),
-                    sa.Column('shop_id', sa.Integer(), nullable=False),
+                    sa.Column('listing_id', sa.Integer(), nullable=False),
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-                    sa.ForeignKeyConstraint(['shop_id'], ['shops.id'], ),
+                    sa.ForeignKeyConstraint(['listing_id'], ['listings.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
     # ### end Alembic commands ###

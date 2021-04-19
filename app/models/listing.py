@@ -19,6 +19,8 @@ class Listing(db.Model):
     favorites = db.relationship("Favorite", back_populates="listing",
                                 cascade="all, delete-orphan")
     reviews = db.relationship("Review", back_populates="listing")
+    carts = db.relationship("Cart", back_populates="listing")
+    purchases = db.relationship("Purchase", back_populates="listing")
 
     def to_dict(self):
         return {

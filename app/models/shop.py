@@ -18,8 +18,6 @@ class Shop(db.Model):
 
     users = db.relationship("User", uselist=False, back_populates="shop")
     listings = db.relationship("Listing", back_populates="shop")
-    purchases = db.relationship("Purchase", back_populates="shop")
-    carts = db.relationship("Cart", back_populates="shop")
 
     def to_dict(self):
         return {
