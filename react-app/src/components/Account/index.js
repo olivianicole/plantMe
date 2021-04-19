@@ -51,6 +51,7 @@ const Account = () => {
       </div>
     )
   } else {
+    
     option = (
       <>
         <div className="account-shop-container">
@@ -94,7 +95,7 @@ const Account = () => {
     if (user.shop){
       setShowShopInfo(true);
       setShowShopForm(false);
-      setShowFavorites(false)
+      setShowFavorites(false);
     } else {
       setShowShopForm(true);
       setShowFavorites(false);

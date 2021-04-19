@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getListings } from "../../store/listings";
 import Listing from "../Listing";
+import { authenticate } from "../../store/session";
 import "./Home.css";
 
 const Home = ({ authenticated }) => {
@@ -12,7 +13,8 @@ const Home = ({ authenticated }) => {
 
     useEffect(() => {
         if (!listings) dispatch(getListings());
-    }, [dispatch, listings])
+        if (!user) dispatch(authenticate());
+    }, [dispatch, listings, user])
 
     return (
         <>

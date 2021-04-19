@@ -20,8 +20,22 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
       setErrors(user.errors);
     }
   };
-  console.log(errors);
-    const signInDemoUser = async (e) => {
+  let handleErrors;
+  if(errors){
+    errors.map((error) => {
+     handleErrors = (
+       <>
+        <div className="login-errors-container">
+          <div>{error.email}</div>
+          <div>{error.password}</div>
+        </div>
+       </>
+     )
+    })
+  }
+  console.log("errors", errors)
+  
+  const signInDemoUser = async (e) => {
     e.preventDefault();
     await dispatch(login("demo@gmail.com", "password"))
     setAuthenticated(true);
@@ -40,18 +54,15 @@ const LoginForm = ({ authenticated, setShowModal, setAuthenticated }) => {
   if (authenticated) {
     return <Redirect to="/home" />;
   };
-
   return (
     <div className="login-form-container">
         <form className="login-form" onSubmit={onLogin}>
         <div className="login-form-title">
             <p>Welcome back!</p>
         </div>
-        {/* <div>
-            {errors.map((error) => (
-            <div className="login-error-messages">{error}</div>
-            ))}
-        </div> */}
+        <div>
+           {handleErrors}
+        </div>
         <div className="login-form-field-container">
             <input
             className="login-form-field"
