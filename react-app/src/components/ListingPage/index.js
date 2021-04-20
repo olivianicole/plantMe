@@ -15,7 +15,7 @@ const ListingPage = () => {
     
     const listing = useSelector((state) => state.listings?.allListings?.current_listing);
     const emptyImage = "https://www.vitraglobal.com/UPLOAD/Products/thumb/K94773300001VTE0_small.jpg";
-    console.log(listing);
+    // console.log(listing);
     useEffect(() => {
         if (!listing) dispatch(getCurrentListing(params.id));
 
@@ -41,9 +41,9 @@ const ListingPage = () => {
             image: listing?.image_1,
             price: listing?.price,
             quantity, 
-            shop_id: listing?.shop_id
+            listing_id: listing?.id
         }
-
+    // console.log("item", item)
     return (
         <>
             <div className="listing-page-container">

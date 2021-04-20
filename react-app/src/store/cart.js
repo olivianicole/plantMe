@@ -1,5 +1,6 @@
 const BUY = "/cart/buy";
 const ADD = "/cart/add"
+const LOAD = "/listing/load";
 
 const buy = (item) => ({
     type: BUY,
@@ -9,37 +10,63 @@ const buy = (item) => ({
 export const add = (item) => ({
     type: ADD,
     payload: item,
-})
+});
+
+const load = (items) => ({
+    type: LOAD,
+    payload: items,
+});
+
+
+export const getCart = () => async (dispatch) => {
+    const response = await fetch('/api/cart/', {
+        headers : {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.ok) {
+        const items = await response.json();
+        dispatch(load(items));
+        return response;
+    }
+};
 
 export const addToCart = (itemDetails) => async (dispatch) => {
-    const { user_id, shop_id, quantity } = itemDetails;
-    const response = await fetch("/api/cart/add", {
-        method: "POST", 
+    const { user_id, listing_id, quantity } = itemDetails;
+    // console.log("item details in the thunk", itemDetails)
+    const response = await fetch('/api/cart/add', {
+        method: 'POST', 
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             user_id,
-            shop_id,
+            listing_id,
             quantity,
         }),
-    })
+    });
+    console.log("response", response)
+    const item = await response.json();
+    if (response.ok){
+        dispatch(add(item));
+        return item;
+    }
+    return item;
 }
 
 export const purchase = (itemDetails) => async (dispatch) => {
-    const { user_id, shop_id, quantity } = itemDetails;
-    const response = await fetch("/api/cart/", {
+    const { user_id, listing_id, quantity } = itemDetails;
+    const response = await fetch("/api/cart/purchase", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json" 
         },
         body: JSON.stringify({
             user_id,
-            shop_id,
+            listing_id,
             quantity,
         }),
     });
-    console.log(response)
     const item = await response.json();
     if (response.ok) {
         dispatch(buy(item));
@@ -62,6 +89,10 @@ const cartReducer = (state=initialState, action) => {
             newState = Object.assign({}, state);
             if (newState.cart) newState.cart.push(action.payload)
             else newState.cart = [action.payload];
+            return newState;
+        case LOAD:
+            newState = Object.assign({}, state);
+            newState.cart = action.payload;
             return newState;
         default:
             return state;

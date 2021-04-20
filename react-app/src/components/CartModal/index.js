@@ -1,22 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ShoppingCartModal } from "../../context/Modal";
 import Cart from "./Cart";
 import "./Cart.css";
-import { add } from "../../store/cart";
-import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/cart";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const CartModal = ({ item }) => {
     const dispatch = useDispatch();
     const [ showModal, setShowModal ] = useState(false);
+    const user = useSelector((state) => state?.session?.user?.current_user);
+    // console.log("item", item)
+    const { name, image, price, quantity, listing_id} = item;
 
+    const itemDetails = {
+        user_id: user.id,
+        listing_id: listing_id,
+        quantity: quantity,
+    }
 
+    // console.log("item details", itemDetails)
     return (
         <>
             <button 
             onClick={() => {
-                dispatch(add(item))
-                console.log(item)
+                dispatch(addToCart(itemDetails))
                 setShowModal(true)
                 return
             }}

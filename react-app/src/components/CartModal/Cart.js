@@ -1,24 +1,26 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { getCart } from "../../store/cart";
 import priceConverter from "../../services/priceconverter";
 import "./Cart.css";
 
 const Cart = () => {
+    const dispatch = useDispatch();
     const items = useSelector((state) => state.cart?.cart);
-
+    console.log("items", items)
     useEffect(() => {
         if (!items){
-            return items;
+            dispatch(getCart())
         }
-    }, [items])
+    }, [items, dispatch])
  
 
     if (items) {
         return (
             <div className="cart-container">
                 <div className="cart-title-text">View Your Cart</div>
-                {items?.map((item) => (
+                {/* {items?.map((item) => (
                     <div className="cart-item-container" key={item.name}>
                         <img src={item.image}/>
                         <div className="cart-item-name">{item.name}</div>
@@ -29,7 +31,7 @@ const Cart = () => {
                     </div>
 
                 )
-                )}
+                )} */}
                 <NavLink to="/checkout" className="cart-checkout-button">Proceed to checkout</NavLink>
             </div>
         )
