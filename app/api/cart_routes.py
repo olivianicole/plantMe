@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from flask_login import login_required
+# from flask_login import login_required
 from app.models import db, Purchase, Shop, User, Cart
 from app.forms import PurchaseForm
 from app.forms import CartForm
@@ -8,14 +8,15 @@ cart_routes = Blueprint('cart', __name__)
 
 
 @cart_routes.route('/')
-@login_required
+# @login_required
 def cart():
+    print("hello")
     cart = Cart.query.all()
     return {"your_cart": [item.to_dict() for item in cart]}
 
 
 @cart_routes.route('/add', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def add_to_cart():
     form = CartForm()
     print(request.get_json())
@@ -35,7 +36,7 @@ def add_to_cart():
 
 
 @cart_routes.route('/purchase', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def checkout():
     form = PurchaseForm()
     print(request.get_json())

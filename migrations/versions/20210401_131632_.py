@@ -91,6 +91,7 @@ def upgrade():
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('user_id', sa.Integer(), nullable=False),
                     sa.Column('listing_id', sa.Integer(), nullable=False),
+                    sa.Column('quantity', sa.Integer(), nullable=False),
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
                     sa.ForeignKeyConstraint(['listing_id'], ['listings.id'], ),
                     sa.PrimaryKeyConstraint('id')
@@ -99,6 +100,7 @@ def upgrade():
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('user_id', sa.Integer(), nullable=False),
                     sa.Column('listing_id', sa.Integer(), nullable=False),
+                    sa.Column('quantity', sa.Integer(), nullable=False),
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
                     sa.ForeignKeyConstraint(['listing_id'], ['listings.id'], ),
                     sa.PrimaryKeyConstraint('id')

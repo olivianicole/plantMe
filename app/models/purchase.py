@@ -7,6 +7,7 @@ class Purchase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"))
+    quantity = db.Column(db.Integer)
 
     user = db.relationship("User", back_populates="purchases")
     listing = db.relationship("Listing", back_populates="purchases")
@@ -16,6 +17,7 @@ class Purchase(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "listing_id": self.listing_id,
+            "quantity": self.quantity,
             "user": self.user.to_simple_dict(),
             "listing": self.listing.to_dict(),
         }

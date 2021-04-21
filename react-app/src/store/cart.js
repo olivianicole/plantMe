@@ -1,6 +1,6 @@
 const BUY = "/cart/buy";
 const ADD = "/cart/add"
-const LOAD = "/listing/load";
+const LOAD = "/cart/load";
 
 const buy = (item) => ({
     type: BUY,
@@ -19,7 +19,7 @@ const load = (items) => ({
 
 
 export const getCart = () => async (dispatch) => {
-    const response = await fetch('/api/cart/', {
+    const response = await fetch('/api/cart', {
         headers : {
             'Content-Type': 'application/json',
         },
@@ -33,7 +33,7 @@ export const getCart = () => async (dispatch) => {
 
 export const addToCart = (itemDetails) => async (dispatch) => {
     const { user_id, listing_id, quantity } = itemDetails;
-    // console.log("item details in the thunk", itemDetails)
+    console.log("item details in the thunk", itemDetails)
     const response = await fetch('/api/cart/add', {
         method: 'POST', 
         headers: {
@@ -87,9 +87,12 @@ const cartReducer = (state=initialState, action) => {
             return newState;
         case ADD:
             newState = Object.assign({}, state);
-            if (newState.cart) newState.cart.push(action.payload)
-            else newState.cart = [action.payload];
-            return newState;
+            if (newState.cart) {
+                newState.cart = [...newState.cart, action.cart]
+            } else {
+                newState.cart = action.like
+            }
+      return newState;
         case LOAD:
             newState = Object.assign({}, state);
             newState.cart = action.payload;

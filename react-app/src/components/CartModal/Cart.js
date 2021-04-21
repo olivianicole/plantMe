@@ -7,7 +7,7 @@ import "./Cart.css";
 
 const Cart = () => {
     const dispatch = useDispatch();
-    const items = useSelector((state) => state.cart?.cart);
+    const items = useSelector((state) => state.cart?.cart?.your_cart);
     console.log("items", items)
     useEffect(() => {
         if (!items){
@@ -20,18 +20,18 @@ const Cart = () => {
         return (
             <div className="cart-container">
                 <div className="cart-title-text">View Your Cart</div>
-                {/* {items?.map((item) => (
-                    <div className="cart-item-container" key={item.name}>
-                        <img src={item.image}/>
-                        <div className="cart-item-name">{item.name}</div>
+                {items?.map((item) => (
+                    <div className="cart-item-container" key={item.listing_id}>
+                        <img src={item.listing.image_1}/>
+                        <div className="cart-item-name">{item.listing.name}</div>
                         <div className="cart-item-right-container">
-                            <div className="cart-item-price">{priceConverter(item.price)}</div>
+                            <div className="cart-item-price">{priceConverter(item.listing.price)}</div>
                             <div className="cart-item-quantity">Quantity: {item.quantity}</div>
                         </div>
                     </div>
 
                 )
-                )} */}
+                )}
                 <NavLink to="/checkout" className="cart-checkout-button">Proceed to checkout</NavLink>
             </div>
         )
