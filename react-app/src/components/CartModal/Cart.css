@@ -17,6 +17,9 @@
 .cart-container{
     display: flex;
     flex-direction: column;
+    position: absolute;
+    height: 100%;
+    overflow: scroll;
 }
 
 .cart-title-text {
@@ -39,10 +42,12 @@
 .cart-item-container img {
     height: 75px;
     width: 75px;
+    margin: 5px;
 }
 
 .cart-item-name {
-    width: 200px;
+    margin: 5px;
+    width: 180px;
     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
     color: #222;
     -webkit-font-smoothing: antialiased;
@@ -52,13 +57,19 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    
+    margin: 5px;   
 }
 
 .cart-item-price, .cart-item-quantity {
     font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
     color: #222;
     -webkit-font-smoothing: antialiased;
+}
+
+.cart-delete-btn {
+    background-color: none;
+    border: none;
+    margin: 5px;
 }
 
 .cart-checkout-button {

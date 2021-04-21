@@ -1,16 +1,16 @@
 from .db import db
 
 
-class Purchase(db.Model):
-    __tablename__ = "purchases"
+class Cart(db.Model):
+    __tablename__ = "carts"
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"))
     quantity = db.Column(db.Integer)
 
-    user = db.relationship("User", back_populates="purchases", lazy="subquery")
-    listing = db.relationship("Listing", back_populates="purchases", lazy="subquery")
+    user = db.relationship("User", back_populates="carts", lazy="subquery")
+    listing = db.relationship("Listing", back_populates="carts", lazy="subquery")
 
     def to_dict(self):
         return {

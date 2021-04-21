@@ -1,5 +1,7 @@
 const BUY = "/cart/buy";
 const ADD = "/cart/add"
+const LOAD = "/cart/load";
+const REMOVE = "/item/delete";
 
 const buy = (item) => ({
     type: BUY,
@@ -9,25 +11,83 @@ const buy = (item) => ({
 export const add = (item) => ({
     type: ADD,
     payload: item,
-})
+});
+
+const load = (items) => ({
+    type: LOAD,
+    payload: items,
+});
+
+const remove = (item) => ({
+  type: REMOVE,
+  payload: item
+});
 
 
+export const getCart = () => async (dispatch) => {
+    const response = await fetch('/api/cart', {
+        headers : {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.ok) {
+        const items = await response.json();
+        dispatch(load(items));
+        return response;
+    }
+};
+
+export const addToCart = (itemDetails) => async (dispatch) => {
+    const { user_id, listing_id, quantity } = itemDetails;
+    console.log("item details in the thunk", itemDetails)
+    const response = await fetch('/api/cart/add', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            user_id,
+            listing_id,
+            quantity,
+        }),
+    });
+    console.log("response", response)
+    const item = await response.json();
+    if (response.ok){
+        dispatch(add(item));
+        return item;
+    }
+    return item;
+}
+
+export const removeFromCart = (itemId) => async (dispatch) => {
+    const response = await fetch(`/api/cart/${itemId}/delete`, {
+      method: "POST",
+      headers: {"Content-type": "application/json"},
+      body: JSON.stringify({ itemId })
+  });
+    console.log(response)
+    const deletedItem = await response.json();
+
+    if (response.ok) {
+        dispatch(remove(deletedItem))
+    }
+  return deletedItem;
+};
 
 export const purchase = (itemDetails) => async (dispatch) => {
-    const { user_id, shop_id, quantity } = itemDetails;
-    console.log(itemDetails)
-    const response = await fetch("/api/cart/", {
+    const { user_id, listing_id, quantity } = itemDetails;
+    const response = await fetch("/api/cart/purchase", {
         method: "POST",
         headers: { 
             "Content-Type": "application/json" 
         },
         body: JSON.stringify({
             user_id,
-            shop_id,
+            listing_id,
             quantity,
         }),
     });
-    console.log(response)
     const item = await response.json();
     if (response.ok) {
         dispatch(buy(item));
@@ -36,7 +96,7 @@ export const purchase = (itemDetails) => async (dispatch) => {
 };
 
 
-const initialState = {};
+const initialState = { cart: [] };
 
 const cartReducer = (state=initialState, action) => {
     let newState;
@@ -47,9 +107,17 @@ const cartReducer = (state=initialState, action) => {
             else newState.purchased = [action.payload];
             return newState;
         case ADD:
+            console.log(state)
+            if (state.cart.your_cart) newState = { cart: [...state.cart.your_cart, action.payload]};
+            else newState = { cart: [action.payload]}
+            return newState;
+        case LOAD:
             newState = Object.assign({}, state);
-            if (newState.cart) newState.cart.push(action.payload)
-            else newState.cart = [action.payload];
+            newState.cart = action.payload;
+            return newState;
+         case REMOVE:
+            newState = Object.assign({}, state)
+            newState.cart = newState.cart.cart.filter(cart => cart.id !== action.payload.id)
             return newState;
         default:
             return state;

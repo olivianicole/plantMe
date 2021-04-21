@@ -74,3 +74,9 @@
     margin-bottom: 50px;
 }
 
+.checkout-delete-btn {
+    background-color: none;
+    border: none;
+    margin: 5px;
+}
+

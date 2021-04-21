@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     reviews = db.relationship("Review", back_populates="user")
     favorites = db.relationship("Favorite", back_populates="user")
     purchases = db.relationship("Purchase", back_populates="user")
+    carts = db.relationship("Cart", back_populates="user")
 
     @property
     def password(self):
@@ -38,8 +39,9 @@ class User(db.Model, UserMixin):
                 "reviews": [review.to_simple_dict() for review in self.reviews],
                 "favorites": [favorite.to_simple_dict()
                               for favorite in self.favorites],
-                "purchases": [purchase.to_simple_dict()
-                              for purchase in self.purchases]
+            
+                # "purchases": [purchase.to_simple_dict()
+                #               for purchase in self.purchases]
             }
         else:
             dict = {
@@ -49,8 +51,8 @@ class User(db.Model, UserMixin):
                 "reviews": [review.to_simple_dict() for review in self.reviews],
                 "favorites": [favorite.to_simple_dict()
                               for favorite in self.favorites],
-                "purchases": [purchase.to_simple_dict()
-                              for purchase in self.purchases]
+                # "purchases": [purchase.to_simple_dict()
+                #               for purchase in self.purchases]
             }
         return dict
 
