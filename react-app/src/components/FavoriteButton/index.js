@@ -21,7 +21,7 @@ const FavoriteButton = ({ listing }) => {
         if (!favorites) dispatch(getUserFavorites(user?.id));
     }, [dispatch, favorites])
    
-    const handleClick = async () => {
+    const handleClick = () => {
 
         const favorite = favorites?.filter((favorite) => favorite.listing_id === listing.id)
         console.log("favorite", favorite)
