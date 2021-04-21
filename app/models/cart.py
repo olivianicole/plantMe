@@ -9,8 +9,8 @@ class Cart(db.Model):
     listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"))
     quantity = db.Column(db.Integer)
 
-    user = db.relationship("User", back_populates="carts", lazy='subquery' )
-    listing = db.relationship("Listing", back_populates="carts")
+    user = db.relationship("User", back_populates="carts", lazy="subquery")
+    listing = db.relationship("Listing", back_populates="carts", lazy="subquery")
 
     def to_dict(self):
         return {

@@ -43,7 +43,7 @@ const ListingPage = () => {
             quantity, 
             listing_id: listing?.id
         }
-    // console.log("item", item)
+    console.log("item", item)
     return (
         <>
             <div className="listing-page-container">
@@ -67,12 +67,12 @@ const ListingPage = () => {
                         <FavoriteButton listing={listing}/>
                     </div>
                     <div className="listing-page-quantity-container">Quantity
-                        <select className="quantity-select">
-                            <option value={1} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>1</option>
-                            <option value={2} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>2</option>
-                            <option value={3} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>3</option>
-                            <option value={4} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>4</option>
-                            <option value={5} className="quantity-option" onSelect={(e) => setQuantity(e.target.value)}>5</option>
+                        <select className="quantity-select" onChange={(e) => setQuantity(e.target.value)}>
+                            <option value={1} className="quantity-option">1</option>
+                            <option value={2} className="quantity-option">2</option>
+                            <option value={3} className="quantity-option">3</option>
+                            <option value={4} className="quantity-option">4</option>
+                            <option value={5} className="quantity-option">5</option>
                         </select>
                     </div>
                     <CartModal item={item} />

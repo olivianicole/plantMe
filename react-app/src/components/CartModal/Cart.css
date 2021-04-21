@@ -66,6 +66,12 @@
     -webkit-font-smoothing: antialiased;
 }
 
+.cart-delete-btn {
+    background-color: none;
+    border: none;
+    margin: 5px;
+}
+
 .cart-checkout-button {
     align-self: center;
     justify-self: flex-end;

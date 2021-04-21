@@ -9,8 +9,8 @@ class Purchase(db.Model):
     listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"))
     quantity = db.Column(db.Integer)
 
-    user = db.relationship("User", back_populates="purchases")
-    listing = db.relationship("Listing", back_populates="purchases")
+    user = db.relationship("User", back_populates="purchases", lazy="subquery")
+    listing = db.relationship("Listing", back_populates="purchases", lazy="subquery")
 
     def to_dict(self):
         return {

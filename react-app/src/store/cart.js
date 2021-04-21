@@ -117,7 +117,7 @@ const cartReducer = (state=initialState, action) => {
             return newState;
          case REMOVE:
             newState = Object.assign({}, state)
-            newState.cart = newState.cart.cart.filter(favorite => favorite.id !== action.payload.id)
+            newState.cart = newState.cart.cart.filter(cart => cart.id !== action.payload.id)
             return newState;
         default:
             return state;

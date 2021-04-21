@@ -48,7 +48,7 @@ def delete_item(id):
     print("ITEM", item)
     db.session.delete(item)
     db.session.commit()
-    return item
+    return item.to_dict()
 
 
 @cart_routes.route('/purchase', methods=['GET', 'POST'])

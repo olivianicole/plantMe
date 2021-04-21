@@ -17,7 +17,8 @@ const Checkout = () => {
     }, [items, dispatch])
 
 
-    const handleRemove = (itemId) => {
+    const handleRemove = (itemId, e) => {
+        e.preventDefault();
         dispatch(removeFromCart(itemId))
     };
     
@@ -50,7 +51,7 @@ const Checkout = () => {
                     <div className="checkout-item-right-container">
                         <div className="checkout-item-price">{priceConverter(item.listing.price)}</div>
                         <div className="checkout-item-quantity">Quantity: {item.quantity}</div>
-                        {/* <button onClick={handleRemove(item.id)}><i className="far fa-trash-alt"></i></button> */}
+                        <button className="checkout-delete-btn" onClick={(e) => handleRemove(item.id, e)}><i className="far fa-trash-alt"></i></button>
                     </div>
                 </div>
                 ))}
