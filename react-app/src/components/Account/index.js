@@ -23,7 +23,7 @@ const Account = () => {
     if (!favorites) dispatch(getUserFavorites(user.id));
     
 
-  }, [user, dispatch])
+  }, [user, dispatch, favorites])
 
   let option;
 
