@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Modal } from "../../context/Modal";
+import { NewListingModal } from "../../context/Modal";
 import NewListing from "./NewListing.js"
 import "./ListingModal.css";
 
@@ -13,9 +13,9 @@ const ListingModal = () => {
             New Listing
             </button>
             { showModal && (
-            <Modal onClose={() => setShowModal(false)}>
+            <NewListingModal onClose={() => setShowModal(false)}>
                 <NewListing setShowModal={setShowModal} />
-            </Modal>
+            </NewListingModal>
             )}
         </>
     )

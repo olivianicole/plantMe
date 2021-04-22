@@ -11,7 +11,7 @@ const Account = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user?.current_user);
   const favorites = useSelector((state) => state?.favorites?.favorites?.favorites);
-  const listings = useSelector((state) => state?.session?.user?.current_user?.shop.listings);
+  const listings = useSelector((state) => state?.session?.user?.current_user?.shop?.listings);
   const items = useSelector((state) => state.cart?.cart?.purchased);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showShopForm, setShowShopForm] = useState(false);
@@ -23,7 +23,7 @@ const Account = () => {
     if (!favorites) dispatch(getUserFavorites(user.id));
     
 
-  }, [user, dispatch])
+  }, [user, dispatch, favorites]);
 
   let option;
 
@@ -59,10 +59,10 @@ const Account = () => {
         <div className="account-shop-container">
           <div>
             <div className="account-shop-title">Manage Your Shop</div>
-            <img src={user.shop.shop_logo}/>
+            <img src={user?.shop?.shop_logo?.url}/>
           </div>
           <div>
-            <div className="account-shop-name">{user.shop.name}</div>
+            <div className="account-shop-name">{user?.shop.name}</div>
             <div className="account-shop-description">{user.shop.description}</div>
             <ListingModal />
           </div>

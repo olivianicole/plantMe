@@ -15,9 +15,12 @@ const ShopForm = () => {
     const [state, setState] = useState("");
     const [country, setCountry] = useState("");
 
-    const handleSubmit = () => {
+    const updateShopLogo = () => {
+
+    }
+
+    const openShop = () => {
         const submission = {
-            shop_logo,
             name,
             owner_id: user.id,
             description,
@@ -33,9 +36,18 @@ const ShopForm = () => {
 
     return (
         <div className="shop-form-container">
-            <div className="shop-form-title"></div>
+            <div className="shop-form-title">
+                <p>Want to start selling your plants?</p>
+            </div>
             <div className="shop-form-shop-logo">
-
+                <input 
+                className="shop-form-shop-logo"
+                type="file"
+                accept='image/*'
+                placeholder="Shop Logo"
+                value={shop_logo}
+                onChange={(e) => updateShopLogo(e)}
+                />
             </div>
             <div className="shop-form-name">
                 <input 
@@ -53,7 +65,10 @@ const ShopForm = () => {
                 placeholder="Describe your shop!"
                 value={description} />
             </div>
-            <div className="shop-form-location-text">Where's your shop located? This helps customers know when to expect the arrival of their plant!</div>
+            <div className="shop-form-location-text">
+                <p>Where's your shop located?</p>
+                <p>This helps customers know when to expect the arrival of their plant!</p>
+            </div>
             <div className="shop-form-city">
                 <input 
                 className="shop-form-city-input"
@@ -81,6 +96,7 @@ const ShopForm = () => {
                 placeholder="Country"
                 value={country} />
             </div>
+            <button onClick={(e) => openShop(e)} className="shop-form-submit">Open Shop!</button>
         </div>
     )
 };

@@ -7,3 +7,4 @@ from .favorite import Favorite
 from .category import Category
 from .purchase import Purchase
 from .cart import Cart
+from .logo import Logo
