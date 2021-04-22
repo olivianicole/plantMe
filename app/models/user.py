@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    shop = db.relationship("Shop", uselist=False, back_populates="users")
+    shop = db.relationship("Shop", uselist=False, back_populates="user")
     reviews = db.relationship("Review", back_populates="user")
     favorites = db.relationship("Favorite", back_populates="user")
     purchases = db.relationship("Purchase", back_populates="user")

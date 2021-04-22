@@ -11,7 +11,7 @@ const Account = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user?.current_user);
   const favorites = useSelector((state) => state?.favorites?.favorites?.favorites);
-  const listings = useSelector((state) => state?.session?.user?.current_user?.shop.listings);
+  const listings = useSelector((state) => state?.session?.user?.current_user?.shop?.listings);
   const items = useSelector((state) => state.cart?.cart?.purchased);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showShopForm, setShowShopForm] = useState(false);
@@ -23,7 +23,7 @@ const Account = () => {
     if (!favorites) dispatch(getUserFavorites(user.id));
     
 
-  }, [user, dispatch, favorites])
+  }, [user, dispatch, favorites]);
 
   let option;
 

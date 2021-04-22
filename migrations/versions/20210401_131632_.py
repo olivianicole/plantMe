@@ -37,7 +37,6 @@ def upgrade():
                     )
     op.create_table('shops',
                     sa.Column('id', sa.Integer(), nullable=False),
-                    sa.Column('shop_logo', sa.String(), nullable=False),
                     sa.Column('name', sa.String(), nullable=False),
                     sa.Column('owner_id', sa.Integer(), nullable=False),
                     sa.Column('description', sa.String(), nullable=False),
@@ -50,6 +49,13 @@ def upgrade():
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('name'),
                     sa.UniqueConstraint('owner_id')
+                    )
+    op.create_table('logos', 
+                    sa.Column('id', sa.Integer(), nullable=False),
+                    sa.Column('shop_id', sa.Integer(), nullable=False),
+                    sa.Column('url', sa.String(), nullable=False),
+                    sa.PrimaryKeyConstraint('id'),
+                    sa.ForeignKeyConstraint(['shop_id'], ['shops.id'], ),
                     )
     op.create_table('listings',
                     sa.Column('id', sa.Integer(), nullable=False),

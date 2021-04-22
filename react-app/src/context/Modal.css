@@ -1,3 +1,5 @@
+/* auth modals */
+
 #modal {
       position: fixed;
       top: 0;
@@ -35,8 +37,9 @@
   
   } */
 
+/* cart modals */
 
-  #cart-modal {
+#cart-modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -63,5 +66,38 @@
     background-color:#f8f8ff;
     height: 650px;
     width: 400px;
+    
+}
+
+/* listing modal */
+
+#listing-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+  }
+
+#listing-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#listing-modal-content {
+   position: absolute;
+   background-color:#f8f8ff;
+   height: 400px;
+   width: 400px;
+   box-shadow: 0px -1px 5px 5px rgba(0,0,0, 0.3);
+   border: black solid 3px;
     
 }

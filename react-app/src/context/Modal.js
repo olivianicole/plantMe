@@ -6,7 +6,7 @@ const ModalContext = React.createContext();
 
 export function ModalProvider({ children }) {
     const modalRef = useRef();
-    const [value, setValue ] = useState();
+    const [ value, setValue ] = useState();
 
     useEffect(() => {
         setValue(modalRef.current);
@@ -45,6 +45,21 @@ export function ShoppingCartModal ({ onClose, children, setShowModal }) {
         <div id="cart-modal">
             <div id="cart-modal-background" onClick={onClose} />
             <div id="cart-modal-content" >
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+};
+
+export function NewListingModal ({ onClose, children, setShowModal }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="listing-modal">
+            <div id="listing-modal-background" onClick={onClose} />
+            <div id="listing-modal-content" >
                 {children}
             </div>
         </div>,

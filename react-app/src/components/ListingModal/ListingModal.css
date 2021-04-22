@@ -13,3 +13,38 @@
     width: 120px;
     height: 48px;
 }
+
+.newlisting-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.newlisting-form input, .newlisting-form textarea {
+    width: 250px;
+    margin: 10px;
+    background-color: #f8f8ff;
+    border-radius: 4px;
+    padding: 4px;
+    border: rgba(0,0,0, 0.2) 1px solid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    color: black;
+}
+.newlisting-title {
+    margin: 20px 10px 0px 10px;
+}
+
+.newlisting-submit {
+    width: 150px;
+    margin: 10px;
+    padding: 4px;
+    border-radius: 8px;
+    color: white;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: rgba(0,0,0, 0.2) 1px solid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
