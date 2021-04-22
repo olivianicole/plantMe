@@ -12,6 +12,7 @@ const Account = () => {
   const user = useSelector((state) => state?.session?.user?.current_user);
   const favorites = useSelector((state) => state?.favorites?.favorites?.favorites);
   const listings = useSelector((state) => state?.session?.user?.current_user?.shop.listings);
+  const items = useSelector((state) => state.cart?.cart?.purchased);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showShopForm, setShowShopForm] = useState(false);
   const [showShopInfo, setShowShopInfo] = useState(false);
@@ -85,10 +86,22 @@ const Account = () => {
       </>
     )
   } else if (showReviews) {
-    option = (
-      <>
-      </>
-    )
+    if (items) {
+      option = (
+        <>
+  
+        </>
+      )
+
+    } else {
+      option = (
+        <>
+          <div className="account-shop-container">
+            <div className="account-shop-title">Oops! You must purchase an item before you can review it.</div>
+          </div>
+        </>
+      )
+    }
   } else {
     option = (
       <>
@@ -132,7 +145,7 @@ const Account = () => {
               <i className="fas fa-store account-store"></i>
             </button>
             <button onClick={() => openReviews()} className="review account-link-container">
-              <i class="far fa-comment-alt account-review"></i>
+              <i className="far fa-comment-alt account-review"></i>
             </button>
             </div>
             <div className="account-page-lower-container"> 

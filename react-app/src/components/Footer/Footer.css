@@ -1,0 +1,25 @@
+.footer-component {
+    width: 100%;
+    border-top: 2px solid black;
+    height: 150px;
+    background-color: #f8f8ff;
+    position: relative;
+    bottom: 0;
+    z-index: 1;
+    margin-top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-text {
+    font-size: 14px;
+    margin: 10px;
+    font-style: italic;
+}
+
+.footer-links a, .footer-links a :active {
+    font-size: 25px;
+    margin: 10px;
+    color: black;
+}

@@ -67,5 +67,5 @@ def checkout():
         )
     db.session.add(purchase)
     db.session.commit()
-    return purchase.to_dict()
+    return {'item': purchase.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
