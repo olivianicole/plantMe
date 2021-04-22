@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import ListingPage from "./components/ListingPage";
 import Checkout from "./components/Checkout";
 import Favorites from "./components/Favorites";
+import Footer from "./components/Footer"
 import { authenticate } from "./store/session";
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           <Favorites />
         </ProtectedRoute>
       </Switch>
+      <Footer authenticated={authenticated} setAuthenticated={setAuthenticated} />
     </BrowserRouter>
   );
 }

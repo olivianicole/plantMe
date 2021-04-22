@@ -12,9 +12,11 @@ const Account = () => {
   const user = useSelector((state) => state?.session?.user?.current_user);
   const favorites = useSelector((state) => state?.favorites?.favorites?.favorites);
   const listings = useSelector((state) => state?.session?.user?.current_user?.shop.listings);
+  const items = useSelector((state) => state.cart?.cart?.purchased);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showShopForm, setShowShopForm] = useState(false);
   const [showShopInfo, setShowShopInfo] = useState(false);
+  const [showReviews, setShowReviews] = useState(false);
   
   useEffect(() => {
     if (!user) dispatch(authenticate());
@@ -50,7 +52,7 @@ const Account = () => {
         <ShopForm />
       </div>
     )
-  } else {
+  } else if (showShopInfo) {
     
     option = (
       <>
@@ -83,7 +85,29 @@ const Account = () => {
         </div>
       </>
     )
-  } 
+  } else if (showReviews) {
+    if (items) {
+      option = (
+        <>
+  
+        </>
+      )
+
+    } else {
+      option = (
+        <>
+          <div className="account-shop-container">
+            <div className="account-shop-title">Oops! You must purchase an item before you can review it.</div>
+          </div>
+        </>
+      )
+    }
+  } else {
+    option = (
+      <>
+      </>
+    )
+  }
 
   const openFavorites = () => {
     setShowFavorites(true);
@@ -102,6 +126,13 @@ const Account = () => {
       setShowShopInfo(false);
     }
   }
+
+  const openReviews = () => {
+     setShowFavorites(false);
+      setShowShopInfo(false);
+      setShowShopForm(false);
+      setShowReviews(true)
+  }
   return (
     <>
       <div className="acount-page-container">
@@ -112,6 +143,9 @@ const Account = () => {
             </button>
             <button onClick={() => openShopInfo()} className="store account-link-container">
               <i className="fas fa-store account-store"></i>
+            </button>
+            <button onClick={() => openReviews()} className="review account-link-container">
+              <i className="far fa-comment-alt account-review"></i>
             </button>
             </div>
             <div className="account-page-lower-container"> 

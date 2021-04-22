@@ -29,7 +29,10 @@
     justify-content: center;
     align-items: center;
     margin: 35px 5px 5px 5px;
-    color: rgba(0, 0, 0, 0.5)
+    color: rgba(0, 0, 0, 0.5);
+}
+.account-link-container-i {
+    background-color: none;
 }
 
 .fav:focus {
@@ -37,20 +40,23 @@
     border: white 5px solid;
     outline: 0;
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75);
+    background-color: none;
 }
 
-.store:focus {
+.store:focus, .review:focus {
     color: rgba(0, 0, 0, 0.75);
     border: white 5px solid;
     outline:0;
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75);
+    background-color: none;
 }
 .account-favorites-navlink, .account-favorites-navlink :active {
     text-decoration: none;
 }
-.account-heart, .account-store {
+.account-heart, .account-store, .account-review {
     font-size: 30px;
     color: inherit;
+    background-color: transparent;
 }
 
 .account-page-lower-container {

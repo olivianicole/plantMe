@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import priceConverter from "../../services/priceconverter";
-import { getCart, removeFromCart } from "../../store/cart";import { NavLink } from "react-router-dom";
+import { getCart, removeFromCart, purchase } from "../../store/cart";import { NavLink } from "react-router-dom";
 import "./Checkout.css";
 
 const Checkout = () => {
     const dispatch = useDispatch();
+    const [purchased, setPurchased] = useState(false);
     const items = useSelector((state) => state.cart?.cart?.your_cart);
     const user = useSelector((state) => state?.session?.user?.current_user);
     // console.log(items)
@@ -26,18 +27,22 @@ const Checkout = () => {
         e.preventDefault();
         if (items) {
             items.map((item) => {
-                // const itemDetails = {
-                //     user_id: user.id,
-                //     listing_id: item.listing_id,
-                //     quantity: item.quantity,
-                // };
-                // dispatch(purchase(itemDetails));
+                const itemDetails = {
+                    user_id: user.id,
+                    listing_id: item.listing_id,
+                    quantity: item.quantity,
+                };
+                dispatch(purchase(itemDetails));
                 dispatch(removeFromCart(item.id))
                 })
-                return <Redirect to="/account" />;
+                setPurchased(true);
             } else {
                 console.log("error! no items!")
             }
+    }
+
+    if (purchased === true) {
+        return <Redirect to="/account"/>
     }
     return (
         <>
