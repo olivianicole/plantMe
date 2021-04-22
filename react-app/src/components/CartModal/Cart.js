@@ -8,7 +8,7 @@ import "./Cart.css";
 const Cart = () => {
     const dispatch = useDispatch();
     const items = useSelector((state) => state.cart?.cart?.your_cart);
-    console.log("items", items)
+    // console.log("items", items)
     useEffect(() => {
         if (!items){
             dispatch(getCart())
