@@ -2,6 +2,7 @@ const BUY = "/cart/buy";
 const ADD = "/cart/add"
 const LOAD = "/cart/load";
 const REMOVE = "/item/delete";
+const PURCHASES = "/purchases/load";
 
 const buy = (item) => ({
     type: BUY,
@@ -23,6 +24,11 @@ const remove = (item) => ({
   payload: item
 });
 
+const purchases = (items) => ({
+    type: PURCHASES,
+    payload: items
+})
+
 
 export const getCart = () => async (dispatch) => {
     const response = await fetch('/api/cart', {
@@ -33,6 +39,19 @@ export const getCart = () => async (dispatch) => {
     if (response.ok) {
         const items = await response.json();
         dispatch(load(items));
+        return response;
+    }
+};
+
+export const getPurchased = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/cart/${userId}`, {
+        headers : {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.ok) {
+        const items = await response.json();
+        dispatch(purchases(items));
         return response;
     }
 };
@@ -115,10 +134,14 @@ const cartReducer = (state=initialState, action) => {
             newState = Object.assign({}, state);
             newState.cart = action.payload;
             return newState;
-         case REMOVE:
+        case REMOVE:
             newState = Object.assign({}, state)
             console.log(newState.cart)
             newState.cart.your_cart = newState.cart.your_cart.filter(cart => cart.id !== action.payload.id)
+            return newState;
+        case PURCHASES:
+            newState = Object.assign({}, state);
+            newState.purchases = action.payload;
             return newState;
         default:
             return state;

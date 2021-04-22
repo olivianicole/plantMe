@@ -10,7 +10,7 @@ const Checkout = () => {
     const [purchased, setPurchased] = useState(false);
     const items = useSelector((state) => state.cart?.cart?.your_cart);
     const user = useSelector((state) => state?.session?.user?.current_user);
-    // console.log(items)
+    console.log(items)
     useEffect(() => {
     if (!items){
         dispatch(getCart())
@@ -33,6 +33,7 @@ const Checkout = () => {
                     quantity: item.quantity,
                 };
                 dispatch(purchase(itemDetails));
+
                 dispatch(removeFromCart(item.id))
                 })
                 setPurchased(true);

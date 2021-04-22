@@ -6,6 +6,7 @@ class Shop(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False, unique=True)
+    shop_logo = db.Column(db.String, nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"),
                          nullable=False, unique=True)
     description = db.Column(db.String, nullable=False)
@@ -17,12 +18,11 @@ class Shop(db.Model):
 
     user = db.relationship("User", uselist=False, back_populates="shop")
     listings = db.relationship("Listing", back_populates="shop")
-    logo = db.relationship("Logo", back_populates="shop", uselist=False)
 
     def to_dict(self):
         return {
             "id": self.id,
-            "shop_logo": self.logo.to_dict(),
+            "shop_logo": self.shop_logo,
             "name": self.name,
             "ownerId": self.owner_id,
             "description": self.description,
@@ -37,7 +37,7 @@ class Shop(db.Model):
     def to_simple_dict(self):
         return {
             "id": self.id,
-            "shop_logo": self.logo.to_dict(),
+            "shop_logo": self.shop_logo,
             "name": self.name,
             "ownerId": self.owner_id,
             "description": self.description,

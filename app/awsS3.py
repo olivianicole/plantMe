@@ -3,14 +3,14 @@ import botocore
 import os
 import uuid
 
-BUCKET_NAME = os.environ.get('plantme-listingimgs')
+BUCKET_NAME = os.environ.get('S3_BUCKET')
 S3_LOCATION = f'http://{BUCKET_NAME}.s3.amazonaws.com/'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 s3 = boto3.client(
     's3',
-    aws_access_key_id=os.environ.get('S3_KEY'),
-    aws_secret_access_key=os.environ.get('S3_SECRET')
+    aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
+    aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
 )
 
 
@@ -26,6 +26,7 @@ def get_unique_filename(filename):
 
 
 def upload_file_to_s3(file, acl='public-read'):
+    print(BUCKET_NAME)
     try:
         s3.upload_fileobj(
             file,
@@ -37,6 +38,7 @@ def upload_file_to_s3(file, acl='public-read'):
             }
         )
     except Exception as e:
+        print("no")
         return {'errors': str(e)}
-
+    print("yes")
     return {'url': f'{S3_LOCATION}{file.filename}'}
