@@ -29,7 +29,7 @@ function AccountButton ({ setAuthenticated }) {
     return (
         <div className="account-menu-container">
             <div className="account-menu-button" onClick={openMenu}>
-                <i className="fas fa-seedling"></i>
+                <i className="fab fa-pagelines"></i>
             </div>
             {showMenu && (
             <div className="account-menu">

@@ -15,6 +15,7 @@ const Account = () => {
   const [showFavorites, setShowFavorites] = useState(false);
   const [showShopForm, setShowShopForm] = useState(false);
   const [showShopInfo, setShowShopInfo] = useState(false);
+  const [showReviews, setShowReviews] = useState(false);
   
   useEffect(() => {
     if (!user) dispatch(authenticate());
@@ -50,7 +51,7 @@ const Account = () => {
         <ShopForm />
       </div>
     )
-  } else {
+  } else if (showShopInfo) {
     
     option = (
       <>
@@ -83,7 +84,17 @@ const Account = () => {
         </div>
       </>
     )
-  } 
+  } else if (showReviews) {
+    option = (
+      <>
+      </>
+    )
+  } else {
+    option = (
+      <>
+      </>
+    )
+  }
 
   const openFavorites = () => {
     setShowFavorites(true);
@@ -102,6 +113,13 @@ const Account = () => {
       setShowShopInfo(false);
     }
   }
+
+  const openReviews = () => {
+     setShowFavorites(false);
+      setShowShopInfo(false);
+      setShowShopForm(false);
+      setShowReviews(true)
+  }
   return (
     <>
       <div className="acount-page-container">
@@ -112,6 +130,9 @@ const Account = () => {
             </button>
             <button onClick={() => openShopInfo()} className="store account-link-container">
               <i className="fas fa-store account-store"></i>
+            </button>
+            <button onClick={() => openReviews()} className="review account-link-container">
+              <i class="far fa-comment-alt account-review"></i>
             </button>
             </div>
             <div className="account-page-lower-container"> 

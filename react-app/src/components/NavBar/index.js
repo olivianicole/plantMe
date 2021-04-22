@@ -18,7 +18,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
               <NavLink className="header-site-title" to="/home" exact={true} activeClassName="active">plantMe</NavLink>
           </div>
           <div className="nav-container-right">
-            <TinyCartModal className="nabvar-cart-link"/>
+            <TinyCartModal className="navbar-cart-link"/>
             <NavLink className="navbar-favorites-link" to="/favorites">
               <div>
                 <i className="far fa-heart"/>
