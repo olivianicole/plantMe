@@ -1,10 +1,37 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
-from app.models import db, User, Shop
+from app.models import db, User, Shop, Logo
 from app.forms import ShopForm
 from app.forms import ListingForm
+from app.awsS3 import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 account_routes = Blueprint('account', __name__)
+
+@account_routes.route("/logo", methods=["POST"])
+@login_required
+def upload_image():
+    # print(request.files)
+    if "logo" not in request.files:
+        return {"errors": "image required"}, 400
+    logo = request.files["logo"]
+    # print("LOGO", logo)
+    # print("FILENAME", logo.filename)
+    if not allowed_file(logo.filename):
+        return {"errors": "file type not permitted"}, 400
+    logo.filename = get_unique_filename(logo.filename)
+    upload = upload_file_to_s3(logo)
+    print("hey did it work")
+    
+    if "url" not in upload:             # if the dictionary doesn't have a url key it means that there was an error when we tried to upload so we send back that error message
+        return upload, 400
+    url = upload["url"]
+
+    logo = Logo(url=url)
+
+    db.session.add(logo)
+    db.session.commit()
+    return {"url": url}
 
 
 @account_routes.route('/open-shop', methods=["POST"])
@@ -13,7 +40,6 @@ def open_shop():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit(): 
         new_shop = Shop(
-                        shop_logo=form.shop_logo.data,
                         name=form.name.data,
                         owner_id=form.owner_id.data,
                         description=form.description.data,

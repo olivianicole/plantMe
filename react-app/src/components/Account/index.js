@@ -3,29 +3,36 @@ import { authenticate } from "../../store/session";
 import { useDispatch, useSelector } from 'react-redux';
 import ShopForm from "./ShopForm";
 import Listing from "../Listing";
+import SimpleListing from "../Listing/SimpleListing";
 import ListingModal from "../ListingModal";
 import "./Account.css";
 import { getUserFavorites } from "../../store/favorites";
+import { getPurchased } from "../../store/cart";
 
 const Account = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user?.current_user);
   const favorites = useSelector((state) => state?.favorites?.favorites?.favorites);
   const listings = useSelector((state) => state?.session?.user?.current_user?.shop?.listings);
-  const items = useSelector((state) => state.cart?.cart?.purchased);
+  const items = useSelector((state) => state?.cart?.purchases?.your_purchases);
+  
   const [showFavorites, setShowFavorites] = useState(false);
   const [showShopForm, setShowShopForm] = useState(false);
   const [showShopInfo, setShowShopInfo] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
-  
   useEffect(() => {
     if (!user) dispatch(authenticate());
     if (!favorites) dispatch(getUserFavorites(user.id));
+    if (!items) dispatch(getPurchased(user.id));
     
-
-  }, [user, dispatch, favorites]);
-
+  }, [dispatch, user, favorites, items]);
+  
   let option;
+
+
+  const getUnique = (items) => {
+
+  }
 
   if (showFavorites) {
     option = (
@@ -59,7 +66,7 @@ const Account = () => {
         <div className="account-shop-container">
           <div>
             <div className="account-shop-title">Manage Your Shop</div>
-            <img src={user?.shop?.shop_logo?.url}/>
+            <img src={user?.shop?.shop_logo}/>
           </div>
           <div>
             <div className="account-shop-name">{user?.shop.name}</div>
@@ -73,7 +80,7 @@ const Account = () => {
             return (
               <div className="account-indiv-listing">
                   <div>
-                      <Listing listing={listing} />
+                      <SimpleListing listing={listing} />
                   </div>
                   <div className="account-indiv-text-container">
                     <div className="account-indiv-name">{listing.name}</div>
@@ -86,22 +93,29 @@ const Account = () => {
       </>
     )
   } else if (showReviews) {
-    if (items) {
-      option = (
-        <>
-  
-        </>
-      )
+      if (items) {
+        option = (
+          <>
+            {items?.map((item) => {
+              return (
+                <div className="account-review-item-container">
+                  <SimpleListing listing={item} key={item.id}/>
+                </div>
+              )
+            })}
+          </>
+        )
+    
+      } else {
+        option = (
+          <>
+            <div className="account-shop-container">
+              <div className="account-shop-title">Oops! You must purchase an item before you can review it.</div>
+            </div>
+          </>
+        )
+      }
 
-    } else {
-      option = (
-        <>
-          <div className="account-shop-container">
-            <div className="account-shop-title">Oops! You must purchase an item before you can review it.</div>
-          </div>
-        </>
-      )
-    }
   } else {
     option = (
       <>
@@ -109,10 +123,12 @@ const Account = () => {
     )
   }
 
+
   const openFavorites = () => {
     setShowFavorites(true);
     setShowShopInfo(false);
     setShowShopForm(false);
+    setShowReviews(false);
   }
 
   const openShopInfo = () => {
@@ -120,18 +136,20 @@ const Account = () => {
       setShowShopInfo(true);
       setShowShopForm(false);
       setShowFavorites(false);
+      setShowReviews(false);
     } else {
       setShowShopForm(true);
       setShowFavorites(false);
       setShowShopInfo(false);
+      setShowReviews(false);
     }
   }
 
   const openReviews = () => {
-     setShowFavorites(false);
+      setShowFavorites(false);
       setShowShopInfo(false);
       setShowShopForm(false);
-      setShowReviews(true)
+      setShowReviews(true);
   }
   return (
     <>

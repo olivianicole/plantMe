@@ -4,8 +4,8 @@ from wtforms.validators import DataRequired
 
 
 class ShopForm(FlaskForm):
-    shop_logo = StringField("shop_logo", validators=[DataRequired()])
     name = StringField("name", validators=[DataRequired()])
+    shop_logo = StringField("shop_logo", validators=[DataRequired()])
     owner_id = IntegerField("owner_id", validators=[DataRequired()])
     description = TextAreaField("description")
     city = StringField("city")

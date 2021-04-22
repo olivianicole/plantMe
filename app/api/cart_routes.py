@@ -10,13 +10,14 @@ cart_routes = Blueprint('cart', __name__)
 @cart_routes.route('/')
 # @login_required
 def cart():
-    # print("hello")
     cart = Cart.query.all()
-    print(cart)
-    # if len(cart) == 1:
-    #     return {"your_cart": cart.to_dict()}
-    # else:
     return {"your_cart": [item.to_dict() for item in cart]}
+
+@cart_routes.route('/<int:id>')
+# @login_required
+def purchases(id):
+    purchases = Purchase.query.filter(Purchase.user_id == id).all()
+    return {"your_purchases": [item.to_dict() for item in purchases]}
 
 
 @cart_routes.route('/add', methods=['GET', 'POST'])

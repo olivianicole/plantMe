@@ -5,6 +5,7 @@ const load = (shop) => ({
     payload: shop
 });
 
+
 export const createShop = (shop) => async (dispatch) => {
     const {
         shop_logo,
