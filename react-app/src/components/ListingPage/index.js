@@ -75,6 +75,8 @@ const ListingPage = () => {
                         </select>
                     </div>
                    <CartModal item={item} /> 
+                   <div className="listing-page-listing-description-title">Description</div>
+                   <div className="listing-page-listing-description">{listing?.description}</div>
                 </div>
             </div>
         </>
