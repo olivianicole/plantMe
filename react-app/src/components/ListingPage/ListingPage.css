@@ -12,7 +12,7 @@
 }
 
 .listing-page-container-left {
-    margin: auto;
+    margin: 0 auto auto 0;
 
 }
 
@@ -117,4 +117,19 @@
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     border-radius: 6px;
+}
+.listing-page-listing-description-title {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    padding: 12px;
+    margin-top: 48px;
+}
+.listing-page-listing-description {
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 28px;
+    padding: 12px;
 }
