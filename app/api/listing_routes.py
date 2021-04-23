@@ -11,6 +11,7 @@ listing_routes = Blueprint('listing', __name__)
 def listings():
     listings = Listing.query.limit(30)
     all_listings = Listing.query.all()
+    print(all_listings)
     suggested_listings = Listing.query.order_by(Listing.price).limit(7)
     # print("LISTINGS", listings)
     return {"all_listings": [listing.to_simple_dict() for listing in listings],

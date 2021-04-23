@@ -15,11 +15,10 @@ const ListingPage = () => {
     
     const listing = useSelector((state) => state.listings?.allListings?.current_listing);
     const emptyImage = "https://www.vitraglobal.com/UPLOAD/Products/thumb/K94773300001VTE0_small.jpg";
-    // console.log(listing);
     useEffect(() => {
         if (!listing) dispatch(getCurrentListing(params.id));
 
-    }, [listing, dispatch, params]);
+    }, [listing, dispatch]);
 
     const controlsOptions = {
         show: true,
@@ -43,10 +42,10 @@ const ListingPage = () => {
             quantity, 
             listing_id: listing?.id
         }
-    console.log("item", item)
+    const listingPrice = priceConverter(listing?.price)
     return (
         <>
-            <div className="listing-page-container">
+            <div className="listing-page-container"> 
                 <div className="listing-page-container-left">
                     <a href="/home" className="listing-page-back"><i className="fas fa-arrow-left"></i>Back to listings</a>
                     <div className="listing-image-carousel">
@@ -63,7 +62,7 @@ const ListingPage = () => {
                     <div className="listing-page-num-sales">{numSales} sales</div>
                     <div className="listing-page-listing-title">{listing?.name}</div>
                     <div className="listing-page-price-fav">
-                        <div className="listing-page-listing-price">{priceConverter(listing?.price)}</div>
+                        <div className="listing-page-listing-price">{listingPrice}</div>
                         <FavoriteButton listing={listing}/>
                     </div>
                     <div className="listing-page-quantity-container">Quantity
@@ -75,7 +74,7 @@ const ListingPage = () => {
                             <option value={5} className="quantity-option">5</option>
                         </select>
                     </div>
-                    <CartModal item={item} />
+                   <CartModal item={item} /> 
                 </div>
             </div>
         </>

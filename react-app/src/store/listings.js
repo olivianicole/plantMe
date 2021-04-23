@@ -1,5 +1,6 @@
 const LOAD = "/listing/load";
 const ADD = "/listing/new";
+
 const load = (listings) => ({
     type: LOAD,
     payload: listings,
@@ -15,6 +16,7 @@ export const getListings = () => async (dispatch) => {
             'Content-Type': 'application/json',
         },
     });
+    console.log(response)
     if (response.ok) {
         const listings = await response.json();
         dispatch(load(listings));
@@ -33,6 +35,7 @@ export const getCurrentListing = (id) => async (dispatch) => {
         dispatch(load(listing));
         return response;
     }
+    return response;
 }
 
 export const newListing = (listing) => async (dispatch) => {
