@@ -20,6 +20,7 @@ class Shop(db.Model):
     listings = db.relationship("Listing", back_populates="shop")
 
     def to_dict(self):
+      
         return {
             "id": self.id,
             "shop_logo": self.shop_logo,
@@ -31,10 +32,11 @@ class Shop(db.Model):
             "country": self.country,
             "num_sales": self.num_sales,
             "user": self.users.to_simple_dict(),
-            "listings": [listing.to_simple_dict() for listing in self.listings]
+            "listings": [listing.to_simple_dict() for listing in self.listing],
         }
 
     def to_simple_dict(self):
+
         return {
             "id": self.id,
             "shop_logo": self.shop_logo,
@@ -45,5 +47,5 @@ class Shop(db.Model):
             "state": self.state,
             "country": self.country,
             "num_sales": self.num_sales,
-            "listings": [listing.to_simple_dict() for listing in self.listings]
+            "listings": [listing.to_simple_dict() for listing in self.listings],
         }

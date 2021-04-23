@@ -37,6 +37,7 @@ export const getCurrentListing = (id) => async (dispatch) => {
 
 export const newListing = (listing) => async (dispatch) => {
     const { name, description, image_1, image_2, image_3, category_id, shop_id, price } = listing;
+    console.log(listing)
     const response = await fetch('/api/account/new', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -51,6 +52,7 @@ export const newListing = (listing) => async (dispatch) => {
             price
         })
     });
+    console.log(response)
     if (response.ok) {
         const listing = await response.json();
         dispatch(add(listing));
@@ -68,7 +70,9 @@ const listingsReducer = (state = initialState, action) => {
             newState.allListings = action.payload;
             return newState;
         case ADD:
-            newState.allListings = [...newState.allListings, action.payload]
+            newState = Object.assign({}, state);
+            newState.allListings = action.payload;
+            return newState;
         default:
             return state;
     }

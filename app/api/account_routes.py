@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
-from app.models import db, User, Shop, Logo
+from app.models import db, User, Shop, Logo, Listing
 from app.forms import ShopForm
 from app.forms import ListingForm
 from app.awsS3 import (
@@ -10,19 +10,16 @@ account_routes = Blueprint('account', __name__)
 
 @account_routes.route("/logo", methods=["POST"])
 @login_required
-def upload_image():
-    # print(request.files)
+def logo():
     if "logo" not in request.files:
         return {"errors": "image required"}, 400
     logo = request.files["logo"]
-    # print("LOGO", logo)
-    # print("FILENAME", logo.filename)
+   
     if not allowed_file(logo.filename):
         return {"errors": "file type not permitted"}, 400
     logo.filename = get_unique_filename(logo.filename)
     upload = upload_file_to_s3(logo)
-    print("hey did it work")
-    
+
     if "url" not in upload:             # if the dictionary doesn't have a url key it means that there was an error when we tried to upload so we send back that error message
         return upload, 400
     url = upload["url"]
@@ -53,54 +50,42 @@ def open_shop():
     else:
         return {"errors": "invalid submission"}
 
-@account_routes.route('/image1', methods=["POST"])
-def image_1():
-    if "image1" not in request.files:
+@account_routes.route('/image', methods=["POST"])
+@login_required
+def upload_image():
+
+    if "image" not in request.files:
         return {"errors": "image required"}, 400
-    image1 = request.files["image1"]
-    image1.name = get_unique_filename(image1.name)
-    upload1 = upload_file_to_s3(image1)
+    image = request.files["image"]
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+    image.filename = get_unique_filename(image.filename)
+    upload = upload_file_to_s3(image)
 
-    if "url" not in upload1: # if the dictionary doesn't have a url key it means that there was an error when we tried to upload so we send back that error message
+    
+    if "url" not in upload:     
         return upload, 400
-    url1 = upload["url"] #
+    url = upload["url"]
 
+    logo = Logo(url=url)
 
-@account_routes.route('/image2', methods=["POST"])
-def image_2():
-    if "image2" in request.files:
-        if not allowed_file(image2.name):
-            return {"errors": "file type not permitted"}, 400
-        image2.name = get_unique_filename(image2.name)
-        upload2 = upload_file_to_s3(image2)
-        if "url" not in upload2: 
-            url2 = ""
-        url2 = upload2["url"]
-    
-@account_routes.route('/image3', methods=["POST"])
-    
-def image_3():
+    db.session.add(logo)
+    db.session.commit()
+    return {"url": url}
 
-    if "image3" in request.files:
-        if not allowed_file(image3.name):
-            return {"errors": "file type not permitted"}, 400
-        image3.name = get_unique_filename(image3.name)
-        upload3 = upload_file_to_s3(image3)
-        if "url" not in upload3: 
-            url3 = ""
-        url3 = upload3["url"]
 
 @account_routes.route('/new', methods=["POST"])
 def new_listing():
     form = ListingForm()
+    print(form.name.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_listing = Listing(
                                 name=form.name.data,
                                 description=form.description.data,
-                                image_1=url1,
-                                image_2=url2,
-                                image_3=url3,
+                                image_1=form.image_1.data,
+                                image_2=form.image_2.data,
+                                image_3=form.image_3.data,
                                 category_id=form.category_id.data,
                                 shop_id=form.shop_id.data,
                                 price=form.price.data,
