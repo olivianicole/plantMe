@@ -96,13 +96,16 @@ const Account = () => {
       if (items) {
         option = (
           <>
-            {items?.map((item) => {
-              return (
-                <div className="account-review-item-container">
-                  <SimpleListing listing={item} key={item.id}/>
-                </div>
-              )
-            })}
+          <div className="account-review-container">
+              {items?.map((item) => {
+                return (
+                  <div className="account-review-item-container">
+                    <SimpleListing listing={item} key={item.id}/>
+                    <div className="review-text">Thank you for your recent purchase. The option to leave a review will become available after your item has arrived.</div>
+                  </div>
+                )
+              })}
+            </div>
           </>
         )
     

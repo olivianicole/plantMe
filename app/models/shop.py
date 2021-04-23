@@ -33,7 +33,6 @@ class Shop(db.Model):
             "num_sales": self.num_sales,
             "user": self.users.to_simple_dict(),
             "listings": [listing.to_simple_dict() for listing in self.listing],
-            "unique_listings": [listing.to_simple_dict() for listing in unique_listings],
         }
 
     def to_simple_dict(self):
@@ -49,5 +48,4 @@ class Shop(db.Model):
             "country": self.country,
             "num_sales": self.num_sales,
             "listings": [listing.to_simple_dict() for listing in self.listings],
-            "unique_listings": [listing.to_simple_dict() for listing in unique_listings],
         }
