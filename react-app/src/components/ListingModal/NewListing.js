@@ -2,60 +2,73 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { authenticate } from "../../store/session";
+import { newListing } from "../../store/listings";
 import "./ListingModal.css"
 
-const NewListing = () => {
+const NewListing = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const user = useSelector((state) => state?.session?.user?.current_user);
 
     const [ name, setName ] = useState("");
     const [ description, setDescription ] = useState("");
-    const [ image_1, setImage1] = useState("");
-    const [ image_2, setImage2] = useState("");
-    const [ image_3, setImage3] = useState("");
-    const [ category_id, setCategoryId] = useState("");
-    const [ shop_id, setShopId] = useState("");
+    const [ image_1, setImage1] = useState(null);
+    const [ image_2, setImage2] = useState(null);
+    const [ image_3, setImage3] = useState(null);
+    const [ category_id, setCategoryId] = useState();
+    const [ shop_id, setShopId] = useState(user?.shop?.id);
     const [ price, setPrice] = useState("");
+    const [ imageLoading, setImageLoading ] = useState(false);
 
-    const user = useSelector((state) => state?.session?.user?.current_user);
     
     useEffect(() => {
     if (!user) dispatch(authenticate());
     
-
     }, [user, dispatch])
 
     const updateName = (e) => setName(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
 
+   const updateImage = async (e, setFunction) => {
+        const image = e.target.files[0];
+        const formData = new FormData();
+        formData.append("image", image);
+        setImageLoading(true);
+        const response = await fetch("/api/account/image", {
+            method: "POST",
+            body: formData,
+        });
+        if (response.ok) {
+            const image = await response.json();
+            await setFunction(image.url)
+            setImageLoading(false);
+        } else {
+            setImageLoading(false);
+            console.log("Upload Error")
+        }
+    }
+
     const updateImage1 = async (e) => {
-        const image = e.target.files[0]
-        const formData = new FormData();
-        formData.append("image1", image);
-        setImage1(formData)
-    };
+        await updateImage(e, setImage1);
+    }
     const updateImage2 = async (e) => {
-        const image = e.target.files[0]
-        const formData = new FormData();
-        formData.append("image2", image);
-        setImage2(formData)
-    };
+        if (e.target.value) await updateImage(e, setImage2);
+        else setImage2("");
+    }
     const updateImage3 = async (e) => {
-        const image = e.target.files[0]
-        const formData = new FormData();
-        formData.append("image3", image);
-        setImage3(formData)
-    };
-  
-    const updateCategoryId = () => setCategoryId(null);
-    const updateShopId = () => setShopId(user?.shop?.id);
+        if (e.target.value) await updateImage(e, setImage3);
+        else setImage3("");
+    }
+
     const updatePrice = (e) => setPrice(e.target.value);
 
 
     const handleNewListing = (e) => {
         e.preventDefault();
-        updateCategoryId();
-        const newListing = {
+        setShowModal(false);
+        if (!image_2) updateImage2(e);
+        if (!image_3) updateImage2(e);
+        const info = {
             "name": name, 
             "description": description,
             "image_1": image_1,
@@ -65,6 +78,9 @@ const NewListing = () => {
             "shop_id": shop_id,
             "price": price   
         };
+        dispatch(newListing(info));
+        dispatch(authenticate());
+        history.push('/account');
     };
    
     return (
@@ -92,7 +108,6 @@ const NewListing = () => {
                     type="file"
                     accept='image/*'
                     placeholder="Image 1"
-                    value={image_1}
                     onChange={(e) => updateImage1(e)}
                     />
                     <input 
@@ -100,7 +115,6 @@ const NewListing = () => {
                     type="file"
                     accept='image/*'
                     placeholder="Image 2"
-                    value={image_2}
                     onChange={(e) => updateImage2(e)}
                     />
                     <input 
@@ -108,7 +122,6 @@ const NewListing = () => {
                     type="file"
                     accept='image/*'
                     placeholder="Image 3"
-                    value={image_3}
                     onChange={(e) => updateImage3(e)}
                     />
                     <input 
