@@ -21,9 +21,37 @@
     font-size: 40px;
     text-decoration: none;
 }
+
+.nav-container-left {
+    width: 87%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-search-bar {
+    justify-self: center;
+    padding-left: 18px;
+    border-radius: 96px;
+    box-shadow: none;
+    background: transparent;
+    padding-right: 42px;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    height: 48px;
+    outline: none;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    width: 80%;
+    margin-top: 20px;
+}
+
 .header-site-title :active {
     color:#636F57;
     text-decoration: none;
+    
 }
 
 .nav-container-right {
@@ -34,7 +62,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
 }
 
 .navbar-favorites-link, .navbar-favorites-link :active, 
