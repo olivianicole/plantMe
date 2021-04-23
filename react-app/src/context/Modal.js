@@ -66,3 +66,18 @@ export function NewListingModal ({ onClose, children, setShowModal }) {
         modalNode
     );
 };
+
+export function SearchBarModal ({ onClose, children, setShowModal }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
+
+    return ReactDOM.createPortal(
+        <div id="search-modal">
+            <div id="search-modal-background" onClick={onClose} />
+            <div id="search-modal-content" >
+                {children}
+            </div>
+        </div>,
+        modalNode
+    );
+};
