@@ -11,17 +11,15 @@ const ShopForm = () => {
     const history = useHistory();
     const [shop_logo, setShopLogo] = useState(null);
     const [name, setName] = useState("");
-    const [description, setDescription] = ("");
+    const [description, setDescription] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [country, setCountry] = useState("");
-    const [logoLoading, setLogoLoading] = useState(false);
 
     const updateShopLogo = async (e) => {
         const logo = e.target.files[0];
         const formData = new FormData();
         formData.append("logo", logo);
-        setLogoLoading(true);
         const response = await fetch("/api/account/logo", {
             method: "POST",
             body: formData,
@@ -31,14 +29,11 @@ const ShopForm = () => {
             const logo = await response.json();
             console.log(logo.url)
             await setShopLogo(logo.url)
-            setLogoLoading(false);
-        } else {
-            setLogoLoading(false);
-            console.log("Upload Error")
-        }
+        } 
     }
 
-    const openShop = () => {
+    const openShop = (e) => {
+        e.preventDefault();
         const submission = {
             name,
             shop_logo,
@@ -48,9 +43,9 @@ const ShopForm = () => {
             state,
             country,
         };
-
+        console.log(submission)
         dispatch(createShop(submission));
-        window.location.reload();
+        // window.location.reload();
         return history.push("/account");
     }
 
@@ -59,63 +54,65 @@ const ShopForm = () => {
             <div className="shop-form-title">
                 <p>Want to start selling your plants?</p>
             </div>
-            <div className="shop-form-shop-logo">
-                <input 
-                className="shop-form-shop-logo"
-                type="file"
-                accept='image/*'
-                placeholder="Shop Logo"
-                onChange={(e) => updateShopLogo(e)}
-                />
-            </div>
-            <div className="shop-form-name">
-                <input 
-                className="shop-form-name-input"
-                name="name"
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your Shop's Name"
-                value={name} />
-            </div>
-            <div className="shop-form-description">
-                <textarea
-                className="shop-form-description-textarea"
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Describe your shop!"
-                value={description} />
-            </div>
-            <div className="shop-form-location-text">
-                <p>Where's your shop located?</p>
-                <p>This helps customers know when to expect the arrival of their plant!</p>
-            </div>
-            <div className="shop-form-city">
-                <input 
-                className="shop-form-city-input"
-                name="city"
-                type="text"
-                onChange={(e) => setCity(e.target.value)}
-                placeholder="City"
-                value={city} />
-            </div>
-            <div className="shop-form-state">
-                <input 
-                className="shop-form-state-input"
-                name="state"
-                type="text"
-                onChange={(e) => setState(e.target.value)}
-                placeholder="State"
-                value={state} />
-            </div>
-            <div className="shop-form-country">
-                <input 
-                className="shop-form-country-input"
-                name="country"
-                type="text"
-                onChange={(e) => setCountry(e.target.value)}
-                placeholder="Country"
-                value={country} />
-            </div>
-            <button onClick={(e) => openShop(e)} className="shop-form-submit">Open Shop!</button>
+            <form>
+                <div className="shop-form-shop-logo">
+                    <input 
+                    className="shop-form-shop-logo"
+                    type="file"
+                    accept='image/*'
+                    placeholder="Shop Logo"
+                    onChange={(e) => updateShopLogo(e)}
+                    />
+                </div>
+                <div className="shop-form-name">
+                    <input 
+                    className="shop-form-name-input"
+                    name="name"
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your Shop's Name"
+                    value={name} />
+                </div>
+                <div className="shop-form-description">
+                    <textarea
+                    className="shop-form-description-textarea"
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Describe your shop!"
+                    />
+                </div>
+                <div className="shop-form-location-text">
+                    <p>Where's your shop located?</p>
+                    <p>This helps customers know when to expect the arrival of their plant!</p>
+                </div>
+                <div className="shop-form-city">
+                    <input 
+                    className="shop-form-city-input"
+                    name="city"
+                    type="text"
+                    onChange={(e) => setCity(e.target.value)}
+                    placeholder="City"
+                    value={city} />
+                </div>
+                <div className="shop-form-state">
+                    <input 
+                    className="shop-form-state-input"
+                    name="state"
+                    type="text"
+                    onChange={(e) => setState(e.target.value)}
+                    placeholder="State"
+                    value={state} />
+                </div>
+                <div className="shop-form-country">
+                    <input 
+                    className="shop-form-country-input"
+                    name="country"
+                    type="text"
+                    onChange={(e) => setCountry(e.target.value)}
+                    placeholder="Country"
+                    value={country} />
+                </div>
+                <button onClick={(e) => openShop(e)} type="submit" className="shop-form-submit">Open Shop!</button>
+            </form>
         </div>
     )
 };

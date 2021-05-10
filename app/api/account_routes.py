@@ -35,8 +35,9 @@ def logo():
 def open_shop():
     form = ShopForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit(): 
+    if form.validate_on_submit():
         new_shop = Shop(
+                        shop_logo=form.shop_logo.data,
                         name=form.name.data,
                         owner_id=form.owner_id.data,
                         description=form.description.data,

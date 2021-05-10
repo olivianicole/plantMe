@@ -1,12 +1,12 @@
-const LOAD = "shop/load";
+const CREATE = "/shop/create";
 
-const load = (shop) => ({
-    type: LOAD,
-    payload: shop
+const create = (shop) => ({
+    type: CREATE,
+    payload: shop,
 });
 
 
-export const createShop = (shop) => async (dispatch) => {
+export const createShop = (submission) => async (dispatch) => {
     const {
         shop_logo,
         name,
@@ -15,9 +15,9 @@ export const createShop = (shop) => async (dispatch) => {
         city,
         state,
         country
-    } = shop;
-
-    await fetch("/api/account/open-shop", {
+    } = submission;
+    
+    const response = await fetch("/api/account/open-shop", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -30,16 +30,24 @@ export const createShop = (shop) => async (dispatch) => {
             country
         })
     });
+    const newShop = await response.json();
+
+    if (response.ok){
+        dispatch(create(newShop));
+        return newShop;
+    }
+    return newShop;
 }
 
 let initialState = {};
 
 const shopReducer = (state = initialState, action) => {
     let newState;
+    console.log(action)
     switch (action.type) {
-        case LOAD:
+        case CREATE:
             newState = Object.assign({}, state);
-            newState.shop = action.coffee;
+            newState.shop = action.payload;
             return newState;
         default:
             return state;

@@ -20,7 +20,7 @@ const Footer = ({ authenticated, setAuthenticated }) => {
                     </a>
                     |
                     <a href="https://angel.co/u/olivia-young-10">
-                        <i class="fab fa-angellist"></i>
+                        <i className="fab fa-angellist"></i>
                     </a>
                 </div>
             </div>
