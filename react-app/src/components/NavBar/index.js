@@ -12,25 +12,21 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
   const [ showSearchModal, setShowSearchModal ] = useState(false);
   const totalListings = useSelector((state) => state?.listings?.allListings?.total_listings);
-  console.log(totalListings)
   
-  // useEffect(() => {
-  //   if (!totalListings) dispatch(getListings())
-  // }, [dispatch, totalListings]);
+  useEffect(() => {
+    if (!totalListings) dispatch(getListings())
+  }, [dispatch, totalListings]);
   
 
-  // const handleSearch = (e) => {
-  //   setShowSearchModal(true)
-  //   console.log(e.target.value)
-  //   let searchResults = totalListings?.filter((listing) => listing.name.toLowerCase().includes(e.target.value.toLowerCase()) || listing.description.toLowerCase().includes(e.target.value.toLowerCase()));
-  //   console.log("set")
-
-  //   return (
-  //     <>
-  //       <SearchModal searchResults={searchResults} showSearchModal={showSearchModal} setShowSearchModal={setShowSearchModal}/>
-  //     </>
-  //   )
-  // }
+  const handleSearch = (e) => {
+    setShowSearchModal(true)
+    let searchResults = totalListings?.filter((listing) => listing.name.toLowerCase().includes(e.target.value.toLowerCase()) || listing.description.toLowerCase().includes(e.target.value.toLowerCase()));
+    return (
+      <>
+        <SearchModal searchResults={searchResults} showSearchModal={showSearchModal} setShowSearchModal={setShowSearchModal}/>
+      </>
+    )
+  }
   if (!authenticated) {
     return <Redirect to="/" />
   }
@@ -45,7 +41,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
               <input 
                 placeholder="search"
                 className="nav-search-bar"
-                />
+                onChange={(e) => handleSearch(e)}/>
           </div>
           <div className="nav-container-right">
             <TinyCartModal className="navbar-cart-link"/>
