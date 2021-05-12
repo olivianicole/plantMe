@@ -3,7 +3,7 @@ import { SearchBarModal } from "../../context/Modal";
 import Search from "./Search";
 
 const SearchModal = ({ searchResults, showSearchModal, setShowSearchModal }) => {
-
+    setShowSearchModal(true)
     return (
         <>
             { showSearchModal && (

@@ -12,6 +12,7 @@ const Search = ({ searchResults, setShowModal }) => {
                 <div className="results-listings-grid">
                     {searchResults?.map((listing) => {
                         return (
+                            console.log("made it"),
                             <Listing listing={listing} />
                         )
                 })}
